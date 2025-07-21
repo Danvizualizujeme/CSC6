@@ -22,7 +22,7 @@
   ];
 </script>
 
-<header class="fixed inset-x-0 top-0 bg-black z-50 border-b border-red-600">
+<header class="fixed inset-x-0 top-0 bg-black z-50 border-b-[0.5px] border-red-600">
   <div class="container mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center space-x-2">
