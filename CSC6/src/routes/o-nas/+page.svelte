@@ -1,8 +1,7 @@
 <script>
-  // Moderní gym interiér (hlavní obrázek)
+  // Hlavní obrázek gymu
   const aboutImg = "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1200&q=80";
-
-  // Galerie – mix sportu, týmu a atmosféry
+  // Galerie
   const gallery = [
     "https://images.unsplash.com/photo-1517960413843-0aee8e2d471c?auto=format&fit=crop&w=800&q=80",
     "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80",
@@ -10,7 +9,7 @@
   ];
 </script>
 
-<!-- HERO sekce nahoře -->
+<!-- HERO sekce -->
 <section class="relative h-[400px] md:h-[500px] flex items-center justify-center">
   <img
     src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=1600&q=80"
@@ -28,18 +27,18 @@
   </div>
 </section>
 
-<!-- HLAVNÍ BLOK: Moderní layout, stejný styl jako homepage -->
+<!-- HLAVNÍ BLOK -->
 <section class="bg-csc-black py-20">
   <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
     <!-- Obrázek vlevo + badge -->
-    <div class="w-full md:w-1/2 relative">
-      <div class="w-full h-[400px] rounded-lg overflow-hidden shadow-xl">
+    <div class="w-full md:w-1/2 relative flex-shrink-0">
+      <div class="relative w-full h-[400px] rounded-lg overflow-hidden shadow-xl">
         <img src={aboutImg} alt="interior gym" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-csc-black to-transparent"></div>
-      </div>
-      <div class="absolute -bottom-8 -right-8 bg-csc-red p-5 rounded-lg shadow-xl flex flex-col items-center">
-        <span class="font-oswald text-3xl font-bold">20+</span>
-        <span class="uppercase text-xs font-semibold">let zkušeností</span>
+        <div class="absolute -bottom-8 -right-8 bg-csc-red p-5 rounded-lg shadow-xl flex flex-col items-center">
+          <span class="font-oswald text-3xl font-bold">20+</span>
+          <span class="uppercase text-xs font-semibold">let zkušeností</span>
+        </div>
       </div>
     </div>
     <!-- Text vpravo -->
@@ -79,7 +78,7 @@
   </div>
 </section>
 
-<!-- ÚSPĚCHY a HISTORIE BLOK -->
+<!-- HISTORIE & ÚSPĚCHY -->
 <section class="py-20 bg-csc-dark">
   <div class="container mx-auto px-4">
     <h2 class="font-oswald text-3xl md:text-4xl font-bold mb-8 text-center">Naše historie a úspěchy</h2>
@@ -97,7 +96,7 @@
   </div>
 </section>
 
-<!-- Galerie: stejný tmavý styl -->
+<!-- Galerie sekce -->
 <section class="py-20 bg-csc-black">
   <div class="container mx-auto px-4">
     <h2 class="font-oswald text-3xl font-bold mb-10 text-center text-csc-red">Klubové momenty</h2>
