@@ -5,11 +5,12 @@
   let mobileOpen = false;
 
   const links = [
-    { href: '/',         label: 'HOME'     },
-    { href: '/about',    label: 'ABOUT'    },
-    { href: '/schedule', label: 'SCHEDULE' },
-    { href: '/trainers', label: 'TRAINERS' },
-    { href: '/contact',  label: 'CONTACT'  }
+    { href: '/',         label: 'DOMŮ'     },
+    { href: '/o-nas',    label: 'O NÁS'    },
+    { href: '/treneri',  label: 'TRENÉŘI' },
+    { href: '/rozpis',   label: 'ROZPIS TRÉNINKŮ' },
+    { href: '/galerie',  label: 'GALERIE' },
+    { href: '/kontakt',  label: 'KONTAKT'  }
   ];
 
   const programLinks = [
