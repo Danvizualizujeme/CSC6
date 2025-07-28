@@ -122,14 +122,12 @@
           href="#schedule"
           class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold flex items-center gap-2"
         >
-          <!-- 📅 -->
           VIEW SCHEDULE
         </a>
         <a
           href="#join"
           class="border border-white hover:bg-white hover:text-black transition px-6 py-3 rounded font-semibold flex items-center gap-2"
         >
-          <!-- 🙋 -->
           JOIN NOW
         </a>
       </div>
@@ -140,7 +138,6 @@
   <section class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
     {#each features as f}
       <div class="bg-black p-6 rounded-lg border border-gray-700 hover:scale-105 transform transition">
-        <!-- red circle icon wrapper -->
         <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
           {@html f.icon}
         </div>
@@ -232,30 +229,31 @@
     </div>
   </section>
 
-  <!-- TRAINERS -->
+  <!-- OUR TRAINERS -->
   <section class="container mx-auto px-6 py-16 max-w-6xl">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold">OUR <span class="text-red-600">TRAINERS</span></h2>
+      <h2 class="text-3xl font-bold">
+        OUR <span class="text-red-600 underline decoration-red-600 decoration-4 underline-offset-2">TRAINERS</span>
+      </h2>
       <p class="text-gray-300">
         Meet our team of professional trainers with years of experience across all disciplines.
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {#each trainers as t}
-        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-          <img src={t.image} alt={t.name} class="w-full h-64 object-cover" />
-          <div class="p-6">
-            <h3 class="text-xl font-semibold">{t.name}</h3>
-            <p class="text-red-600 mb-4">{t.role}</p>
-            <p class="text-gray-300 mb-4">{t.description}</p>
-            <div class="flex space-x-3 text-gray-400">
-              {#each t.socials as s}
-                <a href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer"
-                   class="hover:text-white">
-                  {@html s.icon}
-                </a>
-              {/each}
-            </div>
+        <div
+          class="bg-black p-6 rounded-lg border border-gray-700 hover:scale-105 transform transition"
+        >
+          <img src={t.image} alt={t.name} class="w-full h-64 object-cover rounded-md mb-4" />
+          <h3 class="text-xl font-semibold text-white">{t.name}</h3>
+          <p class="text-red-600 mb-4">{t.role}</p>
+          <p class="text-gray-300">{t.description}</p>
+          <div class="flex space-x-4 mt-6 text-gray-400">
+            {#each t.socials as s}
+              <a href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer" class="hover:text-white">
+                {@html s.icon}
+              </a>
+            {/each}
           </div>
         </div>
       {/each}
@@ -290,18 +288,10 @@
         </div>
       </div>
       <div class="flex space-x-4 mt-8 text-gray-400">
-        <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-          <!-- fb SVG -->
-        </a>
-        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-          <!-- ig SVG -->
-        </a>
-        <a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-          <!-- tw SVG -->
-        </a>
-        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-          <!-- yt SVG -->
-        </a>
+        <a href="https://facebook.com" aria-label="Facebook"><!-- fb SVG --></a>
+        <a href="https://instagram.com" aria-label="Instagram"><!-- ig SVG --></a>
+        <a href="https://twitter.com" aria-label="Twitter"><!-- tw SVG --></a>
+        <a href="https://youtube.com" aria-label="YouTube"><!-- yt SVG --></a>
       </div>
     </div>
     <form class="space-y-4 bg-gray-800 p-6 rounded-lg">
@@ -319,6 +309,7 @@
       </button>
     </form>
   </section>
+
 </main>
 
 <style>
