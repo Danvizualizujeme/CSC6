@@ -1,215 +1,241 @@
-<script>
-  // Galerie fotek pro sekci "Klubové momenty"
-  const gallery = [
-    "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1517960413843-0aee8e2d471c?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=800&q=80"
-  ];
+<!-- src/routes/o-nas/+page.svelte -->
+<script lang="ts">
+  // žádná logika prozatím není potřeba
 </script>
 
-<!-- HERO sekce -->
-<section class="relative h-[420px] md:h-[520px] flex items-center px-4 bg-black overflow-hidden">
-  <img 
-    src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=1600&q=80" 
-    alt="O nás" 
-    class="absolute inset-0 w-full h-full object-cover object-center brightness-75 scale-105 animate-zoom-in" 
-    loading="lazy"
-  />
-  <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-transparent"></div>
-  <div class="relative z-10 max-w-2xl">
-    <h1 class="font-oswald text-5xl md:text-6xl font-bold text-white mb-3 uppercase tracking-wider drop-shadow-lg animate-fadein-up">
-      O <span class="text-csc-red">NÁS</span>
-    </h1>
-    <p class="text-gray-200 text-lg mb-2 animate-fadein-up delay-200">
-      Poznejte příběh CSC MMA Clubu – místa, kde se rodí šampioni a kde každý den překonáváme své limity. Jsme víc než jen gym, jsme rodina bojovníků.
-    </p>
-  </div>
-</section>
+<main class="bg-black text-white pt-24 space-y-16">
 
-<!-- FILOZOFIE -->
-<section class="bg-black py-16 md:py-20 animate-fadein-up delay-300">
-  <div class="max-w-3xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-oswald font-bold text-white mb-6 text-center uppercase tracking-wider">
-      NAŠE <span class="text-csc-red">FILOZOFIE</span>
-    </h2>
-    <div class="h-1 w-24 bg-csc-red mx-auto mb-8 rounded"></div>
-    <div class="text-gray-300 text-center mb-8">
-      <p>
-        CSC MMA Club vznikl v roce 2012 z vášně pro bojové sporty a snu vytvořit místo, kde každý najde prostor růst: od začátečníků až po šampiony.
+  <!-- HERO / ABOUT -->
+  <section
+    class="relative bg-cover bg-center h-[600px]"
+    style="background-image:url('/images/about-hero.jpg')"
+  >
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl">
+      <h1 class="text-5xl font-bold leading-tight">
+        ABOUT <span class="text-red-600">CSC MMA</span>
+      </h1>
+      <p class="mt-4 text-lg">
+        Building champions through discipline, dedication, and world-class training since 2005.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a
+          href="#story"
+          class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold"
+          >OUR STORY</a
+        >
+        <a
+          href="#join"
+          class="border border-white hover:bg-white hover:text-black transition px-6 py-3 rounded font-semibold"
+          >JOIN US</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section
+    id="story"
+    class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl"
+  >
+    <div>
+      <h2 class="text-3xl font-bold mb-4">
+        OUR <span class="text-red-600">STORY</span>
+      </h2>
+      <p class="text-gray-200 mb-4">
+        Founded in 2005 by former UFC fighter Alex Rodriguez, CSC MMA Club began as a small
+        training facility dedicated to developing local talent. What started as a passion project
+        quickly evolved into one of the most respected MMA training centers in the region.
+      </p>
+      <p class="text-gray-200 mb-4">
+        Our mission has always been to provide world-class training while fostering a supportive
+        community environment. We believe that martial arts is not just about fighting—it's about
+        discipline, respect, and continuous self‑improvement.
+      </p>
+      <p class="text-gray-200">
+        Today, CSC MMA Club is home to professional fighters, amateur competitors, and fitness
+        enthusiasts alike. Our diverse community shares a common goal: to push beyond limitations
+        and achieve greatness, both in and out of the cage.
       </p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div class="bg-zinc-900 rounded-xl py-6 px-2 shadow-lg border-t-4 border-csc-red transition-transform hover:-translate-y-1 animate-fadein-up delay-400">
-        <i class="fa-solid fa-fire text-2xl text-csc-red mb-2"></i>
-        <div class="font-oswald font-bold text-white mb-1">VÁŠEŇ</div>
-        <div class="text-xs text-gray-400">Do tréninku dáváme srdce</div>
-      </div>
-      <div class="bg-zinc-900 rounded-xl py-6 px-2 shadow-lg border-t-4 border-csc-red transition-transform hover:-translate-y-1 animate-fadein-up delay-500">
-        <i class="fa-solid fa-handshake text-2xl text-csc-red mb-2"></i>
-        <div class="font-oswald font-bold text-white mb-1">RESPEKT</div>
-        <div class="text-xs text-gray-400">Respektujeme soupeře i tým</div>
-      </div>
-      <div class="bg-zinc-900 rounded-xl py-6 px-2 shadow-lg border-t-4 border-csc-red transition-transform hover:-translate-y-1 animate-fadein-up delay-600">
-        <i class="fa-solid fa-star text-2xl text-csc-red mb-2"></i>
-        <div class="font-oswald font-bold text-white mb-1">EXCELENCE</div>
-        <div class="text-xs text-gray-400">Jdeme na maximum</div>
-      </div>
-      <div class="bg-zinc-900 rounded-xl py-6 px-2 shadow-lg border-t-4 border-csc-red transition-transform hover:-translate-y-1 animate-fadein-up delay-700">
-        <i class="fa-solid fa-people-group text-2xl text-csc-red mb-2"></i>
-        <div class="font-oswald font-bold text-white mb-1">KOMUNITA</div>
-        <div class="text-xs text-gray-400">Podporujeme se navzájem</div>
-      </div>
+    <div>
+      <img
+        src="/images/about-gym.jpg"
+        alt="Gym interior"
+        class="w-full rounded-lg shadow-lg"
+      />
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- HISTORIE A ÚSPĚCHY -->
-<section class="py-16 md:py-20 bg-zinc-900 animate-fadein-up delay-500">
-  <div class="max-w-3xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-oswald font-bold mb-6 text-white text-center uppercase tracking-wider">
-      NAŠE <span class="text-csc-red">HISTORIE</span> & ÚSPĚCHY
-    </h2>
-    <div class="h-1 w-24 bg-csc-red mx-auto mb-8 rounded"></div>
-    <div class="text-gray-300 text-center mb-8">
-      <p>
-        Za více než 10 let existence jsme dosáhli mnoha úspěchů a vychovali desítky šampionů.
-      </p>
-    </div>
-    <div class="flex flex-col md:flex-row justify-center gap-8 mb-8">
-      <div>
-        <div class="text-xs text-csc-red font-bold uppercase mb-1">Jak to všechno začalo</div>
-        <div class="text-gray-200 text-sm mb-2">
-          V roce 2012 se skupina nadšenců rozhodla založit klub, kde by mohla rozvíjet techniku, charakter i komunitu. Dnes jsme jeden z největších klubů v regionu.
-        </div>
-      </div>
-      <div class="flex flex-col gap-2 text-white text-sm">
-        <div class="flex gap-2"><span class="font-bold text-csc-red">300+</span> Aktivních členů</div>
-        <div class="flex gap-2"><span class="font-bold text-csc-red">50+</span> Medailí a ocenění</div>
-        <div class="flex gap-2"><span class="font-bold text-csc-red">15</span> Profiúčastníků</div>
-        <div class="flex gap-2"><span class="font-bold text-csc-red">12</span> Let historie</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HLAVNÍ ÚSPĚCHY (v tmavém boxu, moderní grid, s animací) -->
-<section class="bg-black py-8 animate-fadein-up delay-700">
-  <div class="max-w-3xl mx-auto px-4">
-    <div class="bg-zinc-900 rounded-2xl shadow-xl px-6 md:px-12 py-8 md:py-10 flex flex-col items-center">
-      <h3 class="text-csc-red text-lg font-oswald font-bold uppercase mb-6 tracking-widest text-center">
-        HLAVNÍ ÚSPĚCHY
+  <!-- OUR PHILOSOPHY -->
+  <section class="bg-black py-16">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h3 class="text-3xl font-bold text-center mb-12">
+        OUR <span class="text-red-600">PHILOSOPHY</span>
       </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-        <div class="flex items-center gap-3">
-          <span class="flex items-center justify-center w-9 h-9 rounded-full bg-csc-red/10 text-csc-red text-xl animate-pop-in">
-            <i class="fa-solid fa-trophy"></i>
-          </span>
-          <div>
-            <div class="font-bold text-white text-base">Klub roku 2022</div>
-            <div class="text-xs text-gray-400">Vyhlášení MMA asociací</div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Discipline -->
+        <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105">
+          <div class="text-red-600 mb-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 3v12M6 15H4a2 2 0 01-2-2V7a2 2 0 012-2h2m12 0h2a2 2 0 012 2v6a2 2 0 01-2 2h-2M6 21h12"
+              />
+            </svg>
           </div>
+          <h4 class="text-xl font-semibold mb-2">DISCIPLINE</h4>
+          <p class="text-gray-300 text-sm">
+            We believe that true growth comes from consistent practice and unwavering commitment.
+            Our training programs are designed to build mental fortitude alongside physical strength.
+          </p>
         </div>
-        <div class="flex items-center gap-3">
-          <span class="flex items-center justify-center w-9 h-9 rounded-full bg-csc-red/10 text-csc-red text-xl animate-pop-in delay-100">
-            <i class="fa-solid fa-medal"></i>
-          </span>
-          <div>
-            <div class="font-bold text-white text-base">50+ turnajových medailí</div>
-            <div class="text-xs text-gray-400">Získáno mezi 2014–2024</div>
+
+        <!-- Respect -->
+        <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105">
+          <div class="text-red-600 mb-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
           </div>
+          <h4 class="text-xl font-semibold mb-2">RESPECT</h4>
+          <p class="text-gray-300 text-sm">
+            At CSC, we foster a culture of mutual respect. Whether you’re a beginner or a
+            professional, everyone is treated with dignity and given the space to grow at their
+            own pace.
+          </p>
         </div>
-        <div class="flex items-center gap-3">
-          <span class="flex items-center justify-center w-9 h-9 rounded-full bg-csc-red/10 text-csc-red text-xl animate-pop-in delay-200">
-            <i class="fa-solid fa-users"></i>
-          </span>
-          <div>
-            <div class="font-bold text-white text-base">300+ členů</div>
-            <div class="text-xs text-gray-400">Největší klub v regionu</div>
+
+        <!-- Excellence -->
+        <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105">
+          <div class="text-red-600 mb-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 8c-1.105 0-2 .672-2 1.5S10.895 11 12 11s2-.672 2-1.5S13.105 8 12 8z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 11v5m0 0l-2-2m2 2l2-2m6-5a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
           </div>
-        </div>
-        <div class="flex items-center gap-3">
-          <span class="flex items-center justify-center w-9 h-9 rounded-full bg-csc-red/10 text-csc-red text-xl animate-pop-in delay-300">
-            <i class="fa-solid fa-globe"></i>
-          </span>
-          <div>
-            <div class="font-bold text-white text-base">Mezinárodní úspěchy</div>
-            <div class="text-xs text-gray-400">Účast a výhry na turnajích IMMAF</div>
-          </div>
+          <h4 class="text-xl font-semibold mb-2">EXCELLENCE</h4>
+          <p class="text-gray-300 text-sm">
+            We push our members to strive for excellence in everything they do. Our world‑class
+            facilities and expert coaches provide the perfect environment for achieving your full
+            potential.
+          </p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- KLUBOVÉ MOMENTY -->
-<section class="py-16 bg-black animate-fadein-up delay-900">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-oswald font-bold text-center text-white mb-2 uppercase tracking-wide">
-      KLUBOVÉ <span class="text-csc-red">MOMENTY</span>
-    </h2>
-    <div class="text-center text-gray-400 text-sm mb-10">
-      Podívejte se na atmosféru našeho klubu a momenty, které tvoří naši komunitu.
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {#each gallery as src}
-        <div class="overflow-hidden rounded-xl shadow-lg">
-          <img src={src} alt="Klubová fotka" class="object-cover w-full h-64 hover:scale-105 transition-transform duration-300" loading="lazy"/>
+  <!-- OUR FACILITIES -->
+  <section class="container mx-auto px-6 py-16 max-w-6xl">
+    <h3 class="text-3xl font-bold text-center mb-12">
+      OUR <span class="text-red-600">FACILITIES</span>
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Professional Octagon -->
+      <div class="relative overflow-hidden rounded-lg group transform transition hover:scale-105">
+        <img
+          src="/images/octagon.jpg"
+          alt="Professional Octagon"
+          class="w-full h-64 object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-black/50 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition"
+        >
+          <h4 class="text-xl font-semibold text-white mb-1">PROFESSIONAL OCTAGON</h4>
+          <p class="text-gray-300 text-sm">
+            Train in the same environment as the pros with our regulation-sized octagon.
+          </p>
         </div>
-      {/each}
-    </div>
-  </div>
-</section>
+      </div>
 
-<!-- CTA sekce -->
-<section class="bg-black py-16 animate-fadein-up delay-1000">
-  <div class="max-w-xl mx-auto px-4 text-center">
-    <h2 class="text-2xl md:text-3xl font-oswald font-bold mb-3 text-white uppercase">
-      Připoj se k <span class="text-csc-red">naší rodině</span>
-    </h2>
-    <p class="mb-8 text-gray-400">
-      Staň se součástí CSC MMA Clubu a začni svou cestu k osobnímu růstu, lepší kondici a sebeobraně. Naši trenéři tě povedou každým krokem.
-    </p>
-    <a href="/kontakt" class="inline-block bg-csc-red hover:bg-csc-red/90 text-white font-oswald font-bold px-8 py-3 rounded-lg uppercase transition-all duration-300 shadow-lg mr-2 mb-2 animate-fadein-up delay-1100">
-      Kontaktujte nás
-    </a>
-    <a href="/rozvrh" class="inline-block border border-csc-red text-csc-red hover:bg-csc-red hover:text-white font-oswald font-bold px-8 py-3 rounded-lg uppercase transition-all duration-300 shadow-lg mb-2 animate-fadein-up delay-1200">
-      Zobrazit rozvrh
-    </a>
-  </div>
-</section>
+      <!-- Strength & Conditioning -->
+      <div class="relative overflow-hidden rounded-lg group transform transition hover:scale-105">
+        <img
+          src="/images/strength.jpg"
+          alt="Strength & Conditioning"
+          class="w-full h-64 object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-black/50 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition"
+        >
+          <h4 class="text-xl font-semibold text-white mb-1">
+            STRENGTH &amp; CONDITIONING
+          </h4>
+          <p class="text-gray-300 text-sm">
+            State-of-the-art equipment to build the strength needed for combat sports.
+          </p>
+        </div>
+      </div>
+
+      <!-- Boxing Ring -->
+      <div class="relative overflow-hidden rounded-lg group transform transition hover:scale-105">
+        <img
+          src="/images/boxing-ring.jpg"
+          alt="Boxing Ring"
+          class="w-full h-64 object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-black/50 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition"
+        >
+          <h4 class="text-xl font-semibold text-white mb-1">BOXING RING</h4>
+          <p class="text-gray-300 text-sm">
+            Perfect your striking in our professional boxing ring with expert coaching.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grappling Area -->
+      <div class="relative overflow-hidden rounded-lg group transform transition hover:scale-105">
+        <img
+          src="/images/grappling-area.jpg"
+          alt="Grappling Area"
+          class="w-full h-64 object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-black/50 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition"
+        >
+          <h4 class="text-xl font-semibold text-white mb-1">GRAPPLING AREA</h4>
+          <p class="text-gray-300 text-sm">
+            Spacious mat space for Brazilian Jiu‑Jitsu, wrestling, and grappling practice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
 <style>
-  .text-csc-red { color: #FF1C1C; }
-  .bg-csc-red { background: #FF1C1C; }
-  .border-csc-red { border-color: #FF1C1C; }
-  .bg-zinc-900 { background: #18181b; }
-  /* Animace */
-  @keyframes fadein-up {
-    0% { opacity:0; transform: translateY(40px);}
-    100% { opacity:1; transform: translateY(0);}
+  :global(html) {
+    scroll-padding-top: 6rem;
   }
-  .animate-fadein-up { animation: fadein-up 0.8s cubic-bezier(.19,1,.22,1) both; }
-  .delay-200 { animation-delay: .2s }
-  .delay-300 { animation-delay: .3s }
-  .delay-400 { animation-delay: .4s }
-  .delay-500 { animation-delay: .5s }
-  .delay-600 { animation-delay: .6s }
-  .delay-700 { animation-delay: .7s }
-  .delay-900 { animation-delay: .9s }
-  .delay-1000 { animation-delay: 1s }
-  .delay-1100 { animation-delay: 1.1s }
-  .delay-1200 { animation-delay: 1.2s }
-  @keyframes zoom-in {
-    0% {transform: scale(1.08);}
-    100% {transform: scale(1);}
-  }
-  .animate-zoom-in { animation: zoom-in 1.5s cubic-bezier(.19,1,.22,1) both;}
-  @keyframes pop-in {
-    0% {opacity: 0; transform: scale(0.7);}
-    100% {opacity: 1; transform: scale(1);}
-  }
-  .animate-pop-in { animation: pop-in 0.7s cubic-bezier(.19,1,.22,1) both;}
-  .delay-100 { animation-delay: 0.1s }
-  .delay-200 { animation-delay: 0.2s }
-  .delay-300 { animation-delay: 0.3s }
 </style>
