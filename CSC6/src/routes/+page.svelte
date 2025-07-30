@@ -207,38 +207,33 @@
     </div>
   </section>
 
-  <!-- SCHEDULE -->
-  <section id="schedule" class="container mx-auto px-6 max-w-6xl space-y-6">
-    <div class="text-center">
-      <h2 class="text-3xl font-bold">ROZPIS <span class="text-red-600">TRÉNINKŮ</span></h2>
-      <p class="text-gray-300">
-        Prohlédněte si náš týdenní rozpis a vyberte si tréninky podle svých potřeb a dostupností.
-      </p>
-    </div>
-    <div class="overflow-x-auto">
-      <table class="min-w-full text-left border-collapse">
-        <thead>
-          <tr>
-            {#each days as d, i}
-              <th class="px-4 py-2" class:bg-red-600={i > 0} class:text-white={i > 0}>{d}</th>
-            {/each}
-          </tr>
-        </thead>
-        <tbody>
-          {#each schedule as row, ri}
-            <tr class:bg-gray-800={ri % 2 === 0}>
-              {#each row as cell}
-                <td class="px-4 py-2 border-t border-gray-700">{cell}</td>
-              {/each}
-            </tr>
-          {/each}
-        </tbody>
-      </table>
-    </div>
-    <div class="text-center">
-      <a href="#join" class="bg-red-600 hover:bg-red-700 transition px-8 py-3 rounded font-semibold">
-        OBJEDNEJTE SI ZKUŠEBNÍ TRÉNINK
-      </a>
+  <!-- OUR CLASSES -->
+  <section class="container mx-auto px-6 py-16 max-w-6xl">
+    <h3 class="text-3xl font-bold text-center mb-12">
+      OUR <span class="text-red-600">CLASSES</span>
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
+        <h4 class="text-xl font-semibold mb-2">MMA TRAINING</h4>
+        <p class="text-gray-300 text-sm mb-4">
+          Comprehensive mixed martial arts training combining striking, grappling, and ground techniques.
+        </p>
+        <button class="text-red-600 font-semibold uppercase text-sm">All Levels</button>
+      </div>
+      <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
+        <h4 class="text-xl font-semibold mb-2">BOXING</h4>
+        <p class="text-gray-300 text-sm mb-4">
+          Master the sweet science with our professional boxing coaches. Focus on footwork and defensive techniques.
+        </p>
+        <button class="text-red-600 font-semibold uppercase text-sm">All Levels</button>
+      </div>
+      <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
+        <h4 class="text-xl font-semibold mb-2">BJJ</h4>
+        <p class="text-gray-300 text-sm mb-4">
+          Learn ground fighting with our BJJ program. Focus on submissions and positional control.
+        </p>
+        <button class="text-red-600 font-semibold uppercase text-sm">All Levels</button>
+      </div>
     </div>
   </section>
 
