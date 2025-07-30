@@ -14,7 +14,7 @@
   ];
 </script>
 
-<header class="fixed inset-x-0 top-0 bg-black z-50 border-b-[0.5px] border-red-600">
+<header class="fixed inset-x-0 top-0 bg-black z-50 border-b-[0.5px] border-gray-400/30">
   <div class="container mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center space-x-2">
@@ -66,7 +66,7 @@
   </div>
 
   {#if mobileOpen}
-    <nav class="lg:hidden bg-black border-t border-red-600">
+    <nav class="lg:hidden bg-black border-t border-gray-400/30">
       <div class="container mx-auto px-6 py-4 space-y-3">
         {#each links as { href, label }}
           <a
@@ -93,7 +93,7 @@
   <slot />
 </main>
 
-<footer class="bg-black text-gray-400 border-t-2 border-red-600 pt-16 pb-8">
+<footer class="bg-black text-gray-400 border-t border-gray-400/30 pt-16 pb-8">
   <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
 
     <!-- Brand & Description -->
