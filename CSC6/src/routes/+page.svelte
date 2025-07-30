@@ -150,7 +150,6 @@
 </script>
 
 <main class="bg-black text-white space-y-32">
-
   <!-- HERO -->
   <section class="relative bg-cover bg-center h-[600px]" style="background-image:url('/images/mma-hero.jpg')">
     <div class="absolute inset-0 bg-black/70"></div>
@@ -162,8 +161,12 @@
         Přidej se do CSC MMA klubu a trénuj s nejlepšími bojovníky a trenéry. Nabízíme komplexní programy pro všechny úrovně.
       </p>
       <div class="mt-6 flex flex-wrap gap-4">
-        <a href="/rozpis" class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">ZOBRAZIT ROZPIS</a>
-        <a href="/kontakt" class="border border-white hover:bg-white hover:text-black transition px-6 py-3 rounded font-semibold">PŘIPOJ SE</a>
+        <a href="/rozpis" class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">
+          ZOBRAZIT ROZPIS
+        </a>
+        <a href="/kontakt" class="border border-white hover:bg-white hover:text-black transition px-6 py-3 rounded font-semibold">
+          PŘIPOJ SE
+        </a>
       </div>
     </div>
   </section>
@@ -208,20 +211,22 @@
   <section id="schedule" class="container mx-auto px-6 max-w-6xl space-y-6">
     <div class="text-center">
       <h2 class="text-3xl font-bold">ROZPIS <span class="text-red-600">TRÉNINKŮ</span></h2>
-      <p class="text-gray-300">Prohlédněte si náš týdenní rozpis a vyberte si tréninky podle svých potřeb a dostupností.</p>
+      <p class="text-gray-300">
+        Prohlédněte si náš týdenní rozpis a vyberte si tréninky podle svých potřeb a dostupností.
+      </p>
     </div>
     <div class="overflow-x-auto">
       <table class="min-w-full text-left border-collapse">
         <thead>
           <tr>
             {#each days as d, i}
-              <th class="px-4 py-2" class:bg-red-600={i>0} class:text-white={i>0}>{d}</th>
+              <th class="px-4 py-2" class:bg-red-600={i > 0} class:text-white={i > 0}>{d}</th>
             {/each}
           </tr>
         </thead>
         <tbody>
           {#each schedule as row, ri}
-            <tr class:bg-gray-800={ri%2===0}>
+            <tr class:bg-gray-800={ri % 2 === 0}>
               {#each row as cell}
                 <td class="px-4 py-2 border-t border-gray-700">{cell}</td>
               {/each}
@@ -231,23 +236,35 @@
       </table>
     </div>
     <div class="text-center">
-      <a href="#join" class="bg-red-600 hover:bg-red-700 transition px-8 py-3 rounded font-semibold">OBJEDNEJTE SI ZKUŠEBNÍ TRÉNINK</a>
+      <a href="#join" class="bg-red-600 hover:bg-red-700 transition px-8 py-3 rounded font-semibold">
+        OBJEDNEJTE SI ZKUŠEBNÍ TRÉNINK
+      </a>
     </div>
   </section>
 
   <!-- OUR TRAINERS -->
   <section class="container mx-auto px-6 py-16 max-w-6xl">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold">NAŠI <span class="text-red-600 underline decoration-red-600 decoration-4">TRENÉŘI</span></h2>
-      <p class="text-gray-300">Seznamte se s naším týmem profesionálních trenérů s bohatými zkušenostmi ve všech disciplínách.</p>
+      <h2 class="text-3xl font-bold">
+        NAŠI <span class="text-red-600 underline decoration-red-600 decoration-4">TRENÉŘI</span>
+      </h2>
+      <p class="text-gray-300">
+        Seznamte se s naším týmem profesionálních trenérů s bohatými zkušenostmi ve všech disciplínách.
+      </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {#each trainers as t}
-        <div class="bg-black p-6 rounded-lg border border-gray-700 hover:scale-105 transform transition">
-          <img src={t.image} alt={t.name} class="w-full h-64 object-cover rounded-md mb-4" />
-          <h3 class="text-xl font-semibold text-white">{t.name}</h3>
-          <p class="text-red-600 mb-4">{t.role}</p>
-          <p class="text-gray-300">{t.description}</p>
+        <div class="overflow-hidden rounded-xl transform transition hover:scale-105 border border-gray-500/50">
+          <img
+            src={t.image}
+            alt={t.name}
+            class="w-full h-80 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-white">{t.name}</h3>
+            <p class="text-red-600 mt-1 mb-4">{t.role}</p>
+            <p class="text-gray-300">{t.description}</p>
+          </div>
         </div>
       {/each}
     </div>
@@ -258,7 +275,9 @@
     <!-- Levá strana: text + info -->
     <div class="space-y-8">
       <h2 class="text-3xl font-bold">KONTAKTUJTE <span class="text-red-600">NÁS</span></h2>
-      <p class="text-gray-300">Máte dotazy nebo chcete naplánovat návštěvu? Napište nám níže a my se ozveme co nejdříve.</p>
+      <p class="text-gray-300">
+        Máte dotazy nebo chcete naplánovat návštěvu? Napište nám níže a my se ozveme co nejdříve.
+      </p>
       <div class="space-y-4 text-gray-200 text-sm">
         <div><strong>Naše adresa</strong><br />Ulice Bojovníků 123, Combat City, ČR</div>
         <div><strong>Telefon</strong><br />+420 123 456 789</div>
