@@ -18,11 +18,9 @@
   <div class="container mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center space-x-2">
-      <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">
-        CSC
-      </div>
+      <img src="/images/logoCSC2.1.svg" alt="Moje logo" class="w-14 h-14 object-contain" />
       <h1 class="text-white font-bold text-2xl">
-        CSC <span class="text-red-600">MMA CLUB</span>
+        COMBAT SPORTS <span class="text-red-600">CLUB</span>
       </h1>
     </a>
 
@@ -99,10 +97,8 @@
     <!-- Brand & Description -->
     <div>
       <div class="flex items-center space-x-2">
-        <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">
-          CSC
-        </div>
-        <span class="text-white font-bold text-lg">CSC MMA CLUB</span>
+        <img src="/images/logoCSC2.1.svg" alt="Moje logo" class="w-14 h-14 object-contain" />
+        <span class="text-white font-bold text-lg">CSC KARVINÁ</span>
       </div>
       <p class="mt-4 text-gray-300 text-sm">
         Naším posláním je poskytovat špičkové tréninky v bojových uměních pro všechny úrovně.
