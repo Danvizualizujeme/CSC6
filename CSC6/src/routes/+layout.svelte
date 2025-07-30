@@ -1,5 +1,8 @@
-<script lang="ts">
+<script context="module">
   import '../app.css';
+</script>
+
+<script lang="ts">
   import { page } from '$app/stores';
   let mobileOpen = false;
 

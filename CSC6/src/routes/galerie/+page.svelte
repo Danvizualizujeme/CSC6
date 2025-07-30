@@ -1,37 +1,180 @@
 <script lang="ts">
-  // Seznam obrázků – můžeš měnit za vlastní URL
-  const images: string[] = [
-    "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=900&q=80"
+  interface Item { src: string; category: string; caption?: string; }
+
+  // Categories
+  const categories = ['All', 'Sparring', 'Events', 'Training', 'Museums'];
+  let activeCategory = 'All';
+
+  // Gallery items (6 per category)
+  const allItems: Item[] = [
+    // Sparring
+    { src: 'https://via.placeholder.com/600x400?text=Sparring+1', category: 'Sparring', caption: 'Sparring Match 1' },
+    { src: 'https://via.placeholder.com/600x400?text=Sparring+2', category: 'Sparring', caption: 'Sparring Match 2' },
+    { src: 'https://via.placeholder.com/600x400?text=Sparring+3', category: 'Sparring', caption: 'Sparring Match 3' },
+    { src: 'https://via.placeholder.com/600x400?text=Sparring+4', category: 'Sparring', caption: 'Sparring Match 4' },
+    { src: 'https://via.placeholder.com/600x400?text=Sparring+5', category: 'Sparring', caption: 'Sparring Match 5' },
+    { src: 'https://via.placeholder.com/600x400?text=Sparring+6', category: 'Sparring', caption: 'Sparring Match 6' },
+
+    // Events
+    { src: 'https://via.placeholder.com/600x400?text=Event+1', category: 'Events', caption: 'MMA Event 1' },
+    { src: 'https://via.placeholder.com/600x400?text=Event+2', category: 'Events', caption: 'MMA Event 2' },
+    { src: 'https://via.placeholder.com/600x400?text=Event+3', category: 'Events', caption: 'MMA Event 3' },
+    { src: 'https://via.placeholder.com/600x400?text=Event+4', category: 'Events', caption: 'MMA Event 4' },
+    { src: 'https://via.placeholder.com/600x400?text=Event+5', category: 'Events', caption: 'MMA Event 5' },
+    { src: 'https://via.placeholder.com/600x400?text=Event+6', category: 'Events', caption: 'MMA Event 6' },
+
+    // Training
+    { src: 'https://via.placeholder.com/600x400?text=Training+1', category: 'Training', caption: 'Training Session 1' },
+    { src: 'https://via.placeholder.com/600x400?text=Training+2', category: 'Training', caption: 'Training Session 2' },
+    { src: 'https://via.placeholder.com/600x400?text=Training+3', category: 'Training', caption: 'Training Session 3' },
+    { src: 'https://via.placeholder.com/600x400?text=Training+4', category: 'Training', caption: 'Training Session 4' },
+    { src: 'https://via.placeholder.com/600x400?text=Training+5', category: 'Training', caption: 'Training Session 5' },
+    { src: 'https://via.placeholder.com/600x400?text=Training+6', category: 'Training', caption: 'Training Session 6' },
+
+    // Museums
+    { src: 'https://via.placeholder.com/600x400?text=Museum+1', category: 'Museums', caption: 'Museum Exhibit 1' },
+    { src: 'https://via.placeholder.com/600x400?text=Museum+2', category: 'Museums', caption: 'Museum Exhibit 2' },
+    { src: 'https://via.placeholder.com/600x400?text=Museum+3', category: 'Museums', caption: 'Museum Exhibit 3' },
+    { src: 'https://via.placeholder.com/600x400?text=Museum+4', category: 'Museums', caption: 'Museum Exhibit 4' },
+    { src: 'https://via.placeholder.com/600x400?text=Museum+5', category: 'Museums', caption: 'Museum Exhibit 5' },
+    { src: 'https://via.placeholder.com/600x400?text=Museum+6', category: 'Museums', caption: 'Museum Exhibit 6' },
   ];
 
-  let lightbox: boolean = false;
-  let activeImg: string = "";
+  // Reactive filtering
+  let visibleCount = 9;
+  $: filteredItems = allItems.filter(item =>
+    activeCategory === 'All' || item.category === activeCategory
+  );
+  $: visibleItems = filteredItems.slice(0, visibleCount);
 
-  function openLightbox(src: string): void {
-    activeImg = src;
-    lightbox = true;
-    document.body.style.overflow = "hidden";
-  }
-  function closeLightbox(): void {
-    lightbox = false;
-    activeImg = "";
-    document.body.style.overflow = "";
-  }
+  // Lightbox state
+  let selectedIndex = -1;
+  const openLightbox = (i: number) => selectedIndex = i;
+  const closeLightbox = () => selectedIndex = -1;
+  const prev = () => selectedIndex = (selectedIndex - 1 + filteredItems.length) % filteredItems.length;
+  const next = () => selectedIndex = (selectedIndex + 1) % filteredItems.length;
+  const loadMore = () => visibleCount += 6;
 </script>
 
-<!-- Hero sekce -->
-<section class="relative h-[350px] md:h-[450px] w-full flex items-center justify-center">
-  <img
-    src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1600&q=80"
-    alt="Galerie"
-    class="absolute inset-0 w-full h-full object-cover brightness-50"
-  />
-  <h1 class="relative z-10 text-4xl md:text-6xl font-bold text-white text-center drop-shadow-lg uppercase tracking-wide">
-    Galerie
-  </h1>
-</section>
+<main class="bg-black text-white space-y-16">
+
+  <!-- HERO / GALLERY -->
+  <section
+    class="relative -mt-24 bg-cover bg-center h-[600px]"
+    style="background-image:url('/images/gallery-hero.jpg')"
+  >
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl">
+      <h1 class="text-5xl font-bold leading-tight">
+        Galerie <span class="text-red-600">CSC MMA</span>
+      </h1>
+      <p class="mt-4 text-lg">
+        Prohlédněte si naše nejnovější akce, zápasy a tréninky.
+      </p>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <nav id="gallery" class="sticky top-16 bg-black z-10">
+    <ul class="flex justify-center space-x-6 py-4">
+      {#each categories as cat}
+        <li>
+          <button
+            type="button"
+            class="text-white font-medium hover:text-red-500 transition-colors pb-1"
+            class:selected={activeCategory === cat}
+            on:click={() => activeCategory = cat}
+            aria-pressed={activeCategory === cat}
+          >
+            {cat}
+          </button>
+          {#if activeCategory === cat}
+            <div class="h-0.5 bg-red-600 mt-1"></div>
+          {/if}
+        </li>
+      {/each}
+    </ul>
+  </nav>
+
+  <!-- GALLERY GRID -->
+  <section class="px-4 md:px-12 py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {#each visibleItems as item, idx}
+        <button
+          type="button"
+          class="overflow-hidden rounded-lg cursor-pointer transform hover:scale-105 transition shadow-lg p-0 border-none"
+          on:click={() => openLightbox(idx)}
+          aria-label={`Open image: ${item.caption}`}
+        >
+          <img src={item.src} alt={item.caption} class="w-full h-48 object-cover" />
+        </button>
+      {/each}
+    </div>
+    {#if visibleCount < filteredItems.length}
+      <div class="flex justify-center mt-8">
+        <button
+          type="button"
+          on:click={loadMore}
+          class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded transition"
+        >
+          Load More
+        </button>
+      </div>
+    {/if}
+  </section>
+
+  <!-- LIGHTBOX MODAL -->
+  {#if selectedIndex > -1}
+    <div
+      class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center"
+      role="dialog"
+      aria-modal="true"
+    >
+      <button
+        type="button"
+        class="absolute inset-0"
+        aria-label="Close gallery"
+        on:click={closeLightbox}
+        on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && closeLightbox()}
+      ></button>
+
+      <div class="relative max-w-3xl mx-4">
+        <img
+          src={filteredItems[selectedIndex].src}
+          alt={filteredItems[selectedIndex].caption}
+          class="max-h-[80vh] mx-auto rounded"
+        />
+        <p class="text-white text-center mt-4">{filteredItems[selectedIndex].caption}</p>
+        <button
+          type="button"
+          on:click={prev}
+          class="absolute left-0 top-1/2 transform -translate-y-1/2 p-2"
+          aria-label="Previous image"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          on:click={next}
+          class="absolute right-0 top-1/2 transform -translate-y-1/2 p-2"
+          aria-label="Next image"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  {/if}
+
+</main>
+
+<style>
+  :global(html) {
+    scroll-padding-top: 6rem;
+  }
+</style>
