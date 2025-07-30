@@ -13,25 +13,12 @@
     <div class="absolute inset-0 bg-black/70"></div>
     <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl">
       <h1 class="text-5xl font-bold leading-tight">
-        <span class="text-red-600">TRENÉŘI</span>
+       NAŠI <span class="text-red-600">TRENÉŘI</span>
       </h1>
       <p class="mt-4 text-lg">
         Naši mistři sdílejí své know‑how – připravte se na nový level tréninku.
       </p>
-      <div class="mt-6 flex flex-wrap gap-4">
-        <a
-          href="#profil"
-          class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold"
-        >
-          HLAVNÍ TRENÉR
-        </a>
-        <a
-          href="#tym"
-          class="border border-white hover:bg-white hover:text-black transition px-6 py-3 rounded font-semibold"
-        >
-          TÝM TRENÉRŮ
-        </a>
-      </div>
+      <!-- tlačítka odstraněna -->
     </div>
   </section>
 

@@ -18,20 +18,7 @@
       <p class="mt-4 text-lg">
         Vybudovali jsme šampiony díky disciplíně, odhodlání a špičkovému tréninku od roku 2005.
       </p>
-      <div class="mt-6 flex flex-wrap gap-4">
-        <a
-          href="#story"
-          class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold"
-        >
-          NÁŠ PŘÍBĚH
-        </a>
-        <a
-          href="#join"
-          class="border border-white hover:bg-white hover:text-black transition px-6 py-3 rounded font-semibold"
-        >
-          PŘIPOJ SE
-        </a>
-      </div>
+      <!-- tlačítka odstraněna -->
     </div>
   </section>
 
@@ -80,7 +67,6 @@
           <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <!-- tři rovné čáry jako symbol pořádku a disciplíny -->
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </div>
@@ -95,7 +81,6 @@
           <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <!-- zaškrtnutí jako symbol vzájemného respektu -->
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
@@ -110,7 +95,6 @@
           <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <!-- jednoduchá forma poháru jako symbol excelence -->
               <path stroke-linecap="round" stroke-linejoin="round"
                     d="M5 3h14v4a7 7 0 01-7 7 7 7 0 01-7-7V3z" />
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -191,62 +175,6 @@
           <p class="text-gray-300 text-sm">
             Prostorné žíněnky pro Brazílsko‑jiu‑jitsu, wrestling i grappling.
           </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MEMBER TESTIMONIALS -->
-  <section class="bg-black py-16">
-    <div class="container mx-auto px-6 max-w-6xl text-center mb-12">
-      <h3 class="text-3xl font-bold">
-        NÁZORY <span class="text-red-600">ČLENŮ</span>
-      </h3>
-    </div>
-    <div class="container mx-auto px-6 max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Testimonial 1 -->
-      <div class="bg-black p-6 border border-gray-700 rounded-lg">
-        <div class="text-red-600 mb-4 text-4xl leading-none">“</div>
-        <p class="text-gray-200 mb-6">
-          Klub CSC MMA mi úplně změnil život. Trenéři vás posouvají za hranice vašich možností
-          a zároveň vytvářejí podpůrné prostředí. Nikdy jsem nebyl fyzicky ani psychicky v lepší formě.
-        </p>
-        <div class="flex items-center gap-4">
-          <img src="/images/testimonials/mike.jpg" alt="Mike Johnson" class="w-12 h-12 rounded-full object-cover" />
-          <div class="text-left">
-            <p class="text-white font-semibold">Mike Johnson</p>
-            <p class="text-gray-400 text-sm">Člen od roku 2018</p>
-          </div>
-        </div>
-      </div>
-      <!-- Testimonial 2 -->
-      <div class="bg-black p-6 border border-gray-700 rounded-lg">
-        <div class="text-red-600 mb-4 text-4xl leading-none">“</div>
-        <p class="text-gray-200 mb-6">
-          Jako profesionální zápasník jsem trénoval v tělocvičnách po celém světě. CSC se vyznačuje
-          světovou úrovní zařízení a prvotřídními trenéry. Tady se rodí šampioni.
-        </p>
-        <div class="flex items-center gap-4">
-          <img src="/images/testimonials/sarah.jpg" alt="Sarah Martinez" class="w-12 h-12 rounded-full object-cover" />
-          <div class="text-left">
-            <p class="text-white font-semibold">Sarah Martinez</p>
-            <p class="text-gray-400 text-sm">Profesionální zápasnice</p>
-          </div>
-        </div>
-      </div>
-      <!-- Testimonial 3 -->
-      <div class="bg-black p-6 border border-gray-700 rounded-lg">
-        <div class="text-red-600 mb-4 text-4xl leading-none">“</div>
-        <p class="text-gray-200 mb-6">
-          Do CSC jsem přišel bez zkušeností s bojovými uměními. Začátečnické programy mě přivítaly
-          a postup byl úžasný. Teď soutěžím v amatérských zápasech!
-        </p>
-        <div class="flex items-center gap-4">
-          <img src="/images/testimonials/david.jpg" alt="David Chen" class="w-12 h-12 rounded-full object-cover" />
-          <div class="text-left">
-            <p class="text-white font-semibold">David Chen</p>
-            <p class="text-gray-400 text-sm">Člen od roku 2020</p>
-          </div>
         </div>
       </div>
     </div>
