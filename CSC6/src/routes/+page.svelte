@@ -193,16 +193,7 @@
         CSC MMA klub byl založen v roce 2012 a rychle se stal jedním z předních center bojových umění v regionu.
         Naše špičkově vybavená tělocvična nabízí komplexní výcvik v BJJ, Muay Thai, wrestlingu a boxu.
       </p>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-        {#each aboutList as item}
-          <li class="flex items-center text-gray-200">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-            {item}
-          </li>
-        {/each}
-      </ul>
+      
       <a href="/o-nas" class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">ZJISTIT VÍCE</a>
     </div>
   </section>
