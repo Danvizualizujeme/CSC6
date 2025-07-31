@@ -30,8 +30,6 @@
     { src: '/images/training-4.jpg', category: 'Training', caption: 'Training Session 4' },
     { src: '/images/training-5.jpg', category: 'Training', caption: 'Training Session 5' },
     { src: '/images/training-6.jpg', category: 'Training', caption: 'Training Session 6' },
-
-
   ];
 
   // Reactive filtering
@@ -50,23 +48,7 @@
   const loadMore = () => visibleCount += 6;
 </script>
 
-<main class="bg-black text-white space-y-16">
-
-  <!-- HERO / GALLERY -->
-  <section
-    class="relative -mt-24 bg-cover bg-center h-[600px]"
-    style="background-image:url('/images/gallery-hero.jpg')"
-  >
-    <div class="absolute inset-0 bg-black/70"></div>
-    <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl">
-      <h1 class="text-5xl font-bold leading-tight">
-        Galerie <span class="text-red-600">CSC MMA</span>
-      </h1>
-      <p class="mt-4 text-lg">
-        Prohlédněte si naše nejnovější akce, zápasy a tréninky.
-      </p>
-    </div>
-  </section>
+<main class="bg-black text-white space-y-16 pt-8">
 
   <!-- FILTER BAR -->
   <nav id="gallery" class="sticky top-16 bg-black z-10">
@@ -91,7 +73,7 @@
   </nav>
 
   <!-- GALLERY GRID -->
-  <section class="px-4 md:px-12 py-8">
+  <section class="px-4 md:px-12 py-8 pt-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {#each visibleItems as item, idx}
         <button
@@ -111,7 +93,7 @@
           on:click={loadMore}
           class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded transition"
         >
-          Load More
+          Načíst další
         </button>
       </div>
     {/if}
@@ -127,7 +109,7 @@
       <button
         type="button"
         class="absolute inset-0"
-        aria-label="Close gallery"
+        aria-label="Zavřít galerii"
         on:click={closeLightbox}
         on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && closeLightbox()}
       ></button>
@@ -143,7 +125,7 @@
           type="button"
           on:click={prev}
           class="absolute left-0 top-1/2 transform -translate-y-1/2 p-2"
-          aria-label="Previous image"
+          aria-label="Předchozí obrázek"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -154,7 +136,7 @@
           type="button"
           on:click={next}
           class="absolute right-0 top-1/2 transform -translate-y-1/2 p-2"
-          aria-label="Next image"
+          aria-label="Další obrázek"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

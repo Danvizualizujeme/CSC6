@@ -5,24 +5,6 @@
 
 <main class="bg-black text-white space-y-16">
 
-  <!-- HERO / ABOUT -->
-  <section
-    class="relative -mt-24 bg-cover bg-center h-[600px]"
-    style="background-image:url('/images/about-hero.jpg')"
-  >
-    <div class="absolute inset-0 bg-black/70"></div>
-    <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl">
-      <h1 class="text-5xl font-bold leading-tight">
-        O <span class="text-red-600">CSC MMA</span>
-      </h1>
-      <p class="mt-4 text-lg">
-        Vybudovali jsme šampiony díky disciplíně, odhodlání a špičkovému tréninku od roku 2005.
-      </p>
-      <!-- tlačítka odstraněna -->
-    </div>
-  </section>
-
-  <!-- OUR STORY -->
   <section
     id="story"
     class="container mx-auto px-6 pt-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl"

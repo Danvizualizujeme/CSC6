@@ -5,23 +5,6 @@
 
 <main class="bg-black text-white space-y-16">
 
-  <!-- HERO / TRENÉŘI -->
-  <section
-    class="relative -mt-24 bg-cover bg-center h-[600px]"
-    style="background-image:url('/images/about-hero.jpg')"
-  >
-    <div class="absolute inset-0 bg-black/70"></div>
-    <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl">
-      <h1 class="text-5xl font-bold leading-tight">
-       NAŠI <span class="text-red-600">TRENÉŘI</span>
-      </h1>
-      <p class="mt-4 text-lg">
-        Naši mistři sdílejí své know‑how – připravte se na nový level tréninku.
-      </p>
-      <!-- tlačítka odstraněna -->
-    </div>
-  </section>
-
   <!-- HLAVNÍ TRENÉR -->
   <section
     id="profil"

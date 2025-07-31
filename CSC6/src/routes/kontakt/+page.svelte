@@ -5,23 +5,6 @@
 
 <main class="bg-black text-white min-h-screen overflow-x-hidden">
 
-  <!-- HERO / CONTACT -->
-  <section
-    class="relative -mt-24 bg-cover bg-center h-[600px]"
-    style="background-image: url('https://images.unsplash.com/photo-1606166325683-c9b9f598b48e?auto=format&fit=crop&w=1400&q=80')"
-  >
-    <div class="absolute inset-0 bg-black/70"></div>
-    <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl">
-      <h1 class="text-5xl font-bold leading-tight">
-        <span class="text-red-600">KONTAKT</span>
-      </h1>
-      <p class="mt-4 text-lg text-gray-200">
-        Připoj se k nám a začni svou cestu v bojových sportech. Kontaktuj nás pro více informací.
-      </p>
-      <!-- tlačítka odstraněna -->
-    </div>
-  </section>
-
   <!-- Info boxy -->
   <section class="container mx-auto grid md:grid-cols-3 gap-6 px-6 py-16 max-w-6xl">
     <!-- Adresa -->

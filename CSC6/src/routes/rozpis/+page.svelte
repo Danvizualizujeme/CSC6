@@ -66,24 +66,8 @@
 
 <main class="bg-black text-white space-y-16">
 
-  <!-- HERO / ROZPIS -->
-  <section
-    class="relative -mt-24 bg-cover bg-center h-[600px]"
-    style="background-image:url('/images/schedule-hero.jpg')"
-  >
-    <div class="absolute inset-0 bg-black/70"></div>
-    <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl text-center">
-      <h1 class="text-5xl font-bold leading-tight">
-        ROZPIS <span class="text-red-600">TRÉNINKŮ</span>
-      </h1>
-      <p class="mt-4 text-lg">
-        Najděte tréninkový plán, který vám sedí každý den.
-      </p>
-    </div>
-  </section>
-
   <!-- KARTY DNŮ -->
-  <section class="container mx-auto px-6 max-w-6xl">
+  <section class="container mx-auto px-6 pt-8 max-w-6xl">
     <div class="flex space-x-2 justify-center mb-6">
       {#each days as day, i}
         <button
