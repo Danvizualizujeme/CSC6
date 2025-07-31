@@ -1,34 +1,36 @@
-<!-- src/routes/o-nas/+page.svelte -->
 <script lang="ts">
+  import { fly, fade } from 'svelte/transition';
   // žádná logika prozatím není potřeba
 </script>
 
 <main class="bg-black text-white space-y-16">
 
+  <!-- NAŠE HISTORIE -->
   <section
     id="story"
     class="container mx-auto px-6 pt-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl"
+    in:fly={{ x: -200, duration: 1200 }}
   >
     <div>
-      <h2 class="text-3xl font-bold mb-4">
+      <h2 class="text-3xl font-bold mb-4" in:fade={{ duration: 1600 }}>
         NAŠE <span class="text-red-600">HISTORIE</span>
       </h2>
-      <p class="text-gray-200 mb-4">
+      <p class="text-gray-200 mb-4" in:fade={{ delay: 400, duration: 1600 }}>
         Klub CSC MMA vznikl v roce 2005 z iniciativy bývalého UFC zápasníka Alexe Rodrígueze jako malá
         tréninková aréna na rozvoj místních talentů. Z nadšeného projektu se rychle stal jeden z nejuznávanějších
         MMA tréninkových center v regionu.
       </p>
-      <p class="text-gray-200 mb-4">
+      <p class="text-gray-200 mb-4" in:fade={{ delay: 800, duration: 1600 }}>
         Naší misí je od začátku nabídnout světovou úroveň tréninku a zároveň budovat podpůrnou komunitu.
         Věříme, že bojové umění není jen o zápasech, ale především o disciplíně, respektu a neustálém
         osobním růstu.
       </p>
-      <p class="text-gray-200">
+      <p class="text-gray-200" in:fade={{ delay: 1200, duration: 1600 }}>
         Dnes je CSC MMA domovem profesionálních zápasníků, amatérských bojovníků i nadšenců fitness.
         Společným cílem všech členů je překonávat své limity a dosahovat dokonalosti, v ringu i mimo něj.
       </p>
     </div>
-    <div>
+    <div in:fly={{ x: 200, duration: 1200 }}>
       <img
         src="/images/about-gym.jpg"
         alt="Interiér tělocvičny"
@@ -37,15 +39,23 @@
     </div>
   </section>
 
-  <!-- OUR PHILOSOPHY -->
-  <section class="bg-black py-16">
+  <!-- NAŠE FILOZOFIE -->
+  <section
+    class="bg-black py-16"
+    in:fly={{ y: -100, duration: 1200 }}
+  >
     <div class="container mx-auto px-6 max-w-6xl">
-      <h3 class="text-3xl font-bold text-center mb-12">
+      <h3
+        class="text-3xl font-bold text-center mb-12"
+        in:fade={{ duration: 1800 }}
+      >
         NAŠE <span class="text-red-600">FILOZOFIE</span>
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Discipline -->
-        <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105">
+        <div
+          class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105"
+          in:fly={{ x: -50, duration: 1400, delay: 400 }}
+        >
           <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -53,13 +63,12 @@
             </svg>
           </div>
           <h4 class="text-xl font-semibold mb-2">DISCIPLÍNA</h4>
-          <p class="text-gray-300 text-sm">
-            Pravý růst přichází s pravidelnou praxí a neochvějným odhodláním.
-            Naše programy budují mentální houževnatost i fyzickou sílu.
-          </p>
+          <p class="text-gray-300 text-sm">Pravý růst přichází s pravidelnou praxí a neochvějným odhodláním.</p>
         </div>
-        <!-- Respect -->
-        <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105">
+        <div
+          class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105"
+          in:fly={{ y: 50, duration: 1400, delay: 800 }}
+        >
           <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -67,13 +76,12 @@
             </svg>
           </div>
           <h4 class="text-xl font-semibold mb-2">RESPEKT</h4>
-          <p class="text-gray-300 text-sm">
-            V CSC vytváříme prostředí vzájemného respektu. Ať už jste začátečník nebo profesionál,
-            zasloužíte si důstojné podmínky k osobnímu růstu.
-          </p>
+          <p class="text-gray-300 text-sm">V CSC vytváříme prostředí vzájemného respektu a spolupráce.</p>
         </div>
-        <!-- Excellence -->
-        <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105">
+        <div
+          class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105"
+          in:fly={{ x: 50, duration: 1400, delay: 1200 }}
+        >
           <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -84,22 +92,19 @@
             </svg>
           </div>
           <h4 class="text-xl font-semibold mb-2">EXCELENCE</h4>
-          <p class="text-gray-300 text-sm">
-            Usilujeme o dokonalost ve všem, co děláme. Naše špičkové zázemí a odborní lektoři
-            vás připraví na úspěch.
-          </p>
+          <p class="text-gray-300 text-sm">Usilujeme o excelenci ve všem, co děláme.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- OUR FACILITIES -->
-  <section class="container mx-auto px-6 py-16 max-w-6xl">
-    <h3 class="text-3xl font-bold text-center mb-12">
+  <!-- NAŠE PROSTORY -->
+  <section class="container mx-auto px-6 py-16 max-w-6xl" in:fly={{ y: 100, duration: 800 }}>
+    <h3 class="text-3xl font-bold text-center mb-12" in:fade={{ duration: 1000 }}>
       NAŠE <span class="text-red-600">PROSTORY</span>
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="relative overflow-hidden rounded-lg group transform transition hover:scale-105">
+      <div class="relative overflow-hidden rounded-lg group transform transition hover:scale-105" in:fade={{ delay: 200, duration: 1000 }}>
         <img
           src="/images/octagon.jpg"
           alt="Profesionální oktagon"
@@ -112,6 +117,7 @@
           <p class="text-gray-300 text-sm">
             Trénujte v regulérním oktagonu stejně jako profesionálové.
           </p>
+
         </div>
       </div>
       <div class="relative overflow-hidden rounded-lg group transform transition hover:scale-105">

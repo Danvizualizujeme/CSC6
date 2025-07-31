@@ -1,25 +1,31 @@
 <!-- src/routes/+page.svelte -->
+<!-- src/routes/+page.svelte -->
 <script lang="ts">
+  import { fly, fade, scale } from 'svelte/transition';
+  import { onMount } from 'svelte';
+
+  let mounted = false;
+  onMount(() => {
+    mounted = true;
+  });
+
   // Stav odeslání / chyby
   let success = false;
   let errorMsg = '';
 
-  // Čas vytvoření formuláře pro time‑trap
+  // Čas vytvoření formuláře pro time-trap
   const startTs = Date.now();
 
-  // AJAX‑ový submit na Formspree s honeypot & time‑trap
   async function handleSubmit(event: Event) {
     event.preventDefault();
     errorMsg = '';
     const form = event.currentTarget as HTMLFormElement;
     const data = new FormData(form);
 
-    // Honeypot: pokud pole 'website' není prázdné → spam
     if (data.get('website')) {
       errorMsg = 'Spam detekován.';
       return;
     }
-    // Time‑trap: odeslání dřív než za 3 s → pravděpodobně bot
     const ts = Number(data.get('ts'));
     if (Date.now() - ts < 3000) {
       errorMsg = 'Spam detekován.';
@@ -47,40 +53,9 @@
   // === FEATURES ===
   interface Feature { title: string; description: string; icon: string; }
   const features: Feature[] = [
-    {
-      title: 'Profesionální trénink',
-      description:
-        'Naši certifikovaní trenéři poskytují světovou úroveň MMA výuky s moderními technikami a špičkovým vybavením.',
-      icon: `
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24">
-          <rect x="2" y="10" width="4" height="4"/>
-          <rect x="18" y="10" width="4" height="4"/>
-          <rect x="8" y="11" width="8" height="2"/>
-        </svg>`
-    },
-    {
-      title: 'Podpora komunity',
-      description:
-        'Staňte se součástí podpůrné komunity bojovníků, kteří se vzájemně motivují k dosažení plného potenciálu.',
-      icon: `
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                   2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                   C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5
-                   c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>`
-    },
-    {
-      title: 'Připravenost na soutěž',
-      description:
-        'Ať už trénujete pro kondici nebo pro soutěž, připravíme vás na úspěch v oktagonu.',
-      icon: `
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24">
-          <path d="M20 12a2 2 0 0 0-2-2h-3V8a2 2 0 0 0-2-2h-4
-                   a2 2 0 0 0-2 2v2H6a2 2 0 0 0-2 2v4h4v2a2 2 0 0 0 2 2
-                   h4a2 2 0 0 0 2-2v-2h3a2 2 0 0 0 2-2v-4z"/>
-        </svg>`
-    }
+    { title: 'Profesionální trénink', description: 'Naši certifikovaní trenéři poskytují světovou úroveň MMA výuky s moderními technikami a špičkovým vybavením.', icon: `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"white\" viewBox=\"0 0 24 24\"><rect x=\"2\" y=\"10\" width=\"4\" height=\"4\"/><rect x=\"18\" y=\"10\" width=\"4\" height=\"4\"/><rect x=\"8\" y=\"11\" width=\"8\" height=\"2\"/></svg>` },
+    { title: 'Podpora komunity', description: 'Staňte se součástí podpůrné komunity bojovníků, kteří se vzájemně motivují k dosažení plného potenciálu.', icon: `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"white\" viewBox=\"0 0 24 24\"><path d=\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\"/></svg>` },
+    { title: 'Připravenost na soutěž', description: 'Ať už trénujete pro kondici nebo pro soutěž, připravíme vás na úspěch v oktagonu.', icon: `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"white\" viewBox=\"0 0 24 24\"><path d=\"M20 12a2 2 0 0 0-2-2h-3V8a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H6a2 2 0 0 0-2 2v4h4v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2h3a2 2 0 0 0 2-2v-4z\"/></svg>` }
   ];
 
   // === ABOUT ===
@@ -146,44 +121,50 @@
         { href: 'https://instagram.com',label: 'Instagram', icon: `<svg><!-- ig SVG --></svg>` }
       ]
     }
-    
   ];
 </script>
 
 <main class="bg-black text-white space-y-32">
-  <!-- HERO -->
-  <section class="relative bg-cover bg-center h-[600px]" style="background-image:url('/images/mma-hero.jpg')">
-    <div class="absolute inset-0 bg-black/70"></div>
-    <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl">
-      <h1 class="text-5xl font-bold leading-tight">
-        TRÉNUJ TVRDĚ. <span class="text-red-600">BOJUJ JEŠTĚ TVRDĚJI.</span>
-      </h1>
-      <p class="mt-4 text-lg">
-        Přidej se do CSC MMA klubu a trénuj s nejlepšími bojovníky a trenéry. Nabízíme komplexní programy pro všechny úrovně.
-      </p>
-      <div class="mt-6 flex flex-wrap gap-4">
-        <a href="/rozpis" class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">
-          ZOBRAZIT ROZPIS
-        </a>
-        <a href="/kontakt" class="border border-white hover:bg-white hover:text-black transition px-6 py-3 rounded font-semibold">
-          PŘIPOJ SE
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
-    {#each features as f}
-      <div class="bg-black p-6 rounded-lg border border-gray-700 hover:scale-105 transform transition">
-        <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
-          {@html f.icon}
+ {#if mounted}
+    <!-- HERO -->
+    <section class="relative bg-cover bg-center h-[600px]" style="background-image:url('/images/mma-hero.jpg')" in:fly={{ y: -200, duration: 1500 }}>
+      <div class="absolute inset-0 bg-black/70"></div>
+      <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl">
+        <h1 class="text-5xl font-bold leading-tight" in:fade={{ duration: 1500 }}>
+          TRÉNUJ TVRDĚ. <span class="text-red-600">BOJUJ JEŠTĚ TVRDĚJI.</span>
+        </h1>
+        <p class="mt-4 text-lg" in:fade={{ delay: 500, duration: 1500 }}>
+          Přidej se do CSC MMA klubu a trénuj s nejlepšími bojovníky a trenéry.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-4" in:scale={{ start: 0.8, delay: 1000, duration: 1500 }}>
+          <a href="/rozpis" class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">ZOBRAZIT ROZPIS</a>
+          <a href="/kontakt" class="border border-white hover:bg-white hover:text-black transition px-6 py-3 rounded font-semibold">PŘIPOJ SE</a>
         </div>
-        <h3 class="text-xl font-semibold">{f.title}</h3>
-        <p class="mt-2 text-gray-300">{f.description}</p>
       </div>
-    {/each}
-  </section>
+    </section>
+
+    <!-- FEATURES -->
+    {#key mounted}
+      <section class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
+        {#each features as f, i (f.title)}
+          <div
+            class="bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105"
+            in:fly={{ x: i === 0 ? -200 : i === 2 ? 200 : 0, y: 0, duration: 1200, delay: 300 + i * 400 }}
+          >
+            <div
+              class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white"
+              in:fade={{ delay: 300 + i * 400, duration: 1200 }}
+            >
+              {@html f.icon}
+            </div>
+            <h3 class="text-xl font-semibold" in:fade={{ delay: 600 + i * 400, duration: 1200 }}>{f.title}</h3>
+            <p class="mt-2 text-gray-300" in:fade={{ delay: 900 + i * 400, duration: 1200 }}>{f.description}</p>
+          </div>
+        {/each}
+      </section>
+    {/key}
+  {/if}
+
 
   <!-- ABOUT -->
   <section id="about" class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center max-w-6xl">
@@ -335,7 +316,5 @@
 </main>
 
 <style>
-  :global(html) {
-    scroll-padding-top: 6rem;
-  }
+  :global(html) { scroll-padding-top: 6rem; }
 </style>
