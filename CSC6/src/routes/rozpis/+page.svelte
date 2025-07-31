@@ -7,55 +7,55 @@
     class: string;
     instructor: string;
     level: string;
-    room: string;
+    
   }[]> = {
     PO: [
-      { time: '06:00 - 07:30', class: 'Síla & Kondice', instructor: 'Mike Thomas', level: 'Všechny úrovně', room: 'Fitness' },
-      { time: '09:00 - 10:00', class: 'Box pro začátečníky', instructor: 'Sarah Martinez', level: 'Začátečník', room: 'Boxovací ring' },
-      { time: '12:00 - 13:00', class: 'Jóga pro boj', instructor: 'Anna Lee', level: 'All Levels', room: 'Jóga studio' },
-      { time: '15:00 - 16:30', class: 'MMA sparring', instructor: 'James Wilson', level: 'Pokročilý', room: 'Oktagon' },
-      { time: '18:00 - 19:30', class: 'Základy MMA', instructor: 'Alex Rodriguez', level: 'Začátečník', room: 'Oktagon' }
+      { time: '06:00 - 07:30', class: 'Síla & Kondice', instructor: 'Mike Thomas', level: 'Všechny úrovně' },
+      { time: '09:00 - 10:00', class: 'Box pro začátečníky', instructor: 'Sarah Martinez', level: 'Začátečník' },
+      { time: '12:00 - 13:00', class: 'Jóga pro boj', instructor: 'Anna Lee', level: 'All Levels' },
+      { time: '15:00 - 16:30', class: 'MMA sparring', instructor: 'James Wilson', level: 'Pokročilý' },
+      { time: '18:00 - 19:30', class: 'Základy MMA', instructor: 'Alex Rodriguez', level: 'Začátečník' }
     ],
     ÚT: [
-      { time: '07:00 - 08:30', class: 'Kardio kickboxing', instructor: 'Mike Thomas', level: 'Všechny úrovně', room: 'Fitness' },
-      { time: '10:00 - 11:00', class: 'Brazilsko Jiu-Jitsu', instructor: 'Carlos Silva', level: 'Středně pokročilý', room: 'Zápasnická zóna' },
-      { time: '13:00 - 14:00', class: 'CrossFit', instructor: 'Emily Clark', level: 'All Levels', room: 'CrossFit zóna' },
-      { time: '17:00 - 18:30', class: 'Pokročilý box', instructor: 'John Doe', level: 'Pokročilý', room: 'Boxovací ring' },
-      { time: '19:00 - 20:30', class: 'Open Mat', instructor: 'Self-Directed', level: 'Všechny úrovně', room: 'Všechny zóny' }
+      { time: '07:00 - 08:30', class: 'Kardio kickboxing', instructor: 'Mike Thomas', level: 'Všechny úrovně' },
+      { time: '10:00 - 11:00', class: 'Brazilsko Jiu-Jitsu', instructor: 'Carlos Silva', level: 'Středně pokročilý' },
+      { time: '13:00 - 14:00', class: 'CrossFit', instructor: 'Emily Clark', level: 'All Levels' },
+      { time: '17:00 - 18:30', class: 'Pokročilý box', instructor: 'John Doe', level: 'Pokročilý' },
+      { time: '19:00 - 20:30', class: 'Open Mat', instructor: 'Self-Directed', level: 'Všechny úrovně' }
     ],
     ST: [
-      { time: '08:00 - 09:30', class: 'MMA Fundamentals', instructor: 'Alex Rodriguez', level: 'Začátečník', room: 'Oktagon' },
-      { time: '11:00 - 12:00', class: 'Stretch & Recovery', instructor: 'Anna Lee', level: 'All Levels', room: 'Recovery zóna' },
-      { time: '14:00 - 15:30', class: 'Dětské MMA (8–12 let)', instructor: 'Lisa Johnson', level: 'Mládež', room: 'Tréninková místnost 2' },
-      { time: '17:00 - 18:30', class: 'Muay Thai', instructor: 'Sarah Martinez', level: 'Středně pokročilý', room: 'Boxovací ring' },
-      { time: '20:00 - 21:30', class: 'Advanced MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý', room: 'Oktagon' }
+      { time: '08:00 - 09:30', class: 'MMA Fundamentals', instructor: 'Alex Rodriguez', level: 'Začátečník' },
+      { time: '11:00 - 12:00', class: 'Stretch & Recovery', instructor: 'Anna Lee', level: 'All Levels' },
+      { time: '14:00 - 15:30', class: 'Dětské MMA (8–12 let)', instructor: 'Lisa Johnson', level: 'Mládež' },
+      { time: '17:00 - 18:30', class: 'Muay Thai', instructor: 'Sarah Martinez', level: 'Středně pokročilý' },
+      { time: '20:00 - 21:30', class: 'Advanced MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý' }
     ],
     ČT: [
-      { time: '06:30 - 07:30', class: 'Powerlifting', instructor: 'Rick Thompson', level: 'All Levels', room: 'Strength zóna' },
-      { time: '09:00 - 10:30', class: 'Kettlebell Training', instructor: 'Emily Clark', level: 'All Levels', room: 'Fitness' },
-      { time: '12:00 - 13:00', class: 'Yoga Flow', instructor: 'Anna Lee', level: 'All Levels', room: 'Jóga studio' },
-      { time: '16:00 - 17:30', class: 'MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý', room: 'Oktagon' },
-      { time: '18:00 - 19:30', class: 'Jiu-Jitsu Drills', instructor: 'Carlos Silva', level: 'Intermediate', room: 'Zápasnická zóna' }
+      { time: '06:30 - 07:30', class: 'Powerlifting', instructor: 'Rick Thompson', level: 'All Levels' },
+      { time: '09:00 - 10:30', class: 'Kettlebell Training', instructor: 'Emily Clark', level: 'All Levels' },
+      { time: '12:00 - 13:00', class: 'Yoga Flow', instructor: 'Anna Lee', level: 'All Levels' },
+      { time: '16:00 - 17:30', class: 'MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý' },
+      { time: '18:00 - 19:30', class: 'Jiu-Jitsu Drills', instructor: 'Carlos Silva', level: 'Intermediate' }
     ],
     PÁ: [
-      { time: '07:00 - 08:00', class: 'Cardio Kickboxing', instructor: 'Mike Thomas', level: 'All Levels', room: 'Fitness' },
-      { time: '10:00 - 11:30', class: 'Open Mat Grappling', instructor: 'Carlos Silva', level: 'All Levels', room: 'Zápasnická zóna' },
-      { time: '13:00 - 14:30', class: 'Strength & Conditioning', instructor: 'Mike Thomas', level: 'All Levels', room: 'Fitness' },
-      { time: '17:00 - 18:30', class: 'Boxing Fundamentals', instructor: 'Sarah Martinez', level: 'Začátečník', room: 'Boxovací ring' },
-      { time: '19:00 - 20:30', class: 'Advanced MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý', room: 'Oktagon' }
+      { time: '07:00 - 08:00', class: 'Cardio Kickboxing', instructor: 'Mike Thomas', level: 'All Levels' },
+      { time: '10:00 - 11:30', class: 'Open Mat Grappling', instructor: 'Carlos Silva', level: 'All Levels' },
+      { time: '13:00 - 14:30', class: 'Strength & Conditioning', instructor: 'Mike Thomas', level: 'All Levels' },
+      { time: '17:00 - 18:30', class: 'Boxing Fundamentals', instructor: 'Sarah Martinez', level: 'Začátečník' },
+      { time: '19:00 - 20:30', class: 'Advanced MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý' }
     ],
     SO: [
-      { time: '09:00 - 10:30', class: 'Dětské MMA (8–12 let)', instructor: 'Lisa Johnson', level: 'Mládež', room: 'Tréninková místnost 2' },
-      { time: '11:00 - 12:30', class: 'Muay Thai', instructor: 'Sarah Martinez', level: 'Středně pokročilý', room: 'Boxovací ring' },
-      { time: '14:00 - 15:30', class: 'Open Mat', instructor: 'Self-Directed', level: 'All Levels', room: 'All Areas' },
-      { time: '16:00 - 17:00', class: 'Pilates for Fighters', instructor: 'Anna Lee', level: 'All Levels', room: 'Pilates studio' },
-      { time: '18:00 - 19:30', class: 'MMA Technique', instructor: 'Alex Rodriguez', level: 'Intermediate', room: 'Oktagon' }
+      { time: '09:00 - 10:30', class: 'Dětské MMA (8–12 let)', instructor: 'Lisa Johnson', level: 'Mládež' },
+      { time: '11:00 - 12:30', class: 'Muay Thai', instructor: 'Sarah Martinez', level: 'Středně pokročilý' },
+      { time: '14:00 - 15:30', class: 'Open Mat', instructor: 'Self-Directed', level: 'All Levels' },
+      { time: '16:00 - 17:00', class: 'Pilates for Fighters', instructor: 'Anna Lee', level: 'All Levels' },
+      { time: '18:00 - 19:30', class: 'MMA Technique', instructor: 'Alex Rodriguez', level: 'Intermediate' }
     ],
     NE: [
-      { time: '10:00 - 11:30', class: 'Volné cvičení', instructor: 'Vlastní režie', level: 'All Levels', room: 'Všechny zóny' },
-      { time: '12:00 - 13:30', class: 'Stretch & Mobility', instructor: 'Anna Lee', level: 'All Levels', room: 'Recovery zóna' },
-      { time: '15:00 - 16:30', class: 'Open Mat Grappling', instructor: 'Carlos Silva', level: 'All Levels', room: 'Zápasnická zóna' },
-      { time: '17:00 - 18:30', class: 'MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý', room: 'Oktagon' }
+      { time: '10:00 - 11:30', class: 'Volné cvičení', instructor: 'Vlastní režie', level: 'All Levels' },
+      { time: '12:00 - 13:30', class: 'Stretch & Mobility', instructor: 'Anna Lee', level: 'All Levels' },
+      { time: '15:00 - 16:30', class: 'Open Mat Grappling', instructor: 'Carlos Silva', level: 'All Levels' },
+      { time: '17:00 - 18:30', class: 'MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý' }
     ]
   };
 
@@ -90,7 +90,7 @@
             <th class="px-4 py-2">Lekce</th>
             <th class="px-4 py-2">Trenér</th>
             <th class="px-4 py-2">Úroveň</th>
-            <th class="px-4 py-2">Prostory</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -100,7 +100,7 @@
               <td class="px-4 py-3">{item.class}</td>
               <td class="px-4 py-3">{item.instructor}</td>
               <td class="px-4 py-3">{item.level}</td>
-              <td class="px-4 py-3">{item.room}</td>
+              
             </tr>
           {/each}
         </tbody>
