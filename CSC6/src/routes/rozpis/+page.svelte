@@ -145,14 +145,14 @@
     </h3>
     <div class="container mx-auto px-6 max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="group relative rounded-lg overflow-hidden transform transition hover:scale-105 hover:shadow-lg">
-        <img src="/images/events/event1.jpg" alt="Seminář BJJ" class="w-full h-48 object-cover" />
+        <img src="/images/event1.jpg" alt="Seminář BJJ" class="w-full h-48 object-cover" />
         <div class="absolute bottom-0 left-0 bg-black/70 p-4 w-full">
           <p class="text-red-600 text-sm uppercase">28. čvc • 10:00 – 14:00</p>
           <h4 class="text-white font-semibold">Seminář BJJ s mistrem světa</h4>
         </div>
       </div>
       <div class="group relative rounded-lg overflow-hidden transform transition hover:scale-105 hover:shadow-lg">
-        <img src="/images/events/event2.jpg" alt="Klubová soutěž" class="w-full h-48 object-cover" />
+        <img src="/images/event2.jpg" alt="Klubová soutěž" class="w-full h-48 object-cover" />
         <div class="absolute bottom-0 left-0 bg-black/70 p-4 w-full">
           <p class="text-red-600 text-sm uppercase">15. srp • 18:00 – 22:00</p>
           <h4 class="text-white font-semibold">Klubová soutěž CSC MMA</h4>
