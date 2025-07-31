@@ -29,7 +29,7 @@
   >
     <div>
       <img
-        src="/images/trainers/alex.jpg"
+        src="/images/trainers/alex1.jpg"
         alt="Alex Chen"
         class="w-full rounded-lg shadow-lg object-cover"
       />

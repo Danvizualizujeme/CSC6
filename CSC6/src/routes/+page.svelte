@@ -137,7 +137,7 @@
     {
       name: 'Alex Rodriguez',
       role: 'Specialista Muay Thai',
-      image: '/images/trainers/alex.jpg',
+      image: '/images/trainers/alex1.jpg',
       description:
         'Trénoval v Thajsku 5 let a absolvoval přes 30 profesionálních zápasů v Muay Thai.',
       socials: [
@@ -146,6 +146,7 @@
         { href: 'https://instagram.com',label: 'Instagram', icon: `<svg><!-- ig SVG --></svg>` }
       ]
     }
+    
   ];
 </script>
 

@@ -2,42 +2,36 @@
   interface Item { src: string; category: string; caption?: string; }
 
   // Categories
-  const categories = ['All', 'Sparring', 'Events', 'Training', 'Museums'];
+  const categories = ['All', 'Sparring', 'Events', 'Training'];
   let activeCategory = 'All';
 
   // Gallery items (6 per category)
   const allItems: Item[] = [
     // Sparring
-    { src: 'https://via.placeholder.com/600x400?text=Sparring+1', category: 'Sparring', caption: 'Sparring Match 1' },
-    { src: 'https://via.placeholder.com/600x400?text=Sparring+2', category: 'Sparring', caption: 'Sparring Match 2' },
-    { src: 'https://via.placeholder.com/600x400?text=Sparring+3', category: 'Sparring', caption: 'Sparring Match 3' },
-    { src: 'https://via.placeholder.com/600x400?text=Sparring+4', category: 'Sparring', caption: 'Sparring Match 4' },
-    { src: 'https://via.placeholder.com/600x400?text=Sparring+5', category: 'Sparring', caption: 'Sparring Match 5' },
-    { src: 'https://via.placeholder.com/600x400?text=Sparring+6', category: 'Sparring', caption: 'Sparring Match 6' },
+    { src: '/images/sparring-1.jpg', category: 'Sparring', caption: 'Sparring Match 1' },
+    { src: '/images/sparring-2.jpg', category: 'Sparring', caption: 'Sparring Match 2' },
+    { src: '/images/sparring-3.jpg', category: 'Sparring', caption: 'Sparring Match 3' },
+    { src: '/images/sparring-4.jpg', category: 'Sparring', caption: 'Sparring Match 4' },
+    { src: '/images/sparring-5.jpg', category: 'Sparring', caption: 'Sparring Match 5' },
+    { src: '/images/sparring-6.jpg', category: 'Sparring', caption: 'Sparring Match 6' },
 
     // Events
-    { src: 'https://via.placeholder.com/600x400?text=Event+1', category: 'Events', caption: 'MMA Event 1' },
-    { src: 'https://via.placeholder.com/600x400?text=Event+2', category: 'Events', caption: 'MMA Event 2' },
-    { src: 'https://via.placeholder.com/600x400?text=Event+3', category: 'Events', caption: 'MMA Event 3' },
-    { src: 'https://via.placeholder.com/600x400?text=Event+4', category: 'Events', caption: 'MMA Event 4' },
-    { src: 'https://via.placeholder.com/600x400?text=Event+5', category: 'Events', caption: 'MMA Event 5' },
-    { src: 'https://via.placeholder.com/600x400?text=Event+6', category: 'Events', caption: 'MMA Event 6' },
+    { src: '/images/event-1.jpg', category: 'Events', caption: 'MMA Event 1' },
+    { src: '/images/event-2.jpg', category: 'Events', caption: 'MMA Event 2' },
+    { src: '/images/event-3.jpg', category: 'Events', caption: 'MMA Event 3' },
+    { src: '/images/event-4.jpg', category: 'Events', caption: 'MMA Event 4' },
+    { src: '/images/event-5.jpg', category: 'Events', caption: 'MMA Event 5' },
+    { src: '/images/event-6.jpg', category: 'Events', caption: 'MMA Event 6' },
 
     // Training
-    { src: 'https://via.placeholder.com/600x400?text=Training+1', category: 'Training', caption: 'Training Session 1' },
-    { src: 'https://via.placeholder.com/600x400?text=Training+2', category: 'Training', caption: 'Training Session 2' },
-    { src: 'https://via.placeholder.com/600x400?text=Training+3', category: 'Training', caption: 'Training Session 3' },
-    { src: 'https://via.placeholder.com/600x400?text=Training+4', category: 'Training', caption: 'Training Session 4' },
-    { src: 'https://via.placeholder.com/600x400?text=Training+5', category: 'Training', caption: 'Training Session 5' },
-    { src: 'https://via.placeholder.com/600x400?text=Training+6', category: 'Training', caption: 'Training Session 6' },
+    { src: '/images/training-1.jpg', category: 'Training', caption: 'Training Session 1' },
+    { src: '/images/training-2.jpg', category: 'Training', caption: 'Training Session 2' },
+    { src: '/images/training-3.jpg', category: 'Training', caption: 'Training Session 3' },
+    { src: '/images/training-4.jpg', category: 'Training', caption: 'Training Session 4' },
+    { src: '/images/training-5.jpg', category: 'Training', caption: 'Training Session 5' },
+    { src: '/images/training-6.jpg', category: 'Training', caption: 'Training Session 6' },
 
-    // Museums
-    { src: 'https://via.placeholder.com/600x400?text=Museum+1', category: 'Museums', caption: 'Museum Exhibit 1' },
-    { src: 'https://via.placeholder.com/600x400?text=Museum+2', category: 'Museums', caption: 'Museum Exhibit 2' },
-    { src: 'https://via.placeholder.com/600x400?text=Museum+3', category: 'Museums', caption: 'Museum Exhibit 3' },
-    { src: 'https://via.placeholder.com/600x400?text=Museum+4', category: 'Museums', caption: 'Museum Exhibit 4' },
-    { src: 'https://via.placeholder.com/600x400?text=Museum+5', category: 'Museums', caption: 'Museum Exhibit 5' },
-    { src: 'https://via.placeholder.com/600x400?text=Museum+6', category: 'Museums', caption: 'Museum Exhibit 6' },
+
   ];
 
   // Reactive filtering
