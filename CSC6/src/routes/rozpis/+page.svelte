@@ -1,42 +1,88 @@
 <script lang="ts">
-  let days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+  let days = ['PO', 'ÚT', 'ST', 'ČT', 'PÁ', 'SO', 'NE'];
   let active = 0;
 
-  const schedule = [
-    { time: '06:00 - 07:30', class: 'Strength & Conditioning', instructor: 'Mike Thomas', level: 'All Levels', room: 'Fitness Area' },
-    { time: '08:00 - 09:30', class: 'Boxing Fundamentals', instructor: 'Sarah Martinez', level: 'Beginner', room: 'Boxing Ring' },
-    { time: '10:00 - 11:30', class: 'Brazilian Jiu-Jitsu', instructor: 'Carlos Silva', level: 'Intermediate', room: 'Grappling Area' },
-    { time: '12:00 - 13:00', class: 'Lunch Break Open Mat', instructor: 'Self-Directed', level: 'All Levels', room: 'All Areas' },
-    { time: '16:00 - 17:30', class: 'Kids MMA (Ages 8–12)', instructor: 'Lisa Johnson', level: 'Youth', room: 'Training Room 2' },
-    { time: '18:00 - 19:30', class: 'MMA Fundamentals', instructor: 'Alex Rodriguez', level: 'Beginner', room: 'Octagon' },
-    { time: '20:00 - 21:30', class: 'Advanced MMA Sparring', instructor: 'James Wilson', level: 'Advanced', room: 'Octagon' }
-  ];
+  const scheduleByDay: Record<string, {
+    time: string;
+    class: string;
+    instructor: string;
+    level: string;
+    room: string;
+  }[]> = {
+    PO: [
+      { time: '06:00 - 07:30', class: 'Síla & Kondice', instructor: 'Mike Thomas', level: 'Všechny úrovně', room: 'Fitness' },
+      { time: '09:00 - 10:00', class: 'Box pro začátečníky', instructor: 'Sarah Martinez', level: 'Začátečník', room: 'Boxovací ring' },
+      { time: '12:00 - 13:00', class: 'Jóga pro boj', instructor: 'Anna Lee', level: 'All Levels', room: 'Jóga studio' },
+      { time: '15:00 - 16:30', class: 'MMA sparring', instructor: 'James Wilson', level: 'Pokročilý', room: 'Oktagon' },
+      { time: '18:00 - 19:30', class: 'Základy MMA', instructor: 'Alex Rodriguez', level: 'Začátečník', room: 'Oktagon' }
+    ],
+    ÚT: [
+      { time: '07:00 - 08:30', class: 'Kardio kickboxing', instructor: 'Mike Thomas', level: 'Všechny úrovně', room: 'Fitness' },
+      { time: '10:00 - 11:00', class: 'Brazilsko Jiu-Jitsu', instructor: 'Carlos Silva', level: 'Středně pokročilý', room: 'Zápasnická zóna' },
+      { time: '13:00 - 14:00', class: 'CrossFit', instructor: 'Emily Clark', level: 'All Levels', room: 'CrossFit zóna' },
+      { time: '17:00 - 18:30', class: 'Pokročilý box', instructor: 'John Doe', level: 'Pokročilý', room: 'Boxovací ring' },
+      { time: '19:00 - 20:30', class: 'Open Mat', instructor: 'Self-Directed', level: 'Všechny úrovně', room: 'Všechny zóny' }
+    ],
+    ST: [
+      { time: '08:00 - 09:30', class: 'MMA Fundamentals', instructor: 'Alex Rodriguez', level: 'Začátečník', room: 'Oktagon' },
+      { time: '11:00 - 12:00', class: 'Stretch & Recovery', instructor: 'Anna Lee', level: 'All Levels', room: 'Recovery zóna' },
+      { time: '14:00 - 15:30', class: 'Dětské MMA (8–12 let)', instructor: 'Lisa Johnson', level: 'Mládež', room: 'Tréninková místnost 2' },
+      { time: '17:00 - 18:30', class: 'Muay Thai', instructor: 'Sarah Martinez', level: 'Středně pokročilý', room: 'Boxovací ring' },
+      { time: '20:00 - 21:30', class: 'Advanced MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý', room: 'Oktagon' }
+    ],
+    ČT: [
+      { time: '06:30 - 07:30', class: 'Powerlifting', instructor: 'Rick Thompson', level: 'All Levels', room: 'Strength zóna' },
+      { time: '09:00 - 10:30', class: 'Kettlebell Training', instructor: 'Emily Clark', level: 'All Levels', room: 'Fitness' },
+      { time: '12:00 - 13:00', class: 'Yoga Flow', instructor: 'Anna Lee', level: 'All Levels', room: 'Jóga studio' },
+      { time: '16:00 - 17:30', class: 'MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý', room: 'Oktagon' },
+      { time: '18:00 - 19:30', class: 'Jiu-Jitsu Drills', instructor: 'Carlos Silva', level: 'Intermediate', room: 'Zápasnická zóna' }
+    ],
+    PÁ: [
+      { time: '07:00 - 08:00', class: 'Cardio Kickboxing', instructor: 'Mike Thomas', level: 'All Levels', room: 'Fitness' },
+      { time: '10:00 - 11:30', class: 'Open Mat Grappling', instructor: 'Carlos Silva', level: 'All Levels', room: 'Zápasnická zóna' },
+      { time: '13:00 - 14:30', class: 'Strength & Conditioning', instructor: 'Mike Thomas', level: 'All Levels', room: 'Fitness' },
+      { time: '17:00 - 18:30', class: 'Boxing Fundamentals', instructor: 'Sarah Martinez', level: 'Začátečník', room: 'Boxovací ring' },
+      { time: '19:00 - 20:30', class: 'Advanced MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý', room: 'Oktagon' }
+    ],
+    SO: [
+      { time: '09:00 - 10:30', class: 'Dětské MMA (8–12 let)', instructor: 'Lisa Johnson', level: 'Mládež', room: 'Tréninková místnost 2' },
+      { time: '11:00 - 12:30', class: 'Muay Thai', instructor: 'Sarah Martinez', level: 'Středně pokročilý', room: 'Boxovací ring' },
+      { time: '14:00 - 15:30', class: 'Open Mat', instructor: 'Self-Directed', level: 'All Levels', room: 'All Areas' },
+      { time: '16:00 - 17:00', class: 'Pilates for Fighters', instructor: 'Anna Lee', level: 'All Levels', room: 'Pilates studio' },
+      { time: '18:00 - 19:30', class: 'MMA Technique', instructor: 'Alex Rodriguez', level: 'Intermediate', room: 'Oktagon' }
+    ],
+    NE: [
+      { time: '10:00 - 11:30', class: 'Volné cvičení', instructor: 'Vlastní režie', level: 'All Levels', room: 'Všechny zóny' },
+      { time: '12:00 - 13:30', class: 'Stretch & Mobility', instructor: 'Anna Lee', level: 'All Levels', room: 'Recovery zóna' },
+      { time: '15:00 - 16:30', class: 'Open Mat Grappling', instructor: 'Carlos Silva', level: 'All Levels', room: 'Zápasnická zóna' },
+      { time: '17:00 - 18:30', class: 'MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý', room: 'Oktagon' }
+    ]
+  };
 
   function selectDay(index: number) {
     active = index;
   }
 </script>
 
-<main class="pt-24 bg-black text-white space-y-16">
+<main class="bg-black text-white space-y-16">
 
-  <!-- HERO / SCHEDULE -->
+  <!-- HERO / ROZPIS -->
   <section
     class="relative -mt-24 bg-cover bg-center h-[600px]"
     style="background-image:url('/images/schedule-hero.jpg')"
   >
     <div class="absolute inset-0 bg-black/70"></div>
-    <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl">
+    <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 max-w-4xl text-center">
       <h1 class="text-5xl font-bold leading-tight">
         ROZPIS <span class="text-red-600">TRÉNINKŮ</span>
       </h1>
       <p class="mt-4 text-lg">
-        Najděte nejlepší tréninky přesně pro vás.
+        Najděte tréninkový plán, který vám sedí každý den.
       </p>
-      <!-- tlačítka odstraněna -->
     </div>
   </section>
 
-  <!-- DAYS TABS -->
+  <!-- KARTY DNŮ -->
   <section class="container mx-auto px-6 max-w-6xl">
     <div class="flex space-x-2 justify-center mb-6">
       {#each days as day, i}
@@ -46,26 +92,25 @@
           class:border-red-600={i === active}
           class:text-red-600={i === active}
           class:text-gray-400={i !== active}
-        >
-          {day}
-        </button>
+
+        >{day}</button>
       {/each}
     </div>
 
-    <!-- SCHEDULE TABLE -->
+    <!-- TABULKA ROZPISU -->
     <div class="overflow-x-auto">
       <table class="w-full text-left border-collapse">
         <thead>
           <tr class="text-gray-400 uppercase text-sm">
-            <th class="px-4 py-2">Time</th>
-            <th class="px-4 py-2">Class</th>
-            <th class="px-4 py-2">Instructor</th>
-            <th class="px-4 py-2">Level</th>
-            <th class="px-4 py-2">Room</th>
+            <th class="px-4 py-2">Čas</th>
+            <th class="px-4 py-2">Lekce</th>
+            <th class="px-4 py-2">Trenér</th>
+            <th class="px-4 py-2">Úroveň</th>
+            <th class="px-4 py-2">Prostory</th>
           </tr>
         </thead>
         <tbody>
-          {#each schedule as item}
+          {#each scheduleByDay[days[active]] as item}
             <tr class="border-t border-gray-700 hover:bg-gray-800">
               <td class="px-4 py-3 text-red-600 font-medium">{item.time}</td>
               <td class="px-4 py-3">{item.class}</td>
@@ -79,108 +124,103 @@
     </div>
   </section>
 
-  <!-- OUR CLASSES -->
+  <!-- NAŠE KURZY -->
   <section class="container mx-auto px-6 py-16 max-w-6xl">
     <h3 class="text-3xl font-bold text-center mb-12">
-      OUR <span class="text-red-600">CLASSES</span>
+      NAŠE <span class="text-red-600">KURZY</span>
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
-        <h4 class="text-xl font-semibold mb-2">MMMA TRAINING</h4>
+        <h4 class="text-xl font-semibold mb-2">MMA</h4>
         <p class="text-gray-300 text-sm mb-4">
-          Comprehensive mixed martial arts training combining striking, grappling, and ground techniques.
+          Komplexní trénink MMA pro všechny úrovně, kombinuje údery, zápasení a obranu na zemi.
         </p>
-        <button class="text-red-600 font-semibold uppercase text-sm">All Levels</button>
+        <button class="text-red-600 font-semibold uppercase text-sm">Všechny úrovně</button>
       </div>
       <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
-        <h4 class="text-xl font-semibold mb-2">BOXING</h4>
+        <h4 class="text-xl font-semibold mb-2">BOX</h4>
         <p class="text-gray-300 text-sm mb-4">
-          Master the sweet science with our professional boxing coaches. Focus on footwork and defensive techniques.
+          Naučte se základní a pokročilé boxerské techniky v profesionálním ringu.
         </p>
-        <button class="text-red-600 font-semibold uppercase text-sm">All Levels</button>
+        <button class="text-red-600 font-semibold uppercase text-sm">Všechny úrovně</button>
       </div>
       <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
         <h4 class="text-xl font-semibold mb-2">BJJ</h4>
         <p class="text-gray-300 text-sm mb-4">
-          Learn ground fighting with our BJJ program. Focus on submissions and positional control.
+          Brazilsko Jiu-Jitsu: důraz na páky, škrcení a poziční kontrolu.
         </p>
-        <button class="text-red-600 font-semibold uppercase text-sm">All Levels</button>
+        <button class="text-red-600 font-semibold uppercase text-sm">Všechny úrovně</button>
       </div>
     </div>
   </section>
 
-  <!-- UPCOMING EVENTS -->
+  <!-- NADCHÁZEJÍCÍ UDÁLOSTI -->
   <section class="bg-black py-16">
     <h3 class="text-3xl font-bold text-center mb-12">
-      UPCOMING <span class="text-red-600">EVENTS</span>
+      NADCHÁZEJÍCÍ <span class="text-red-600">UDÁLOSTI</span>
     </h3>
     <div class="container mx-auto px-6 max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="group relative rounded-lg overflow-hidden transform transition hover:scale-105 hover:shadow-lg">
-        <img src="/images/events/event1.jpg" alt="BJJ Seminar" class="w-full h-48 object-cover" />
+        <img src="/images/events/event1.jpg" alt="Seminář BJJ" class="w-full h-48 object-cover" />
         <div class="absolute bottom-0 left-0 bg-black/70 p-4 w-full">
-          <p class="text-red-600 text-sm uppercase">Jul 28 • 10:00 AM – 2:00 PM</p>
-          <h4 class="text-white font-semibold">BJJ Seminar with World Champion</h4>
+          <p class="text-red-600 text-sm uppercase">28. čvc • 10:00 – 14:00</p>
+          <h4 class="text-white font-semibold">Seminář BJJ s mistrem světa</h4>
         </div>
       </div>
       <div class="group relative rounded-lg overflow-hidden transform transition hover:scale-105 hover:shadow-lg">
-        <img src="/images/events/event2.jpg" alt="In-House Competition" class="w-full h-48 object-cover" />
+        <img src="/images/events/event2.jpg" alt="Klubová soutěž" class="w-full h-48 object-cover" />
         <div class="absolute bottom-0 left-0 bg-black/70 p-4 w-full">
-          <p class="text-red-600 text-sm uppercase">Aug 15 • 6:00 PM – 10:00 PM</p>
-          <h4 class="text-white font-semibold">CSC In‑House Competition</h4>
+          <p class="text-red-600 text-sm uppercase">15. srp • 18:00 – 22:00</p>
+          <h4 class="text-white font-semibold">Klubová soutěž CSC MMA</h4>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MEMBERSHIP OPTIONS -->
+  <!-- ČLENSKÉ PLÁNY -->
   <section class="container mx-auto px-6 py-16 max-w-6xl">
     <h3 class="text-3xl font-bold text-center mb-12">
-      MEMBERSHIP <span class="text-red-600">OPTIONS</span>
+      ČLENSKÉ <span class="text-red-600">PLÁNY</span>
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="group bg-black p-6 rounded-lg border border-gray-700 text-center transform transition hover:scale-105 hover:shadow-lg">
-        <h4 class="text-xl font-semibold mb-4">Basic</h4>
-        <p class="text-gray-400 text-3xl font-bold mb-4">$99<span class="text-sm">/month</span></p>
+        <h4 class="text-xl font-semibold mb-4">Základní</h4>
+        <p class="text-gray-400 text-3xl font-bold mb-4">99€<span class="text-sm">/měsíc</span></p>
         <ul class="text-gray-300 mb-6 space-y-2">
-          <li>Access to all basic classes</li>
-          <li>Gym access during business hours</li>
-          <li>1 specialty class per week</li>
+          <li>Přístup ke všem základním lekcím</li>
+          <li>Vstup do posilovny ve všední dny</li>
+          <li>1 speciální lekce týdně</li>
         </ul>
-        <button class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">Select Plan</button>
+        <button class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">Vybrat</button>
       </div>
       <div class="group bg-black p-6 rounded-lg border border-gray-700 text-center transform transition hover:scale-105 hover:shadow-lg">
         <h4 class="text-xl font-semibold mb-4">Premium</h4>
-        <p class="text-gray-400 text-3xl font-bold mb-4">$149<span class="text-sm">/month</span></p>
+        <p class="text-gray-400 text-3xl font-bold mb-4">149€<span class="text-sm">/měsíc</span></p>
         <ul class="text-gray-300 mb-6 space-y-2">
-          <li>Unlimited gym access</li>
-          <li>All specialty classes included</li>
-          <li>1 personal training session/month</li>
-        </ul>
-        <span class="inline-block bg-red-600 text-white px-3 py-1 rounded-full text-sm mb-4">Popular</span>
-        <button class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">Select Plan</button>
+          <li>Neomezený vstup do posilovny</li>
+          <li>Všechny speciální lekce</li>
+</ul>
+        <button class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">Vybrat</button>
       </div>
       <div class="group bg-black p-6 rounded-lg border border-gray-700 text-center transform transition hover:scale-105 hover:shadow-lg">
         <h4 class="text-xl font-semibold mb-4">Elite</h4>
-        <p class="text-gray-400 text-3xl font-bold mb-4">$249<span class="text-sm">/month</span></p>
+        <p class="text-gray-400 text-3xl font-bold mb-4">249€<span class="text-sm">/měsíc</span></p>
         <ul class="text-gray-300 mb-6 space-y-2">
-          <li>Unlimited access to all classes</li>
-          <li>24/7 gym access</li>
-          <li>4 personal training sessions/month</li>
+          <li>24/7 vstup do posilovny</li>
+          <li>4 osobní tréninky měsíčně</li>
         </ul>
-        <button class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">Select Plan</button>
+        <button class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded font-semibold">Vybrat</button>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- ČASTO KLADENÉ DOTAZY -->
   <section class="bg-black py-16">
-    <h3 class="text-3xl font-bold text-center mb-12">
-      FREQUENTLY ASKED <span class="text-red-600">QUESTIONS</span>
-    </h3>
+    <h3 class="text-3xl font-bold text-center mb-12">ČASTO KLADENÉ <span class="text-red-600">DOTAZY</span></h3>
     <div class="container mx-auto px-6 max-w-6xl space-y-4">
       <div class="group border border-gray-700 rounded-lg p-4 transform transition hover:scale-105 hover:shadow-lg">
         <button class="w-full flex justify-between items-center text-white font-semibold">
-          Do I need previous experience to join?
+          Potřebuji předchozí zkušenosti?
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
           </svg>
@@ -188,7 +228,7 @@
       </div>
       <div class="group border border-gray-700 rounded-lg p-4 transform transition hover:scale-105 hover:shadow-lg">
         <button class="w-full flex justify-between items-center text-white font-semibold">
-          What should I bring to my first class?
+          Co si mám přinést na první lekci?
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
           </svg>
@@ -200,8 +240,5 @@
 </main>
 
 <style>
-  :global(html) {
-    scroll-padding-top: 6rem;
-  }
+  :global(html) { scroll-padding-top: 6rem; }
 </style>
-  
