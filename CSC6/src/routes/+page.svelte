@@ -269,9 +269,9 @@
         Máte dotazy nebo chcete naplánovat návštěvu? Napište nám níže a my se ozveme co nejdříve.
       </p>
       <div class="space-y-4 text-gray-200 text-sm">
-        <div><strong>Naše adresa</strong><br />Ulice Bojovníků 123, Combat City, ČR</div>
+        <div><strong>Naše adresa</strong><br />Rudé armády 651/19A, Karviná 733 01</div>
         <div><strong>Telefon</strong><br />+420 123 456 789</div>
-        <div><strong>E‑mail</strong><br />info@cscmmaclub.cz</div>
+        <div><strong>E‑mail</strong><br />csc.karvina@seznam.cz</div>
       </div>
       <div class="flex space-x-4 mt-4 text-gray-400">
         <a href="https://facebook.com" aria-label="Facebook"><!-- fb SVG --></a>

@@ -17,7 +17,7 @@
       </div>
       <h4 class="text-xl font-semibold mb-2">Adresa</h4>
       <p class="text-gray-300 text-sm leading-relaxed">
-        Sportovní 123<br />Praha 10, 100 00<br />Česká republika
+        Rudé armády 651/19A<br />Karviná 733 01<br />Česká republika
       </p>
     </div>
 
@@ -28,12 +28,10 @@
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.09 2h3a2 2 0 0 1 2 1.72c.13.82.36 1.63.7 2.42a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.79.34 1.6.57 2.42.7A2 2 0 0 1 22 16.92Z"/>
         </svg>
       </div>
-      <h4 class="text-xl font-semibold mb-2">Telefon</h4>
+      <h4 class="text-xl font-semibold mb-2">Telefon + Email</h4>
       <p class="text-gray-300 text-sm leading-relaxed">
-        +420 123 456 789<br />
-        info@cscmmaclub.cz<br />
-        Po–Pá 8:00 – 21:00
-      </p>
+        652675367      </p>
+        csc.karvina@seznam.cz<br />      
     </div>
 
     <!-- Email -->
@@ -43,11 +41,10 @@
           <path d="M3 8l9 6 9-6m-18 0a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
         </svg>
       </div>
-      <h4 class="text-xl font-semibold mb-2">Email & sociální sítě</h4>
+      <h4 class="text-xl font-semibold mb-2">Sociální sítě</h4>
       <p class="text-gray-300 text-sm leading-relaxed">
-        info@cscmmaclub.cz<br />
-        Facebook: cscmmaclub<br />
-        Odpověď do 24 h
+        Facebook: CSC - Karviná a Český Těšín<br />
+        Instagram: CSC - csc_mma<br />
       </p>
     </div>
   </section>
@@ -83,8 +80,8 @@
       <div class="group bg-black p-8 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg flex flex-col items-center justify-center h-full">
         <div class="text-lg font-semibold mb-1">Interaktivní mapa</div>
         <div class="text-gray-400 text-sm mb-2 text-center">
-          Sportovní 123, Praha 10<br />
-          50.000000, 14.000000
+          Rudé armády 651/19A<br />
+          Karviná 733 01
         </div>
         <iframe class="w-full h-40 rounded-lg border border-gray-700"
           src="https://maps.google.com/maps?q=Sportovní%20123,%20Praha%2010&t=&z=13&ie=UTF8&iwloc=&output=embed"

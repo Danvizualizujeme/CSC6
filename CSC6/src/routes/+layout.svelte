@@ -123,8 +123,8 @@
     <div class="text-sm space-y-4">
       <h3 class="text-white font-semibold mb-2">ADRESA</h3>
       <div>
-        Sportovní 123<br />
-        Praha 10, 100 00<br />
+        Rudé armády 651/19A<br />
+        733 01 Karviná 1<br />
         Česká republika
       </div>
     </div>
@@ -138,19 +138,22 @@
       </div>
       <div>
         <strong>E‑mail:</strong><br />
-        info@cscmmaclub.cz
+        csc.karvina@seznam.cz
       </div>
     </div>
 
     <!-- Small Map -->
-    <div>
-      <h3 class="text-white font-semibold mb-2">KDE NÁS NAJDETE</h3>
-      <iframe
-        class="w-full h-32 rounded-lg border border-gray-700"
-        src="https://maps.google.com/maps?q=Sportovní%20123,%20Praha%2010&t=&z=13&ie=UTF8&iwloc=&output=embed"
-        title="Mapa umístění CSC MMA Club"
-      ></iframe>
-    </div>
+<div>
+  <h3 class="text-white font-semibold mb-2">KDE NÁS NAJDETE</h3>
+  <iframe
+    class="w-full h-32 rounded-lg border border-gray-700"
+    src="https://www.google.com/maps?q=Rud%C3%A9+arm%C3%A1dy+651%2F19A%2C+733+01+Karvin%C3%A1+1&output=embed"
+    title="Mapa umístění CSC MMA Club"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen
+  ></iframe>
+</div>
 
   </div>
 
