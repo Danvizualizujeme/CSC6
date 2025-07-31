@@ -86,7 +86,7 @@
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
-        <h4 class="text-xl font-semibold mb-2">MMA TRAINING</h4>
+        <h4 class="text-xl font-semibold mb-2">MMMA TRAINING</h4>
         <p class="text-gray-300 text-sm mb-4">
           Comprehensive mixed martial arts training combining striking, grappling, and ground techniques.
         </p>
