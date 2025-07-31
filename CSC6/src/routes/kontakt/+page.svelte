@@ -34,19 +34,37 @@
         csc.karvina@seznam.cz<br />      
     </div>
 
-    <!-- Email -->
-    <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
-      <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24" stroke="none">
-          <path d="M3 8l9 6 9-6m-18 0a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+<!-- Email / Sociální sítě -->
+<div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg flex flex-col items-center">
+  <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24" stroke="none">
+      <path d="M3 8l9 6 9-6m-18 0a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+    </svg>
+  </div>
+  <h4 class="text-xl font-semibold mb-2 text-center">Sociální sítě</h4>
+  <div class="flex flex-col items-center gap-3 mt-2">
+    <a href="https://www.instagram.com/csc_mma" target="_blank" class="flex items-center gap-2 text-gray-200 hover:text-white transition">
+      <!-- Instagram SVG, basic white -->
+      <span class="inline-flex items-center justify-center w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="w-6 h-6">
+          <rect x="2" y="2" width="20" height="20" rx="6" fill="none" stroke="white" stroke-width="2"/>
+          <circle cx="12" cy="12" r="5" fill="none" stroke="white" stroke-width="2"/>
+          <circle cx="17" cy="7" r="1.2" fill="white"/>
         </svg>
-      </div>
-      <h4 class="text-xl font-semibold mb-2">Sociální sítě</h4>
-      <p class="text-gray-300 text-sm leading-relaxed">
-        Facebook: CSC - Karviná a Český Těšín<br />
-        Instagram: CSC - csc_mma<br />
-      </p>
-    </div>
+      </span>
+      <span> <span class="font-semibold">csc_mma</span></span>
+    </a>
+    <a href="https://www.facebook.com/CSCKarvina?locale=cs_CZ" target="_blank" class="flex items-center gap-2 text-gray-200 hover:text-white transition">
+      <!-- Facebook SVG, basic white -->
+      <span class="inline-flex items-center justify-center w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="w-6 h-6">
+          <path d="M17 2.1h-3.4c-3.3 0-5.1 2-5.1 5.3v2.6H5.2c-.2 0-.4.2-.4.4v3.2c0 .2.2.4.4.4h3.3v8.3c0 .2.2.4.4.4h3.4c.2 0 .4-.2.4-.4v-8.3h2.9c.2 0 .4-.2.4-.4l.2-3.2c0-.2-.2-.4-.4-.4h-3.1V7.6c0-.9.3-1.3 1.2-1.3H17c.2 0 .4-.2.4-.4V2.5c0-.2-.2-.4-.4-.4z"/>
+        </svg>
+      </span>
+      <span> <span class="font-semibold">CSC - Karviná a Český Těšín</span></span>
+    </a>
+  </div>
+</div>
   </section>
 
   <!-- Formulář + Mapa -->
