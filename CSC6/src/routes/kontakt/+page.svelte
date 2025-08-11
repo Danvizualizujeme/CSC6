@@ -1,135 +1,195 @@
-<!-- src/routes/kontakt/+page.svelte -->
 <script lang="ts">
-  // Žádná logika zatím není potřeba
+  import { fade } from 'svelte/transition';
+
+  // === Ikony pro infoboxy ===
+  const icons = {
+    address: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>`,
+    phone: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.068 15.068 0 006.59 6.59l2.21-2.21c.27-.27.67-.36.98-.24a10.012 10.012 0 014.28 1.15c.32.1.4.52.1.84l-1.89 1.89c-.52.52-1.28.61-1.87.21-3.69-2.43-6.9-5.64-9.33-9.33-.4-.59-.3-1.35.21-1.87l1.89-1.89c.32-.32.74-.24.84.1a10.012 10.012 0 011.15 4.28c.12.31.03.71-.24.98l-2.21 2.21z"/></svg>`,
+    mail: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>`
+  };
+
+  // === Logika formuláře ===
+  let success = false;
+  let errorMsg = '';
+  const startTs = Date.now();
+
+  async function handleSubmit(event: Event) {
+    event.preventDefault();
+    errorMsg = '';
+    const form = event.currentTarget as HTMLFormElement;
+    const data = new FormData(form);
+
+    if (data.get('website')) {
+      errorMsg = 'Spam detekován.';
+      return;
+    }
+    const ts = Number(data.get('ts'));
+    if (Date.now() - ts < 3000) {
+      errorMsg = 'Spam detekován.';
+      return;
+    }
+
+    try {
+      const res = await fetch('https://formspree.io/f/manbbnjp', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      });
+      const json = await res.json();
+      if (res.ok) {
+        success = true;
+        form.reset();
+      } else {
+        errorMsg = json.error || 'Nastala chyba, zkuste to prosím znovu.';
+      }
+    } catch {
+      errorMsg = 'Síťová chyba, zkuste to znovu.';
+    }
+  }
 </script>
 
-<main class="bg-black text-white min-h-screen overflow-x-hidden">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap');
 
-  <!-- Info boxy -->
-  <section class="container mx-auto grid md:grid-cols-3 gap-6 px-6 py-16 max-w-6xl">
-    <!-- Adresa -->
-    <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
-      <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24" stroke="none">
-          <path d="M12 2C8 2 5 6.5 5 9.5c0 4.8 7 12.5 7 12.5s7-7.7 7-12.5C19 6.5 16 2 12 2Z"/>
-          <circle cx="12" cy="9.5" r="2.5" />
-        </svg>
-      </div>
-      <h4 class="text-xl font-semibold mb-2">Adresa</h4>
-      <p class="text-gray-300 text-sm leading-relaxed">
-        Rudé armády 651/19A<br />Karviná 733 01<br />Česká republika
-      </p>
+  .font-heading {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  .font-body {
+    font-family: 'Poppins', sans-serif;
+  }
+  .bg-dark {
+    background-color: #0c0c0c;
+  }
+</style>
+
+<main class="bg-dark text-white font-body min-h-screen overflow-hidden">
+  <header class="text-center py-24 bg-[#111] border-b border-gray-800">
+    <div class="container mx-auto px-6 max-w-7xl">
+      <h1 class="text-5xl font-heading leading-tight mb-2">
+        <span class="text-red-600">KONTAKTUJTE</span> NÁS
+      </h1>
+      <p class="text-gray-400 text-lg">Máte dotazy, nebo se chcete přihlásit na zkušební trénink?</p>
     </div>
+  </header>
 
-    <!-- Telefon -->
-    <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
-      <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24" stroke="none">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.09 2h3a2 2 0 0 1 2 1.72c.13.82.36 1.63.7 2.42a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.79.34 1.6.57 2.42.7A2 2 0 0 1 22 16.92Z"/>
-        </svg>
-      </div>
-      <h4 class="text-xl font-semibold mb-2">Telefon + Email</h4>
-      <p class="text-gray-300 text-sm leading-relaxed">
-        652675367      </p>
-        csc.karvina@seznam.cz<br />      
-    </div>
-
-<!-- Email / Sociální sítě -->
-<div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg flex flex-col items-center">
-  <div class="inline-flex items-center justify-center bg-red-600 rounded-full w-12 h-12 mb-4 text-white">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24" stroke="none">
-      <path d="M3 8l9 6 9-6m-18 0a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-    </svg>
-  </div>
-  <h4 class="text-xl font-semibold mb-2 text-center">Sociální sítě</h4>
-  <div class="flex flex-col items-center gap-3 mt-2">
-    <a href="https://www.instagram.com/csc_mma" target="_blank" class="flex items-center gap-2 text-gray-200 hover:text-white transition">
-      <!-- Instagram SVG, basic white -->
-      <span class="inline-flex items-center justify-center w-8 h-8">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="w-6 h-6">
-          <rect x="2" y="2" width="20" height="20" rx="6" fill="none" stroke="white" stroke-width="2"/>
-          <circle cx="12" cy="12" r="5" fill="none" stroke="white" stroke-width="2"/>
-          <circle cx="17" cy="7" r="1.2" fill="white"/>
-        </svg>
-      </span>
-      <span> <span class="font-semibold">csc_mma</span></span>
-    </a>
-    <a href="https://www.facebook.com/CSCKarvina?locale=cs_CZ" target="_blank" class="flex items-center gap-2 text-gray-200 hover:text-white transition">
-      <!-- Facebook SVG, basic white -->
-      <span class="inline-flex items-center justify-center w-8 h-8">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="w-6 h-6">
-          <path d="M17 2.1h-3.4c-3.3 0-5.1 2-5.1 5.3v2.6H5.2c-.2 0-.4.2-.4.4v3.2c0 .2.2.4.4.4h3.3v8.3c0 .2.2.4.4.4h3.4c.2 0 .4-.2.4-.4v-8.3h2.9c.2 0 .4-.2.4-.4l.2-3.2c0-.2-.2-.4-.4-.4h-3.1V7.6c0-.9.3-1.3 1.2-1.3H17c.2 0 .4-.2.4-.4V2.5c0-.2-.2-.4-.4-.4z"/>
-        </svg>
-      </span>
-      <span> <span class="font-semibold">CSC - Karviná a Český Těšín</span></span>
-    </a>
-  </div>
-</div>
-  </section>
-
-  <!-- Formulář + Mapa -->
-  <section class="container mx-auto flex flex-col md:flex-row gap-8 px-6 max-w-6xl">
-    <!-- Formulář -->
-    <div class="group flex-1 bg-black p-8 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
-      <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Napište <span class="text-red-600">nám</span></h3>
-      <form class="flex flex-col gap-4">
-        <div class="flex gap-4">
-          <input placeholder="Jméno *" class="flex-1 bg-black bg-opacity-60 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-600 rounded-lg" />
-          <input placeholder="Příjmení *" class="flex-1 bg-black bg-opacity-60 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-600 rounded-lg" />
+  <section class="container mx-auto px-6 py-24 max-w-7xl">
+    <div class="bg-[#1a1a1a] p-12 rounded-3xl border border-gray-800 shadow-2xl max-w-4xl mx-auto" in:fade={{ duration: 1000 }}>
+      <h3 class="text-3xl font-heading mb-6 text-center">Napište <span class="text-red-600">nám</span></h3>
+      {#if success}
+        <p class="text-green-400 mb-4 text-center">✅ Zpráva odeslána! Ozveme se vám co nejdříve.</p>
+      {/if}
+      {#if errorMsg}
+        <p class="text-red-500 mb-4 text-center">❌ {errorMsg}</p>
+      {/if}
+      <form on:submit={handleSubmit} class="flex flex-col gap-6">
+        <input name="website" type="text" tabindex="-1" autocomplete="off" class="absolute left-[-9999px]" />
+        <input name="ts" type="hidden" value={startTs} />
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input
+            name="jmeno"
+            type="text"
+            placeholder="Jméno *"
+            required
+            class="bg-dark border-2 border-gray-700 px-6 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500"
+          />
+          <input
+            name="prijmeni"
+            type="text"
+            placeholder="Příjmení *"
+            required
+            class="bg-dark border-2 border-gray-700 px-6 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500"
+          />
         </div>
-        <div class="flex gap-4">
-          <input placeholder="Email *" class="flex-1 bg-black bg-opacity-60 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-600 rounded-lg" />
-          <input placeholder="Telefon" class="flex-1 bg-black bg-opacity-60 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-600 rounded-lg" />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input
+            name="email"
+            type="email"
+            placeholder="Email *"
+            required
+            class="bg-dark border-2 border-gray-700 px-6 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500"
+          />
+          <input
+            name="telefon"
+            type="tel"
+            placeholder="Telefon"
+            class="bg-dark border-2 border-gray-700 px-6 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500"
+          />
         </div>
-        <input placeholder="Předmět" class="bg-black bg-opacity-60 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-600 rounded-lg" />
-        <textarea placeholder="Zpráva..." class="bg-black bg-opacity-60 border border-gray-700 px-3 py-2 text-white min-h-[90px] focus:outline-none focus:ring-2 focus:ring-red-600 rounded-lg"></textarea>
-        <div class="flex items-center gap-2">
-          <input type="checkbox" id="souhlas" class="accent-red-600" />
-          <label for="souhlas" class="text-sm text-gray-400">Souhlasím se zpracováním osobních údajů *</label>
+        <input
+          name="predmet"
+          type="text"
+          placeholder="Předmět"
+          class="bg-dark border-2 border-gray-700 px-6 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500"
+        />
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Zpráva..."
+          required
+          class="bg-dark border-2 border-gray-700 px-6 py-4 text-white min-h-[120px] rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500"
+        ></textarea>
+        <div class="flex items-center gap-4">
+          <input name="souhlas" type="checkbox" id="souhlas" required class="accent-red-600 h-5 w-5" />
+          <label for="souhlas" class="text-sm text-gray-400">Souhlasím se zpracováním osobních údajů <span class="text-red-600">*</span></label>
         </div>
-        <button class="bg-red-600 hover:bg-red-700 text-white rounded-xl px-6 py-2 font-semibold transition-all duration-200 mt-2 uppercase">
+        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white rounded-full px-12 py-5 font-bold uppercase transition-all duration-300 shadow-lg mt-4 text-lg tracking-wide">
           Odeslat zprávu
         </button>
       </form>
     </div>
+  </section>
 
-    <!-- Mapa + otevírací doba -->
-    <div class="flex-1 flex flex-col gap-6">
-      <div class="group bg-black p-8 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg flex flex-col items-center justify-center h-full">
-        <div class="text-lg font-semibold mb-1">Interaktivní mapa</div>
-        <div class="text-gray-400 text-sm mb-2 text-center">
-          Rudé armády 651/19A<br />
-          Karviná 733 01
+  <section class="container mx-auto px-6 py-24 max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-16">
+    <div class="bg-[#1a1a1a] p-12 rounded-3xl border border-gray-800 shadow-2xl h-full" in:fade={{ duration: 1000, delay: 200 }}>
+      <h3 class="text-3xl font-heading mb-6">Kde nás <span class="text-red-600">najdete</span></h3>
+      <p class="text-gray-400 text-lg mb-6">Navštivte nás v naší tělocvičně v centru Karviné. Těšíme se na vaši návštěvu!</p>
+      <iframe
+        class="w-full h-80 rounded-2xl border border-gray-700 shadow-lg"
+        src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Rud%C3%A9%20arm%C3%A1dy%20651/19A%20Karvin%C3%A1%20733%2001+(CSC%20MMA%20CLUB)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+        title="Mapa umístění CSC MMA CLUB"
+        
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+    
+    <div class="space-y-8">
+      <div class="bg-[#1a1a1a] p-12 rounded-3xl border border-gray-800 shadow-2xl" in:fade={{ duration: 1000, delay: 400 }}>
+        <h3 class="text-3xl font-heading mb-6">Kontaktní <span class="text-red-600">údaje</span></h3>
+        <div class="flex flex-col gap-4 text-lg">
+          <div class="flex items-start gap-4 text-gray-400">
+            {@html icons.address}
+            <p>Rudé armády 651/19A, Karviná 733 01</p>
+          </div>
+          <div class="flex items-start gap-4 text-gray-400">
+            {@html icons.phone}
+            <p>+420 123 456 789</p>
+          </div>
+          <div class="flex items-start gap-4 text-gray-400">
+            {@html icons.mail}
+            <p>csc.karvina@seznam.cz</p>
+          </div>
         </div>
-        <iframe class="w-full h-40 rounded-lg border border-gray-700"
-          src="https://maps.google.com/maps?q=Sportovní%20123,%20Praha%2010&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          title="Mapa umístění CSC MMA CLUB"></iframe>
       </div>
-      <div class="group bg-black p-6 rounded-lg border border-gray-700 transform transition hover:scale-105 hover:shadow-lg">
-        <div class="font-semibold mb-2">Otevírací doba</div>
-        <div class="flex flex-col gap-1 text-sm">
-          <div class="flex justify-between">
-            <span>Pondělí – Pátek:</span>
-            <span class="text-red-600 font-semibold">8:00 – 21:00</span>
+
+      <div class="bg-[#1a1a1a] p-12 rounded-3xl border border-gray-800 shadow-2xl" in:fade={{ duration: 1000, delay: 600 }}>
+        <h3 class="text-3xl font-heading mb-6">Otevírací <span class="text-red-600">doba</span></h3>
+        <div class="flex flex-col gap-4 text-lg">
+          <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+            <span class="text-gray-400">Pondělí – Pátek:</span>
+            <span class="text-white font-bold">8:00 – 21:00</span>
           </div>
-          <div class="flex justify-between">
-            <span>Sobota:</span>
-            <span class="text-red-600 font-semibold">9:00 – 17:00</span>
+          <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+            <span class="text-gray-400">Sobota:</span>
+            <span class="text-white font-bold">9:00 – 17:00</span>
           </div>
-          <div class="flex justify-between">
-            <span>Neděle:</span>
-            <span class="text-gray-500">Zavřeno</span>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-400">Neděle:</span>
+            <span class="text-red-600 font-bold">Zavřeno</span>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <div class="h-24"></div>
 </main>
-
-<style>
-  :global(html) {
-    scroll-padding-top: 6rem;
-  }
-</style>
