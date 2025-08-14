@@ -34,7 +34,6 @@
       </p>
     </div>
     <div class="relative" in:fly={{ y: 20, duration: 1200, delay: 500 }}>
-      <div class="absolute inset-0 bg-red-600 rounded-3xl -rotate-6 transform -z-10 transition-transform duration-700 hover:rotate-3"></div>
       <img
         src="/images/about-gym.jpg"
         alt="Interiér tělocvičny"
@@ -133,7 +132,7 @@
         />
         <div class="absolute inset-0 bg-black/70 flex flex-col justify-end p-8 text-white transition-opacity duration-500 group-hover:opacity-100 opacity-0">
           <h4 class="text-3xl font-heading mb-1">ZÁPASENÍ & GRAPPLING</h4>
-          <p class="text-gray-300 text-sm">Prostorné žíněnky pro Brazílsko‑jiu‑jitsu, wrestling i grappling.</p>
+          <p class="text-gray-300 text-sm">Prostorné žíněnky pro Brazílsko-jiu-jitsu, wrestling i grappling.</p>
         </div>
       </div>
     </div>

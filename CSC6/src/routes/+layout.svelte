@@ -18,7 +18,7 @@
   <div class="container mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center space-x-2">
-      <img src="/images/logoCSC2.1.svg" alt="Moje logo" class="w-14 h-14 object-contain" />
+      <img src="/images/logoCSC2-1.svg" alt="Moje logo" class="w-14 h-14 object-contain" />
       <h1 class="text-white font-bold text-2xl">
         COMBAT SPORTS <span class="text-red-600">CLUB</span>
       </h1>
@@ -93,29 +93,20 @@
 
 <footer class="bg-black text-gray-400 border-t border-gray-400/30 pt-16 pb-8">
   <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-
     <!-- Brand & Description -->
     <div>
       <div class="flex items-center space-x-2">
-        <img src="/images/logoCSC2.1.svg" alt="Moje logo" class="w-14 h-14 object-contain" />
+        <img src="/images/logoCSC2-1.svg" alt="Moje logo" class="w-14 h-14 object-contain" />
         <span class="text-white font-bold text-lg">CSC KARVINÁ</span>
       </div>
       <p class="mt-4 text-gray-300 text-sm">
         Naším posláním je poskytovat špičkové tréninky v bojových uměních pro všechny úrovně.
       </p>
       <div class="mt-4 flex space-x-4">
-        <a href="https://facebook.com" aria-label="Facebook" class="hover:text-white">
-          <!-- Facebook SVG -->
-        </a>
-        <a href="https://instagram.com" aria-label="Instagram" class="hover:text-white">
-          <!-- Instagram SVG -->
-        </a>
-        <a href="https://twitter.com" aria-label="Twitter" class="hover:text-white">
-          <!-- Twitter SVG -->
-        </a>
-        <a href="https://youtube.com" aria-label="YouTube" class="hover:text-white">
-          <!-- YouTube SVG -->
-        </a>
+        <a href="https://facebook.com" aria-label="Facebook" class="hover:text-white"></a>
+        <a href="https://instagram.com" aria-label="Instagram" class="hover:text-white"></a>
+        <a href="https://twitter.com" aria-label="Twitter" class="hover:text-white"></a>
+        <a href="https://youtube.com" aria-label="YouTube" class="hover:text-white"></a>
       </div>
     </div>
 
@@ -134,27 +125,26 @@
       <h3 class="text-white font-semibold mb-2">KONTAKT</h3>
       <div>
         <strong>Telefon:</strong><br />
-        +420 123 456 789
+        +420 123 456 789
       </div>
       <div>
-        <strong>E‑mail:</strong><br />
+        <strong>E-mail:</strong><br />
         csc.karvina@seznam.cz
       </div>
     </div>
 
     <!-- Small Map -->
-<div>
-  <h3 class="text-white font-semibold mb-2">KDE NÁS NAJDETE</h3>
-  <iframe
-    class="w-full h-32 rounded-lg border border-gray-700"
-    src="https://www.google.com/maps?q=Rud%C3%A9+arm%C3%A1dy+651%2F19A%2C+733+01+Karvin%C3%A1+1&output=embed"
-    title="Mapa umístění CSC MMA Club"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    allowfullscreen
-  ></iframe>
-</div>
-
+    <div>
+      <h3 class="text-white font-semibold mb-2">KDE NÁS NAJDETE</h3>
+      <iframe
+        class="w-full h-32 rounded-lg border border-gray-700"
+        src="https://www.google.com/maps?q=Rud%C3%A9+arm%C3%A1dy+651%2F19A%2C+733+01+Karvin%C3%A1+1&output=embed"
+        title="Mapa umístění CSC MMA Club"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
   </div>
 
   <div class="border-t border-gray-700 mt-8 pt-4">
