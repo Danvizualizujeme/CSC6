@@ -57,26 +57,26 @@
   const features: Feature[] = [
     {
       title: 'Profesionální trénink',
-      description: 'Naši certifikovaní trenéři poskytují světovou úroveň MMA výuky s moderními technikami a špičkovým vybavením.',
+      description: 'Zkušení trenéři vedou tréninky MMA zaměřené na správnou techniku, kondici a postupný rozvoj každého člena.',
       icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16H9v-2h2v2zm0-4H9V6h2v8zm4 4h-2v-2h2v2zm0-4h-2V6h2v8z"/></svg>`
     },
     {
       title: 'Podpora komunity',
-      description: 'Staňte se součástí podpůrné komunity bojovníků, kteří se vzájemně motivují k dosažení plného potenciálu.',
+      description: 'Přidejte se ke skupině lidí, kteří se navzájem motivují, podporují a společně se posouvají vpřed.',
       icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
     },
     {
       title: 'Připravenost na soutěž',
-      description: 'Ať už trénujete pro kondici nebo pro soutěž, připravíme vás na úspěch v oktagonu.',
+      description: 'Ať už trénujete pro lepší kondici, sebeobranu nebo s cílem soutěžit, pomůžeme vám připravit se co nejlépe.',
       icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>`
     }
   ];
 
   // === ABOUT ===
   const aboutList = [
-    'Odborní trenéři',
-    'Všechny úrovně',
-    'Moderní vybavení',
+    'Trenéři se zkušenostmi z praxe',
+    'Tréninky pro všechny úrovně',
+    'Příjemné prostředí',
     'Příprava na soutěže'
   ];
 
@@ -104,7 +104,7 @@
   }
   const trainers: Trainer[] = [
     {
-      name: 'Mike Thompson',
+      name: 'Wojdyla',
       role: 'Hlavní trenér / černý pás BJJ',
       image: '/images/trainers/mike.jpg',
       description: 'Bývalý bojovník UFC s více než 15 lety zkušeností v Brazílsko‑jiu‑jitsu a MMA.',
@@ -115,7 +115,7 @@
       ]
     },
     {
-      name: 'Sarah Johnson',
+      name: 'Mayer',
       role: 'Boxerská trenérka',
       image: '/images/trainers/sarah.jpg',
       description: 'Profesionální boxerka s několika národními tituly a 8 lety trenérské praxe.',
@@ -126,7 +126,7 @@
       ]
     },
     {
-      name: 'Alex Rodriguez',
+      name: 'Braborec',
       role: 'Specialista Muay Thai',
       image: '/images/trainers/alex1.jpg',
       description: 'Trénoval v Thajsku 5 let a absolvoval přes 30 profesionálních zápasů v Muay Thai.',
@@ -206,7 +206,7 @@
           PŘEKONÁVEJ SVOJE <span class="text-red-600">LIMITY.</span>
         </h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-8">
-          CSC MMA klub byl založen v roce 2012 s vizí vytvořit místo, kde se vášeň pro bojová umění snoubí s profesionálním přístupem. Naše špičkově vybavená tělocvična nabízí komplexní výcvik v BJJ, Muay Thai, wrestlingu a boxu, pod vedením těch nejlepších trenérů.
+         CSC MMA klub vznikl v roce 2012 jako místo, kde se lidé mohou společně věnovat bojovým sportům a postupně se zlepšovat. Nabízíme tréninky MMA, BJJ, Muay Thai, wrestligu i boxu v přátelském prostředí. Naši trenéři nejsou z velkých světových scén, ale mají zkušenosti, které rádi předávají dál.
         </p>
         <ul class="space-y-4 mb-10">
           {#each aboutList as item}
@@ -224,7 +224,6 @@
 
     <section class="container mx-auto px-6 py-32 max-w-7xl">
       <div class="text-center mb-20">
-        <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Expertiza</p>
         <h2 class="text-5xl font-heading">
           NAŠI <span class="text-red-600">TRENÉŘI</span>
         </h2>
