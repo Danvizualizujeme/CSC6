@@ -1,69 +1,67 @@
-<script lang="ts">
+<script>
+  // @ts-check
   import { fly, fade } from 'svelte/transition';
 
-  let days = ['PO', 'ÚT', 'ST', 'ČT', 'PÁ', 'SO', 'NE'];
+  /** @typedef {'PO'|'ÚT'|'ST'|'ČT'|'PÁ'} Day */
+  /** @typedef {{ time: string; class: string; instructor: string; level: string }} ScheduleItem */
+
+  /** @type {Day[]} */
+  let days = ['PO', 'ÚT', 'ST', 'ČT', 'PÁ'];
+
   let active = 0;
 
-  const scheduleByDay: Record<
-    string,
-    {
-      time: string;
-      class: string;
-      instructor: string;
-      level: string;
-    }[]
-  > = {
+  /** @type {Day} */
+  let currentDay = /** @type {Day} */ (days[active]);
+  $: currentDay = /** @type {Day} */ (days[active]);
+
+  /** @type {Record<Day, ScheduleItem[]>} */
+  const scheduleByDay = {
     PO: [
-      { time: '06:00 - 07:30', class: 'Síla & Kondice', instructor: 'Mike Thomas', level: 'Všechny úrovně' },
-      { time: '09:00 - 10:00', class: 'Box pro začátečníky', instructor: 'Sarah Martinez', level: 'Začátečník' },
-      { time: '12:00 - 13:00', class: 'Jóga pro boj', instructor: 'Anna Lee', level: 'Všechny úrovně' },
-      { time: '15:00 - 16:30', class: 'MMA sparring', instructor: 'James Wilson', level: 'Pokročilý' },
-      { time: '18:00 - 19:30', class: 'Základy MMA', instructor: 'Alex Rodriguez', level: 'Začátečník' }
+      { time: '08:00 - 09:00', class: 'MMA + BOX', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '08:00 - 09:00', class: 'Kruhové tréninky', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '16:00 - 17:00', class: 'Děti trénink', instructor: 'Wojdyla / Mayer', level: 'Děti' },
+      { time: '16:30 - 17:30', class: 'Grappling', instructor: 'Sumelidis „Hero“', level: '—' },
+      { time: '17:00 - 18:00', class: 'Box – začátečníci', instructor: 'Šutvaj', level: 'Začátečníci' },
+      { time: '17:30 - 18:45', class: 'MMA – zem', instructor: 'Sumelidis „Hero“', level: '—' },
+      { time: '17:45 - 19:00', class: 'Kruhové tréninky', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '18:45 - 20:00', class: 'Sparing', instructor: '—', level: 'Pokročilí' }
     ],
     ÚT: [
-      { time: '07:00 - 08:30', class: 'Kardio kickboxing', instructor: 'Mike Thomas', level: 'Všechny úrovně' },
-      { time: '10:00 - 11:00', class: 'Brazilsko Jiu-Jitsu', instructor: 'Carlos Silva', level: 'Středně pokročilý' },
-      { time: '13:00 - 14:00', class: 'CrossFit', instructor: 'Emily Clark', level: 'Všechny úrovně' },
-      { time: '17:00 - 18:30', class: 'Pokročilý box', instructor: 'John Doe', level: 'Pokročilý' },
-      { time: '19:00 - 20:30', class: 'Open Mat', instructor: 'Vlastní režie', level: 'Všechny úrovně' }
+      { time: '13:30', class: 'Lapy', instructor: 'Wojdyla', level: '—' },
+      { time: '16:00 - 17:00', class: 'Box – pokročilý', instructor: 'Gorecki', level: 'Pokročilí' },
+      { time: '18:00 - 18:30', class: 'MMA – začátečníci', instructor: 'Braborec', level: 'Začátečníci' },
+      { time: '18:00 - 19:15', class: 'Kruhové tréninky', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '18:30 - 20:00', class: 'MMA – pokročilý', instructor: 'Wojdyla', level: 'Pokročilí' }
     ],
     ST: [
-      { time: '08:00 - 09:30', class: 'MMA Fundamentals', instructor: 'Alex Rodriguez', level: 'Začátečník' },
-      { time: '11:00 - 12:00', class: 'Stretch & Recovery', instructor: 'Anna Lee', level: 'Všechny úrovně' },
-      { time: '14:00 - 15:30', class: 'Dětské MMA (8–12 let)', instructor: 'Lisa Johnson', level: 'Mládež' },
-      { time: '17:00 - 18:30', class: 'Muay Thai', instructor: 'Sarah Martinez', level: 'Středně pokročilý' },
-      { time: '20:00 - 21:30', class: 'Advanced MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý' }
+      { time: '08:00 - 09:00', class: 'MMA + BOX', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '08:00 - 09:00', class: 'Kruhové tréninky', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '16:00 - 17:00', class: 'Děti trénink', instructor: 'Wojdyla / Mayer', level: 'Děti' },
+      { time: '16:30 - 17:30', class: 'Grappling', instructor: 'Sumelidis „Hero“', level: '—' },
+      { time: '17:30 - 18:45', class: 'MMA – zem', instructor: 'Sumelidis „Hero“', level: '—' },
+      { time: '18:00 - 19:15', class: 'Kruhové tréninky', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '18:45 - 20:00', class: 'Wrestling', instructor: 'Marek Barva', level: '—' }
     ],
     ČT: [
-      { time: '06:30 - 07:30', class: 'Powerlifting', instructor: 'Rick Thompson', level: 'Všechny úrovně' },
-      { time: '09:00 - 10:30', class: 'Kettlebell Training', instructor: 'Emily Clark', level: 'Všechny úrovně' },
-      { time: '12:00 - 13:00', class: 'Yoga Flow', instructor: 'Anna Lee', level: 'Všechny úrovně' },
-      { time: '16:00 - 17:30', class: 'MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý' },
-      { time: '18:00 - 19:30', class: 'Jiu-Jitsu Drills', instructor: 'Carlos Silva', level: 'Středně pokročilý' }
+      { time: '13:30', class: 'Lapy', instructor: 'Wojdyla', level: '—' },
+      { time: '16:00 - 17:00', class: 'Box – pokročilý', instructor: 'Gorecki', level: 'Pokročilí' },
+      { time: '17:00 - 18:30', class: 'MMA – začátečníci', instructor: 'Braborec', level: 'Začátečníci' },
+      { time: '18:00 - 19:15', class: 'Kruhové tréninky', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '18:30 - 20:00', class: 'MMA – pokročilý', instructor: 'Wojdyla', level: 'Pokročilí' }
     ],
     PÁ: [
-      { time: '07:00 - 08:00', class: 'Cardio Kickboxing', instructor: 'Mike Thomas', level: 'Všechny úrovně' },
-      { time: '10:00 - 11:30', class: 'Open Mat Grappling', instructor: 'Carlos Silva', level: 'Všechny úrovně' },
-      { time: '13:00 - 14:30', class: 'Strength & Conditioning', instructor: 'Mike Thomas', level: 'Všechny úrovně' },
-      { time: '17:00 - 18:30', class: 'Boxing Fundamentals', instructor: 'Sarah Martinez', level: 'Začátečník' },
-      { time: '19:00 - 20:30', class: 'Advanced MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý' }
-    ],
-    SO: [
-      { time: '09:00 - 10:30', class: 'Dětské MMA (8–12 let)', instructor: 'Lisa Johnson', level: 'Mládež' },
-      { time: '11:00 - 12:30', class: 'Muay Thai', instructor: 'Sarah Martinez', level: 'Středně pokročilý' },
-      { time: '14:00 - 15:30', class: 'Open Mat', instructor: 'Vlastní režie', level: 'Všechny úrovně' },
-      { time: '16:00 - 17:00', class: 'Pilates for Fighters', instructor: 'Anna Lee', level: 'Všechny úrovně' },
-      { time: '18:00 - 19:30', class: 'MMA Technique', instructor: 'Alex Rodriguez', level: 'Středně pokročilý' }
-    ],
-    NE: [
-      { time: '10:00 - 11:30', class: 'Volné cvičení', instructor: 'Vlastní režie', level: 'Všechny úrovně' },
-      { time: '12:00 - 13:30', class: 'Stretch & Mobility', instructor: 'Anna Lee', level: 'Všechny úrovně' },
-      { time: '15:00 - 16:30', class: 'Open Mat Grappling', instructor: 'Carlos Silva', level: 'Všechny úrovně' },
-      { time: '17:00 - 18:30', class: 'MMA Sparring', instructor: 'James Wilson', level: 'Pokročilý' }
+      { time: '08:00 - 09:00', class: 'MMA + BOX', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '08:00 - 09:00', class: 'Kruhové tréninky', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '15:00 - 16:00', class: 'Kruhové tréninky', instructor: 'Wojdyla', level: 'Všichni' },
+      { time: '16:00 - 17:00', class: 'Děti trénink', instructor: 'Wojdyla / Mayer', level: 'Děti' },
+      { time: '16:00 - 17:00', class: 'Box – začátečníci', instructor: 'Šutvaj', level: 'Začátečníci' },
+      { time: '17:00 - 18:30', class: 'Thaibox', instructor: 'Erik Breik', level: '—' },
+      { time: '18:45 - 20:00', class: 'Sparing', instructor: '—', level: 'Začátečníci' }
     ]
   };
 
-  function selectDay(index: number) {
+  /** @param {number} index */
+  function selectDay(index) {
     active = index;
   }
 </script>
@@ -119,7 +117,7 @@
           </tr>
         </thead>
         <tbody>
-          {#each scheduleByDay[days[active]] as item}
+          {#each scheduleByDay[currentDay] as item}
             <tr class="border-t border-gray-800 transition-colors duration-300 hover:bg-[#252525]">
               <td class="px-8 py-4 text-red-600 font-bold">{item.time}</td>
               <td class="px-8 py-4 text-white font-semibold">{item.class}</td>
@@ -132,6 +130,7 @@
     </div>
   </div>
 
+  <!-- PROZKOUMEJ – KURZY -->
   <section class="container mx-auto px-6 py-24 max-w-7xl">
     <div class="text-center mb-16">
       <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Prozkoumej</p>
@@ -143,30 +142,30 @@
       <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 300 }}>
         <h4 class="text-3xl font-heading mb-2">MMA</h4>
         <p class="text-gray-400 leading-relaxed mb-6">
-          Komplexní trénink MMA pro všechny úrovně, kombinuje údery, zápasení a obranu na zemi.
+          Nabízíme tréninky MMA vhodné pro všechny úrovně – od začátečníků až po pokročilé. Kombinujeme úderové techniky, zápasení i boj na zemi, abyste získali všestranný základ.
         </p>
         <a href="#join" class="text-red-600 font-bold uppercase text-sm tracking-wide transition-colors duration-300 hover:text-white">Všechny úrovně</a>
       </div>
       <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 600 }}>
         <h4 class="text-3xl font-heading mb-2">BOX</h4>
         <p class="text-gray-400 leading-relaxed mb-6">
-          Naučte se základní a pokročilé boxerské techniky v profesionálním ringu.
+          Naučíte se základní i pokročilejší boxerské techniky – od správného postoje a práce nohou až po kombinace úderů, které využijete v tréninku i sparingu.
         </p>
         <a href="#join" class="text-red-600 font-bold uppercase text-sm tracking-wide transition-colors duration-300 hover:text-white">Všechny úrovně</a>
       </div>
       <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 900 }}>
         <h4 class="text-3xl font-heading mb-2">BJJ</h4>
         <p class="text-gray-400 leading-relaxed mb-6">
-          Brazilsko Jiu-Jitsu: důraz na páky, škrcení a poziční kontrolu.
+          Brazilské jiu-jitsu se zaměřuje na boj na zemi – učení pák, škrcení atd. Tréninky jsou vhodné jak pro začátečníky, tak pro pokročilejší, kteří chtějí rozvíjet techniku i strategii.
         </p>
         <a href="#join" class="text-red-600 font-bold uppercase text-sm tracking-wide transition-colors duration-300 hover:text-white">Všechny úrovně</a>
       </div>
     </div>
   </section>
 
+  <!-- CENY A SLUŽBY -->
   <section id="plans" class="container mx-auto px-6 py-24 max-w-7xl">
     <div class="text-center mb-16">
-      <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Ceny a služby</p>
       <h3 class="text-5xl font-heading">
         ČLENSKÉ <span class="text-red-600">PLÁNY</span>
       </h3>
@@ -230,9 +229,9 @@
     </div>
   </section>
 
-  <section class="container mx-auto px-6 py-24 max-w-7xl">
+  <!-- ČASTÉ OTÁZKY -->
+  <section class="container mx-auto px-6 py-24 max-w-7zxl">
     <div class="text-center mb-16">
-      <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Časté otázky</p>
       <h3 class="text-5xl font-heading">
         ČASTO KLADENÉ <span class="text-red-600">DOTAZY</span>
       </h3>
@@ -254,6 +253,6 @@
           </svg>
         </button>
       </div>
-      </div>
+    </div>
   </section>
 </main>
