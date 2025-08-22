@@ -3,7 +3,7 @@
 
   // === HLAVNÍ TRENÉR ===
   const mainTrainer = {
-    name: 'Alex Chen',
+    name: 'Lukáš Wojdyla',
     role: 'Hlavní trenér & zakladatel',
     image: '/images/trainers/alex1.jpg',
     description: 'S více než 15 lety profesionálních bojových zkušeností, včetně úspěšné kariéry v UFC, přináší Alex Chen do klubu CSC MMA nepřekonatelné znalosti a odbornost. Po ukončení závodní kariéry s impozantní bilancí 22–3 se Alex naplno věnuje trénování nové generace bojovníků.',
@@ -38,43 +38,43 @@
 
   const otherTrainers: Trainer[] = [
     {
-      name: 'Sarah Thompson',
-      title: 'Trenérka Muay Thai',
+      name: 'Lukáš Braborec',
+      title: 'MMA začátečníci',
       img: '/images/trainers/sarah.jpg',
       desc: 'Bývalá světová šampiónka v Muay Thai s více než 10 lety zkušeností.',
       social: { twitter: 'https://twitter.com/sarah', instagram: 'https://instagram.com/sarah', facebook: 'https://facebook.com/sarah' }
     },
     {
-      name: 'Carlos Mendez',
-      title: 'Trenér BJJ',
+      name: 'Lukáš Górecki',
+      title: 'Box pokročilý',
       img: '/images/trainers/carlos-mendez.jpg',
       desc: 'Držitel 3. stupně černého pásu v Brazílsko‑jiu‑jitsu.',
       social: { twitter: 'https://twitter.com/carlos', instagram: 'https://instagram.com/carlos', facebook: 'https://facebook.com/carlos' }
     },
     {
-      name: 'James Wilson',
-      title: 'Boxerský trenér',
+      name: 'Ondřej Pawliczek',
+      title: 'Box začátečníci',
       img: '/images/trainers/james-wilson.jpg',
       desc: 'Bývalý olympijský boxer s bohatými zkušenostmi z mezinárodních soutěží.',
       social: { twitter: 'https://twitter.com/james', instagram: 'https://instagram.com/james', facebook: 'https://facebook.com/james' }
     },
     {
-      name: 'Mike Johnson',
-      title: 'Trenér wrestlingu',
+      name: 'Lukáš Mayer',
+      title: 'Dětské tréninky & Junior MMA',
       img: '/images/trainers/mike-johnson.jpg',
       desc: 'Šampion NCAA Division I se zkušenostmi z profesionálních lig.',
       social: { twitter: 'https://twitter.com/mike', instagram: 'https://instagram.com/mike', facebook: 'https://facebook.com/mike' }
     },
     {
-      name: 'David Parker',
-      title: 'Síla & kondice',
+      name: 'Daniel Hudeček',
+      title: 'Fitbox a kruhové tréninky & K1',
       img: '/images/trainers/david-parker.jpg',
       desc: 'Certifikovaný trenér síly a kondice pro bojové sporty.',
       social: { twitter: 'https://twitter.com/david', instagram: 'https://instagram.com/david', facebook: 'https://facebook.com/david' }
     },
     {
-      name: 'Lisa Martinez',
-      title: 'Nutriční & regenerační specialistka',
+      name: 'Michal Sumelidis',
+      title: 'Grappling',
       img: '/images/trainers/lisa-martinez.jpg',
       desc: 'Odbornice na sportovní výživu a regeneraci.',
       social: { twitter: 'https://twitter.com/lisa', instagram: 'https://instagram.com/lisa', facebook: 'https://facebook.com/lisa' }

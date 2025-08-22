@@ -172,8 +172,8 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
       <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 text-center transform transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 300 }}>
-        <h4 class="text-3xl font-heading mb-4">Základní</h4>
-        <p class="text-white text-5xl font-heading mb-4">99€<span class="text-xl">/měsíc</span></p>
+        <h4 class="text-3xl font-heading mb-4">Děti</h4>
+        <p class="text-white text-5xl font-heading mb-4">500Kč<span class="text-xl">/měsíc</span></p>
         <ul class="text-gray-400 mb-8 space-y-3 font-body">
           <li class="flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -183,26 +183,23 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             Vstup do posilovny ve všední dny
           </li>
-          <li class="flex justify-center items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            1 speciální lekce týdně
-          </li>
+          
         </ul>
         <a href="#join" class="bg-red-600 hover:bg-red-700 transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full shadow-lg">
           Vybrat
         </a>
       </div>
       <div class="group bg-red-600 p-10 rounded-3xl border border-red-600 text-center transform transition-transform duration-700 hover:scale-[1.02] hover:border-white shadow-2xl" in:fly={{ y: 20, duration: 1200, delay: 600 }}>
-        <h4 class="text-3xl font-heading mb-4 text-white">Premium</h4>
-        <p class="text-white text-5xl font-heading mb-4">149€<span class="text-xl">/měsíc</span></p>
+        <h4 class="text-3xl font-heading mb-4 text-white">Junioři</h4>
+        <p class="text-white text-5xl font-heading mb-4">650Kč<span class="text-xl">/měsíc</span></p>
         <ul class="text-white mb-8 space-y-3 font-body">
           <li class="flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            Neomezený vstup do posilovny
+            Přístup ke všem základním lekcím
           </li>
           <li class="flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            Všechny speciální lekce
+            Vstup do posilovny ve všední dny
           </li>
         </ul>
         <a href="#join" class="bg-white text-red-600 hover:bg-black/20 hover:text-white transition-colors duration-500 px-10 py-4 uppercase font-bold text-sm tracking-wide rounded-full shadow-lg">
@@ -210,16 +207,16 @@
         </a>
       </div>
       <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 text-center transform transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 900 }}>
-        <h4 class="text-3xl font-heading mb-4">Elite</h4>
-        <p class="text-white text-5xl font-heading mb-4">249€<span class="text-xl">/měsíc</span></p>
+        <h4 class="text-3xl font-heading mb-4">Základní</h4>
+        <p class="text-white text-5xl font-heading mb-4">850Kč<span class="text-xl">/měsíc</span></p>
         <ul class="text-gray-400 mb-8 space-y-3 font-body">
           <li class="flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            24/7 vstup do posilovny
+            Přístup ke všem základním lekcím
           </li>
           <li class="flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            4 osobní tréninky měsíčně
+            24/7 vstup do posilovny
           </li>
         </ul>
         <a href="#join" class="bg-red-600 hover:bg-red-700 transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full shadow-lg">

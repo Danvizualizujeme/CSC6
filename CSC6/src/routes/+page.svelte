@@ -104,8 +104,8 @@
   }
   const trainers: Trainer[] = [
     {
-      name: 'Wojdyla',
-      role: 'Hlavní trenér / černý pás BJJ',
+      name: 'Lukáš Wojdyla',
+      role: 'Hlavní trenér',
       image: '/images/trainers/mike.jpg',
       description: 'Bývalý bojovník UFC s více než 15 lety zkušeností v Brazílsko‑jiu‑jitsu a MMA.',
       socials: [
@@ -115,10 +115,10 @@
       ]
     },
     {
-      name: 'Mayer',
-      role: 'Boxerská trenérka',
+      name: 'Lukáš Mayer',
+      role: 'Dětské tréninky & Junior MMA',
       image: '/images/trainers/sarah.jpg',
-      description: 'Profesionální boxerka s několika národními tituly a 8 lety trenérské praxe.',
+      description: 'Profesionální boxerka s několika národními tituly.',
       socials: [
         { href: 'https://facebook.com', label: 'Facebook', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5.007 3.658 9.164 8.438 9.878v-6.99H7.898V12h2.54v-1.745c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.194 2.238.194v2.465h-1.261c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.888h-2.33v6.99C18.342 21.164 22 17.007 22 12z"/></svg>` },
         { href: 'https://instagram.com', label: 'Instagram', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5A4.25 4.25 0 0020.5 16.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5z"/><path d="M12 7.25a4.75 4.75 0 110 9.5 4.75 4.75 0 010-9.5zm0 1.5a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z"/><circle cx="17.75" cy="6.25" r="1"/></svg>` },
@@ -126,10 +126,10 @@
       ]
     },
     {
-      name: 'Braborec',
-      role: 'Specialista Muay Thai',
+      name: 'Lukáš Braborec',
+      role: 'Box pokročilý',
       image: '/images/trainers/alex1.jpg',
-      description: 'Trénoval v Thajsku 5 let a absolvoval přes 30 profesionálních zápasů v Muay Thai.',
+      description: 'Trénoval v Thajsku 5 let a absolvoval přes 30 profesionálních zápasů.',
       socials: [
         { href: 'https://facebook.com', label: 'Facebook', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5.007 3.658 9.164 8.438 9.878v-6.99H7.898V12h2.54v-1.745c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.194 2.238.194v2.465h-1.261c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.888h-2.33v6.99C18.342 21.164 22 17.007 22 12z"/></svg>` },
         { href: 'https://instagram.com', label: 'Instagram', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5A4.25 4.25 0 0020.5 16.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5z"/><path d="M12 7.25a4.75 4.75 0 110 9.5 4.75 4.75 0 010-9.5zm0 1.5a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z"/><circle cx="17.75" cy="6.25" r="1"/></svg>` },
