@@ -35,52 +35,54 @@
   }
 </style>
 
-<header class="fixed inset-x-0 top-0 bg-dark z-50">
-  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center space-x-2">
-      <img src="/images/logoCSC2-1.svg" alt="Moje logo" class="w-14 h-14 object-contain" />
-      <h1 class="text-white font-heading text-2xl tracking-wide">
-        COMBAT SPORTS <span class="text-red-600">CLUB</span>
-      </h1>
-    </a>
-
-    <nav class="hidden lg:flex items-center space-x-8">
-      {#each links as { href, label }}
-        <a
-          href={href}
-          class={`uppercase font-body text-sm font-semibold transition-colors duration-300 ${$page.url.pathname === href ? 'text-red-600' : 'text-gray-300 hover:text-red-600'}`}
-        >
-          {label}
-        </a>
-      {/each}
-      <a
-        href="/#join"
-        class="bg-red-600 hover:bg-red-700 text-white uppercase font-bold text-sm tracking-wide px-8 py-3 rounded-full transition duration-300"
-      >
-        Připoj se
+<header class="fixed inset-x-0 top-0 z-50">
+  <!-- plná šířka, bez zaoblení, jen průhlednost + blur + rámeček -->
+  <div class="w-full bg-black/40 backdrop-blur-md border-b border-gray-800">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2">
+        <img src="/images/logoCSC2-1.svg" alt="Moje logo" class="w-14 h-14 object-contain" />
+        <h1 class="text-white font-heading text-2xl tracking-wide">
+          COMBAT SPORTS <span class="text-red-600">CLUB</span>
+        </h1>
       </a>
-    </nav>
 
-    <button
-      class="lg:hidden text-white focus:outline-none"
-      aria-label="Toggle menu"
-      on:click={() => (mobileOpen = !mobileOpen)}
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d={mobileOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
-        />
-      </svg>
-    </button>
+      <nav class="hidden lg:flex items-center space-x-8">
+        {#each links as { href, label }}
+          <a
+            href={href}
+            class={`uppercase font-body text-sm font-semibold transition-colors duration-300 ${$page.url.pathname === href ? 'text-red-600' : 'text-gray-300 hover:text-red-600'}`}
+          >
+            {label}
+          </a>
+        {/each}
+        <a
+          href="/#join"
+          class="bg-red-600 hover:bg-red-700 text-white uppercase font-bold text-sm tracking-wide px-8 py-3 rounded-full transition duration-300"
+        >
+          Připoj se
+        </a>
+      </nav>
+
+      <button
+        class="lg:hidden text-white focus:outline-none"
+        aria-label="Toggle menu"
+        on:click={() => (mobileOpen = !mobileOpen)}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d={mobileOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+          />
+        </svg>
+      </button>
+    </div>
   </div>
 
   {#if mobileOpen}
-    <div
-      class="absolute lg:hidden top-full w-full bg-dark"
-    >
-      <nav class="container mx-auto px-6 py-6 border-t border-gray-800">
+    <!-- mobilní menu: plná šířka, rámeček nahoře, průhledné pozadí -->
+    <div class="absolute lg:hidden top-full w-full bg-black/80 backdrop-blur-md border-t border-gray-800">
+      <nav class="container mx-auto px-6 py-6">
         <ul class="space-y-4">
           {#each links as { href, label }}
             <li>
@@ -105,6 +107,8 @@
     </div>
   {/if}
 </header>
+
+
 
 <main class="pt-24 bg-dark text-white font-body">
   <slot />
