@@ -14,7 +14,7 @@
   interface Item {
     src: string;
     category: string;
-    caption?: string;
+    caption?: string; // ponecháme v datech, ale NIKDE nezobrazujeme
   }
 
   const categories = ['Vše', 'Sparring', 'Události', 'Trénink'];
@@ -29,7 +29,7 @@
     { src: '/images/sparring-5.jpg', category: 'Sparring', caption: 'Sparring Match 5' },
     { src: '/images/sparring-6.jpg', category: 'Sparring', caption: 'Sparring Match 6' },
     { src: '/images/event-1.jpg', category: 'Události', caption: 'MMA Událost 1' },
-    { src: '/images/event-2.jpg', 'category': 'Události', caption: 'MMA Událost 2' },
+    { src: '/images/event-2.jpg', category: 'Události', caption: 'MMA Událost 2' },
     { src: '/images/event-3.jpg', category: 'Události', caption: 'MMA Událost 3' },
     { src: '/images/event-4.jpg', category: 'Události', caption: 'MMA Událost 4' },
     { src: '/images/event-5.jpg', category: 'Události', caption: 'MMA Událost 5' },
@@ -141,14 +141,20 @@
               type="button"
               class="relative overflow-hidden rounded-3xl cursor-pointer transform shadow-xl transition-transform duration-500 ease-out group hover:scale-[1.02]"
               on:click={() => openLightbox(idx)}
-              aria-label={`Open image: ${item.caption}`}
+              aria-label="Otevřít obrázek"
               in:receive={{ key: item.src }}
               out:send={{ key: item.src }}
               animate:flip={{ duration: 500 }}
             >
-              <img src={item.src} alt={item.caption} class="w-full h-80 object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
-              <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <p class="text-white text-lg font-semibold uppercase tracking-wide">{item.caption}</p>
+              <img
+                src={item.src}
+                alt={item.category}
+                class="w-full h-80 object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              />
+              <!-- Ponecháme jen tmavý overlay pro efekt, BEZ TEXTU -->
+              <div
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                aria-hidden="true">
               </div>
             </button>
           {/each}
@@ -202,10 +208,10 @@
 
         <img
           src={filteredItems[selectedIndex].src}
-          alt={filteredItems[selectedIndex].caption}
+          alt={filteredItems[selectedIndex].category}
           class="max-h-[85vh] w-auto mx-auto rounded-xl shadow-2xl"
         />
-        <p class="text-white text-center mt-6 text-lg font-semibold">{filteredItems[selectedIndex].caption}</p>
+        <!-- Odebrán textový popisek pod rozjetou fotkou -->
 
         <button
           type="button"
