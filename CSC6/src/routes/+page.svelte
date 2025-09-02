@@ -31,7 +31,7 @@
     }
 
     try {
-      const res = await fetch('https://formspree.io/f/manbbnjp', {
+      const res = await fetch('https://formspree.io/f/mvgbbejz', {
         method: 'POST',
         body: data,
         headers: { Accept: 'application/json' }
