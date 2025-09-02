@@ -24,16 +24,16 @@
     role: 'Hlavní trenér & zakladatel klubu',
     image: mainImage, // ponecháváme původní fotku
     description:
-  'Lukáš byl — jako spousta kluků se zápalem pro bojové sporty — od začátku nadšenec. Protože v okolí chyběl pořádný klub pro nováčky, založil vlastní. Má pochopení pro úplné začátečníky, vše vysvětluje srozumitelně a vede tréninky v přátelské, respektující atmosféře.',
+  '',
 
 philosophy:
   'U nás se jde krok za krokem: důraz na základy, bezpečí, správnou techniku a respekt. Každý si trénink odmaká podle své úrovně — od prvního dne až po závodní přípravu.',
 
     achievements: [
       { text: 'Zakladatel CSC MMA Karviná', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm1 14h-2v-2h2zm0-4h-2V7h2z"/></svg>` },
-      { text: 'Praxe v MMA/BOX/K1 (amatérské & regionální zápasy)', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2z"/></svg>` },
+      { text: 'Praxe v MMA/BOX/K1 ', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2z"/></svg>` },
       { text: 'Trpělivý přístup k nováčkům', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0112 7a5.5 5.5 0 0110 1.5c0 3.78-3.4 6.86-8.55 11.54z"/></svg>` },
-      { text: 'Komunitní projekty a nábory mládeže', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2z"/></svg>` }
+      { text: 'Komunitní projekty', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2z"/></svg>` }
     ]
   };
 

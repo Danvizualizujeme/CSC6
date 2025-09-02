@@ -186,7 +186,7 @@
           </div>
           <div class="flex justify-between items-center">
             <span class="text-gray-400">Neděle:</span>
-            <span class="text-red-600 font-bold">Zavřeno</span>
+            <span class="text-white font-bold">8:00 – 21:00</span>
           </div>
         </div>
       </div>

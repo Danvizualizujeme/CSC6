@@ -106,7 +106,7 @@
     {
       name: 'Lukáš Wojdyla',
       role: 'Hlavní trenér',
-      image: '/images/trainers/mike.jpg',
+      image: '/images/trainers/treneri.jpg',
       description: 'Bývalý bojovník UFC s více než 15 lety zkušeností v Brazílsko‑jiu‑jitsu a MMA.',
       socials: [
         { href: 'https://facebook.com', label: 'Facebook', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5.007 3.658 9.164 8.438 9.878v-6.99H7.898V12h2.54v-1.745c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.194 2.238.194v2.465h-1.261c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.888h-2.33v6.99C18.342 21.164 22 17.007 22 12z"/></svg>` },
@@ -117,7 +117,7 @@
     {
       name: 'Lukáš Mayer',
       role: 'Dětské tréninky & Junior MMA',
-      image: '/images/trainers/sarah.jpg',
+      image: '/images/trainers/treneri.jpg',
       description: 'Profesionální boxerka s několika národními tituly.',
       socials: [
         { href: 'https://facebook.com', label: 'Facebook', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5.007 3.658 9.164 8.438 9.878v-6.99H7.898V12h2.54v-1.745c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.194 2.238.194v2.465h-1.261c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.888h-2.33v6.99C18.342 21.164 22 17.007 22 12z"/></svg>` },
@@ -128,7 +128,7 @@
     {
       name: 'Lukáš Braborec',
       role: 'Box pokročilý',
-      image: '/images/trainers/alex1.jpg',
+      image: '/images/trainers/treneri.jpg',
       description: 'Trénoval v Thajsku 5 let a absolvoval přes 30 profesionálních zápasů.',
       socials: [
         { href: 'https://facebook.com', label: 'Facebook', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5.007 3.658 9.164 8.438 9.878v-6.99H7.898V12h2.54v-1.745c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.194 2.238.194v2.465h-1.261c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.888h-2.33v6.99C18.342 21.164 22 17.007 22 12z"/></svg>` },
@@ -222,38 +222,7 @@
       </div>
     </section>
 
-    <section class="container mx-auto px-6 py-32 max-w-7xl">
-      <div class="text-center mb-20">
-        <h2 class="text-5xl font-heading">
-          NAŠI <span class="text-red-600">TRENÉŘI</span>
-        </h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {#each trainers as t}
-          <div class="group bg-[#1a1a1a] rounded-3xl overflow-hidden shadow-xl border border-gray-800 transition-transform duration-500 hover:scale-[1.02]">
-            <div class="relative h-96 w-full overflow-hidden">
-              <img
-                src={t.image}
-                alt={t.name}
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-              />
-            </div>
-            <div class="p-8">
-              <h3 class="text-2xl font-heading text-white">{t.name}</h3>
-              <p class="text-red-600 text-lg mt-1 mb-4">{t.role}</p>
-              <p class="text-gray-400 mb-6">{t.description}</p>
-              <div class="flex space-x-4 text-gray-500">
-                {#each t.socials as social}
-                  <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} class="hover:text-red-600 transition-colors duration-300">
-                    {@html social.icon}
-                  </a>
-                {/each}
-              </div>
-            </div>
-          </div>
-        {/each}
-      </div>
-    </section>
+    
 
     <section id="join" class="container mx-auto px-6 py-32 max-w-7xl">
       <div class="bg-[#1a1a1a] p-12 lg:p-20 rounded-3xl shadow-2xl border border-gray-800 grid lg:grid-cols-2 gap-16 items-center">
