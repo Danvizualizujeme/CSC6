@@ -5,64 +5,128 @@
   // Jednotná fotka pro všechny podtrenéry (JPG)
   const placeholderImage = `${base}/images/trainers/treneri.jpg`;
 
-  // PŮVODNÍ fotka hlavního trenéra – necháváme přes STEJNOU cestu jako dřív
+  // PŮVODNÍ fotka hlavního trenéra – necháváme stejnou cestu jako dřív
   const mainImage = '/images/trainers/alex1.jpg';
 
   // === HLAVNÍ TRENÉR ===
-  interface Achievement { text: string; icon: string }
   interface MainTrainer {
     name: string;
     role: string;
     image: string;
-    description: string;
-    philosophy: string;
-    achievements: Achievement[];
+    intro: string;
+    shinesIn: string[]; // vyniká v
   }
 
   const mainTrainer: MainTrainer = {
     name: 'Lukáš Wojdyla',
     role: 'Hlavní trenér & zakladatel klubu',
-    image: mainImage, // ponecháváme původní fotku
-    description:
-  '',
-
-philosophy:
-  'U nás se jde krok za krokem: důraz na základy, bezpečí, správnou techniku a respekt. Každý si trénink odmaká podle své úrovně — od prvního dne až po závodní přípravu.',
-
-    achievements: [
-      { text: 'Zakladatel CSC MMA Karviná', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm1 14h-2v-2h2zm0-4h-2V7h2z"/></svg>` },
-      { text: 'Praxe v MMA/BOX/K1 ', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2z"/></svg>` },
-      { text: 'Trpělivý přístup k nováčkům', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0112 7a5.5 5.5 0 0110 1.5c0 3.78-3.4 6.86-8.55 11.54z"/></svg>` },
-      { text: 'Komunitní projekty', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2z"/></svg>` }
-    ]
+    image: mainImage,
+    intro:
+      'Hlavní trenér a srdce celého klubu. Každého člena bere jako součást rodiny a vždy se snaží z každého dostat maximum. Je trpělivý, motivující a nikdy nezkazí žádnou srandu.',
+    shinesIn: ['trpělivosti', 'motivaci svěřenců', 'vedení týmu', 'zakladatel CSC']
   };
 
-  // === ELITNÍ TRENÉŘI — stejné fotky (treneri.jpg), jen jméno ===
-  interface Trainer { name: string; img: string; }
+  // === ELITNÍ TRENÉŘI — role/úryvek se v UI nezobrazuje, rozbalují se jen detaily ===
+  interface Trainer {
+    name: string;
+    img: string;
+    role: string;         // necháváme v datech, ale nezobrazujeme
+    bioFull: string;      // celý text po rozbalení
+    highlights?: string[]; // „Vyniká v:“
+  }
+
   const otherTrainers: Trainer[] = [
-    { name: 'Lukáš Braborec', img: placeholderImage },
-    { name: 'Lukáš Górecki', img: placeholderImage },
-    { name: 'Ondřej Pawliczek', img: placeholderImage },
-    { name: 'Lukáš Mayer', img: placeholderImage },
-    { name: 'Daniel Hudeček', img: placeholderImage },
-    { name: 'Michal Sumelidis', img: placeholderImage }
+    {
+      name: 'Lukáš Bráborec',
+      img: placeholderImage,
+      role: 'MMA začátečníci & příprava kondice',
+      bioFull:
+        'Specialista na práci s nováčky, kterým dokáže srozumitelně a dopodrobna vysvětlit každý detail. Trpělivě vede začátečníky k pevným základům MMA a zároveň jim vštěpuje respekt a disciplínu. Díky němu mají noví členové pevný start.',
+      highlights: ['trpělivost', 'technické vysvětlení', 'výchova začátečníků']
+    },
+    {
+      name: 'Lukáš Górecki',
+      img: placeholderImage,
+      role: 'BOX pokročilí',
+      bioFull:
+        'Tvrdý, ale férový trenér, který dokáže najít slabinu soupeře a připravit bojovníky jak na zápas, tak do života. Je známý svým smyslem pro humor a výborným přístupem, který kombinuje dril s nadhledem. Na svou výšku má ránu, kterou nikdo nechce schytat.',
+      highlights: ['strategie', 'tvrdost', 'humor']
+    },
+    {
+      name: 'Ondřej Pawliczek',
+      img: placeholderImage,
+      role: 'BOX začátečníci & bezkontaktní MMA',
+      bioFull:
+        'Mladý a energický trenér, který přináší do tréninků moderní přístup a nové metody. Odchovanec Lukáše Wojdyly, který se zaměřuje na techniku a detail. Neustále se snaží posouvat svěřence dopředu a motivovat je k růstu.',
+      highlights: ['inovace', 'technika', 'motivace mladých']
+    },
+    {
+      name: 'Lukáš Mayer',
+      img: placeholderImage,
+      role: 'Přípravka (4–10 let) & základy MMA',
+      bioFull:
+        'Empatický trenér s výjimečným přístupem k dětem i dospělým. Snaží se předat nejen techniku bojových sportů, ale také rozumové hodnoty a respekt. Je ohleduplný, lidský a dokáže vytvořit pozitivní atmosféru v každém tréninku.',
+      highlights: ['práce s dětmi', 'lidský přístup', 'výchova hodnot']
+    },
+    {
+      name: 'Daniel Hudeček',
+      img: placeholderImage,
+      role: 'K1 začátečníci & kondiční příprava',
+      bioFull:
+        'Přísný, ale zároveň přátelský trenér, který své svěřence dokáže dovést k jasně stanoveným cílům. Je motivační, férový a vždy dokáže vyvážit disciplínu se zábavou. Každý trénink pod jeho vedením má smysl a řád.',
+      highlights: ['disciplína', 'vedení k cílům', 'přátelský přístup']
+    },
+    {
+      name: 'Michal Sumelidis',
+      img: placeholderImage,
+      role: 'Grappling & mládež (přípravka + junioři)',
+      bioFull:
+        'Jeden z nejlepších grapplerů v České republice, který dokáže učit s lehkostí a humorem. Jeho tréninky jsou zábavné a efektivní i pro ty, kdo nemají přirozený talent. Michal je vtipný, uvolněný a známý svou láskou ke kebabu.',
+      highlights: ['grappling', 'trpělivé učení', 'humor']
+    },
+    {
+      name: 'Erik Breit',
+      img: placeholderImage,
+      role: 'Thaibox (Muay Thai)',
+      bioFull:
+        'Elitní thaiboxer, který pravidelně piluje své dovednosti přímo v Thajsku. Patří k nejlepším v České republice a své znalosti dokáže předat jasně a detailně. Je precizní, náročný na techniku a inspirující pro všechny své svěřence.',
+      highlights: ['thaibox', 'technická preciznost', 'mezinárodní zkušenosti']
+    },
+    {
+      name: 'Marek Barva',
+      img: placeholderImage,
+      role: 'Wrestling',
+      bioFull:
+        'Specialista na wrestling a hody, které učí s maximální pečlivostí a smyslem pro detail. Je skvělý trenér i člověk, jeho tréninky mají jasnou koncepci a směřují k výsledkům. Pokud chcete umět perfektní strhy, je to ten pravý.',
+      highlights: ['wrestling', 'systematičnost', 'praktické vedení']
+    },
+    {
+      name: 'Maxim Kuta',
+      img: placeholderImage,
+      role: 'Asistent trenéra & mládež',
+      bioFull:
+        'Nejmladší člen trenérského týmu, který už nyní dokáže pomoci a inspirovat mladé sportovce. Je otevřený, přátelský a rychle získává zkušenosti, které předává dál. Přináší do klubu svěží energii a pozitivní přístup.',
+      highlights: ['práce s mládeží', 'přátelský přístup', 'energie']
+    }
   ];
+
+  // ==== STAV rozkliknutí karet trenérů ====
+  let expanded = new Set<number>();
+  function toggle(i: number) {
+    if (expanded.has(i)) expanded.delete(i);
+    else expanded.add(i);
+    // reaktivita pro Set
+    expanded = new Set(expanded);
+  }
 </script>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap');
 
-  .font-heading {
-    font-family: 'Bebas Neue', sans-serif;
-  }
-  .font-body {
-    font-family: 'Poppins', sans-serif; /* ← tečka → středník */
-  }
-  .bg-dark {
-    background-color: #0c0c0c;
-  }
+  .font-heading { font-family: 'Bebas Neue', sans-serif; }
+  .font-body { font-family: 'Poppins', sans-serif; }
+  .bg-dark { background-color: #0c0c0c; }
 </style>
-
 
 <main class="bg-dark text-white font-body overflow-hidden">
   <!-- HLAVNÍ TRENÉR -->
@@ -75,23 +139,28 @@ philosophy:
           class="w-full rounded-3xl shadow-2xl object-cover relative transform transition-transform duration-700 hover:scale-105"
         />
       </div>
+
+      <!-- PRAVÝ SLOUPEC – krátké intro + červené odrážky -->
       <div in:fade={{ duration: 1500, delay: 200 }}>
         <p class="text-red-600 font-bold uppercase tracking-widest mb-4">Hlavní trenér</p>
-        <h2 class="text-5xl font-heading leading-tight mb-2">
-          {mainTrainer.name}
-        </h2>
-        <p class="text-gray-300 font-bold text-lg mb-6">{mainTrainer.role}</p>
-        <p class="text-gray-400 text-lg leading-relaxed mb-6">{mainTrainer.description}</p>
-        <p class="text-gray-400 text-lg leading-relaxed mb-8">{mainTrainer.philosophy}</p>
+        <h2 class="text-5xl font-heading leading-tight mb-6">{mainTrainer.name}</h2>
 
-        <!-- Odznáčky: čitelnější (větší ikona + vyšší kontrast) -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-gray-300">
-          {#each mainTrainer.achievements as achievement}
-            <div class="flex flex-col items-center text-center">
-              {@html achievement.icon}
-              <p class="mt-2 text-sm leading-snug">{@html achievement.text}</p>
-            </div>
-          {/each}
+        <!-- Krátké představení -->
+        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+          {mainTrainer.intro}
+        </p>
+
+        <!-- Vyniká v: červené odrážky -->
+        <div class="bg-[#131313] border border-gray-800 rounded-2xl p-6">
+          <h3 class="text-white font-semibold mb-3">Vyniká v:</h3>
+          <ul class="space-y-2.5 text-gray-200 text-base leading-relaxed">
+            {#each mainTrainer.shinesIn as item}
+              <li class="flex gap-3 items-start">
+                <span class="mt-2 inline-flex h-2.5 w-2.5 bg-red-600 rounded-full"></span>
+                <span>{item}</span>
+              </li>
+            {/each}
+          </ul>
         </div>
       </div>
     </div>
@@ -107,17 +176,62 @@ philosophy:
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-      {#each otherTrainers as coach}
+      {#each otherTrainers as coach, i}
         <div class="group bg-[#1a1a1a] rounded-3xl overflow-hidden shadow-xl border border-gray-800 transition-transform duration-500 hover:scale-[1.02]">
-          <div class="relative h-96 w-full overflow-hidden">
+          <!-- Obrázek – klikem rozbalí -->
+          <button
+            type="button"
+            on:click={() => toggle(i)}
+            class="relative h-96 w-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-red-600"
+            aria-expanded={expanded.has(i)}
+            aria-controls={`coach-panel-${i}`}
+          >
             <img
               src={coach.img}
               alt={coach.name}
               class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
             />
-          </div>
+            <span class="sr-only">Více o trenérovi {coach.name}</span>
+          </button>
+
+          <!-- Textová část -->
           <div class="p-8">
             <h4 class="text-2xl font-heading text-white text-center">{coach.name}</h4>
+
+            <!-- Rozbalený obsah po kliku -->
+            {#if expanded.has(i)}
+              <div
+                id={`coach-panel-${i}`}
+                class="text-gray-300 leading-relaxed mt-4 space-y-3"
+                in:fade={{ duration: 200 }}
+                out:fade={{ duration: 150 }}
+              >
+                <p>{coach.bioFull}</p>
+                {#if coach.highlights?.length}
+                  <div>
+                    <p class="font-semibold text-white mb-1">Vyniká v:</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                      {#each coach.highlights as h}
+                        <li>{h}</li>
+                      {/each}
+                    </ul>
+                  </div>
+                {/if}
+              </div>
+            {/if}
+
+            <!-- Tlačítko rozbalit/sbalit -->
+            <div class="mt-6 flex justify-center">
+              <button
+                type="button"
+                on:click={() => toggle(i)}
+                class="px-5 py-2 rounded-full border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-colors duration-200 text-sm font-semibold"
+                aria-expanded={expanded.has(i)}
+                aria-controls={`coach-panel-${i}`}
+              >
+                {expanded.has(i) ? 'Méně' : 'Více'} o trenérovi
+              </button>
+            </div>
           </div>
         </div>
       {/each}

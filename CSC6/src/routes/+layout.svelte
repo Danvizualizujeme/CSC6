@@ -122,8 +122,7 @@
         <span class="text-white font-heading text-xl">CSC MMA CLUB</span>
       </div>
       <p class="text-gray-400 leading-relaxed">
-        Naším posláním je poskytovat špičkové tréninky v bojových uměních pro všechny úrovně, v prostředí plném respektu a disciplíny.
-      </p>
+Naším posláním je vést lidi k tomu, aby objevili svou sílu a posouvali své hranice. Nabízíme špičkové tréninky bojových umění pro všechny úrovně – od úplných začátečníků po pokročilé – v prostředí plném respektu, disciplíny a přátelské podpory.      </p>
       <div class="flex space-x-4 text-gray-500">
         <a href="https://facebook.com" aria-label="Facebook" class="hover:text-[#4267B2] transition-colors duration-300">
           {@html socialIcons.facebook}
@@ -152,7 +151,7 @@
       </div>
       <div class="flex items-start gap-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.068 15.068 0 006.59 6.59l2.21-2.21c.27-.27.67-.36.98-.24a10.012 10.012 0 014.28 1.15c.32.1.4.52.1.84l-1.89 1.89c-.52.52-1.28.61-1.87.21-3.69-2.43-6.9-5.64-9.33-9.33-.4-.59-.3-1.35.21-1.87l1.89-1.89c.32-.32.74-.24.84.1a10.012 10.012 0 011.15 4.28c.12.31.03.71-.24.98l-2.21 2.21z"/></svg>
-        <p class="text-gray-400">+420 123 456 789</p>
+        <p class="text-gray-400">+420 734 538 844</p>
       </div>
     </div>
     

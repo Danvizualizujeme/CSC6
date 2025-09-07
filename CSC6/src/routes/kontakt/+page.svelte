@@ -164,7 +164,7 @@
           </div>
           <div class="flex items-start gap-4 text-gray-400">
             {@html icons.phone}
-            <p>+420 123 456 789</p>
+            <p>+420 734 538 844</p>
           </div>
           <div class="flex items-start gap-4 text-gray-400">
             {@html icons.mail}

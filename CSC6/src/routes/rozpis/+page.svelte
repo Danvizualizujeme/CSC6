@@ -15,51 +15,61 @@
   $: currentDay = /** @type {Day} */ (days[active]);
 
   /** @type {Record<Day, ScheduleItem[]>} */
-  const scheduleByDay = {
-    PO: [
-      { time: '8:15 - 9:15',  class: 'MMA, BOX, K1',        instructor: 'Wojdyla',            level: 'Všichni' },
-      { time: '15:30 - 16:30', class: 'Přípravka MMA',       instructor: 'Mayer, Wojdyla',     level: '—' },
-      { time: '16:30 - 17:30', class: 'BOX začátečníci',     instructor: 'Pawliczek',          level: 'Začátečníci' },
-      { time: '17:30 - 18:30', class: 'Grappling',           instructor: 'Hudeček',            level: '—' },
-      { time: '18:30 - 19:30', class: 'Bezkontaktní MMA',    instructor: 'Pawliczek',          level: '—' }
-    ],
-    ÚT: [
-      { time: '15:30 - 16:30', class: 'Junioři MMA',         instructor: 'Gorecki',            level: '—' },
-      { time: '16:00 - 17:00', class: 'BOX pokročilí',       instructor: 'Hudeček',            level: 'Pokročilí' },
-      { time: '17:00 - 18:15', class: 'MMA začátečníci',     instructor: 'Hudeček',            level: 'Začátečníci' },
-      { time: '18:15 - 19:45', class: 'Grappling',           instructor: 'Wojdyla',            level: '—' },
-      { time: '18:30 - 20:00', class: 'MMA pokročilí',       instructor: 'Wojdyla',            level: 'Pokročilí' }
-    ],
-    ST: [
-      { time: '8:15 - 9:15',   class: 'MMA, BOX, K1',        instructor: 'Wojdyla',            level: 'Všichni' },
-      { time: '15:30 - 16:30', class: 'Přípravka MMA',       instructor: 'Mayer, Wojdyla',     level: '—' },
-      { time: '16:30 - 17:30', class: 'BOX začátečníci',     instructor: 'Pawliczek',          level: 'Začátečníci' },
-      { time: '17:30 - 18:45', class: 'MMA – zem',           instructor: '—',                  level: '—' },
-      { time: '18:45 - 20:00', class: 'Wrestling',           instructor: 'Marek Barva',        level: '—' }
-    ],
-    ČT: [
-      { time: '15:30 - 16:30', class: 'Junioři MMA',         instructor: 'Gorecki',            level: '—' },
-      { time: '16:00 - 17:00', class: 'BOX pokročilí',       instructor: 'Hudeček',            level: 'Pokročilí' },
-      { time: '17:00 - 18:15', class: 'MMA začátečníci',     instructor: 'Hudeček',            level: 'Začátečníci' },
-      { time: '18:15 - 19:45', class: 'Grappling',           instructor: 'Wojdyla',            level: '—' },
-      { time: '18:30 - 20:00', class: 'MMA pokročilí',       instructor: 'Wojdyla',            level: 'Pokročilí' }
-    ],
-    PÁ: [
-      { time: '8:15 - 9:15',   class: 'MMA, BOX, K1',        instructor: 'Wojdyla',            level: 'Všichni' },
-      { time: '16:00 - 17:00', class: 'Junioři MMA',         instructor: 'Pawliczek',          level: '—' },
-      { time: '17:00 - 18:15', class: 'Thaibox',             instructor: 'Thabior',            level: '—' },
-      { time: '18:15 - 19:15', class: 'Sparing (K1 + BOX)',  instructor: '—',                  level: '—' },
-      { time: '18:30 - 19:30', class: 'Bezkontaktní MMA',    instructor: 'Pawliczek',          level: '—' }
-    ],
-    SO: [
-      { time: '—',             class: 'Žádné pravidelné lekce (volno)', instructor: '—',       level: '—' }
-    ],
-    NE: [
-      { time: '16:00 - 17:00', class: 'Open mat / BJJ',      instructor: 'Hudeček',            level: '—' },
-      { time: '17:00 - 18:00', class: 'Sparing',             instructor: '—',                  level: '—' },
-      { time: '18:00 - 19:00', class: 'Bezkontaktní MMA',    instructor: 'Pawliczek',          level: '—' }
-    ]
-  };
+const scheduleByDay = {
+  PO: [
+    { time: '8:15 - 9:15',  class: 'MMA, BOX, K1',            instructor: 'Wojdyla',          level: 'Všichni' },
+    { time: '15:30 - 16:30', class: 'Přípravka MMA',           instructor: 'Mayer, Wojdyla',  level: '4–10 let' },
+    { time: '16:30 - 17:30', class: 'BOX začátečníci',         instructor: 'Pawliczek',       level: 'Začátečníci' },
+    { time: '17:30 - 18:45', class: 'Grappling + Wrestling',   instructor: '—',               level: 'Všichni' },
+    { time: '18:30 - 19:30', class: 'Bezkontaktní MMA',        instructor: 'Pawliczek',       level: '' }
+  ],
+
+  ÚT: [
+    { time: '15:30 - 16:30', class: 'Junioři MMA',             instructor: 'Mayer, Kuta',     level: '11–13 let' },
+    { time: '16:00 - 17:00', class: 'BOX pokročilí',           instructor: 'Górecki',         level: 'Pokročilí' },
+    { time: '16:30 - 17:30', class: 'Fitbox',                  instructor: 'Hudeček',         level: '' },
+    { time: '17:30 - 18:30', class: 'K1',                      instructor: 'Hudeček',         level: 'Začátečníci' },
+    { time: '17:00 - 18:15', class: 'MMA začátečníci',         instructor: 'Bráborec',        level: 'Začátečníci' },
+    { time: '18:15 - 19:30', class: 'MMA pokročilí',           instructor: 'Wojdyla',         level: 'Pokročilí' }
+  ],
+
+  ST: [
+    { time: '8:15 - 9:15',   class: 'MMA, BOX, K1',            instructor: 'Wojdyla',         level: 'Všichni' },
+    { time: '15:30 - 16:30', class: 'Přípravka MMA',           instructor: 'Mayer, Wojdyla',  level: '4–10 let' },
+    { time: '16:30 - 17:30', class: 'BOX začátečníci',         instructor: 'Pawliczek',       level: 'Začátečníci' },
+    { time: '17:30 - 18:45', class: 'Wrestling',               instructor: 'Barva',           level: 'Všichni' },
+    { time: '18:30 - 19:30', class: 'Bezkontaktní MMA',        instructor: 'Pawliczek',       level: '' },
+    { time: '18:45 - 19:45', class: 'Grappling',               instructor: 'Wojdyla',         level: 'Všichni' }
+  ],
+
+  ČT: [
+    { time: '15:30 - 16:30', class: 'Junioři MMA',             instructor: 'Mayer, Kuta',     level: '11–13 let' },
+    { time: '16:00 - 17:00', class: 'BOX pokročilí',           instructor: 'Górecki',         level: 'Pokročilí' },
+    { time: '16:30 - 17:30', class: 'Fitbox',                  instructor: 'Hudeček',         level: '' },
+    { time: '17:00 - 18:15', class: 'MMA začátečníci',         instructor: 'Bráborec',        level: 'Začátečníci' },
+    { time: '18:15 - 19:30', class: 'MMA pokročilí',           instructor: 'Wojdyla',         level: 'Pokročilí' }
+  ],
+
+  PÁ: [
+    { time: '8:15 - 9:15',   class: 'MMA, BOX, K1',            instructor: 'Wojdyla',         level: 'Všichni' },
+    { time: '15:00 - 16:00', class: 'Přípravka MMA + Junioři MMA', instructor: '—',          level: '4–10 & 11–13 let' },
+    { time: '15:30 - 17:00', class: 'Grappling',               instructor: 'Sumelidis',       level: 'Všichni' },
+    { time: '17:00 - 18:15', class: 'Thaibox',                 instructor: 'Breit',           level: '' },
+    { time: '18:15 - 19:15', class: 'Sparing K1 + BOX',        instructor: '—',               level: '' }
+  ],
+
+  SO: [
+    { time: '—',             class: 'Žádné pravidelné lekce (volno)', instructor: '—',       level: '' }
+  ],
+
+  NE: [
+    { time: '16:00 - 17:00', class: 'K1',                      instructor: 'Hudeček',         level: 'Začátečníci' },
+    { time: '17:00 - 18:00', class: 'Sparing MMA + grappling', instructor: '—',               level: 'Všichni' },
+    { time: '18:00 - 19:00', class: 'Bezkontaktní MMA',        instructor: 'Pawliczek',       level: '' }
+  ]
+};
+
+
 
   /** @param {number} index */
   function selectDay(index) {
@@ -133,38 +143,112 @@
     </div>
   </div>
 
-  <!-- PROZKOUMEJ – KURZY -->
-  <section class="container mx-auto px-6 py-24 max-w-7xl">
-    <div class="text-center mb-16">
-      <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Prozkoumej</p>
-      <h3 class="text-5xl font-heading">
-        NAŠE <span class="text-red-600">KURZY</span>
-      </h3>
+ <!-- PROZKOUMEJ – KURZY -->
+<section class="container mx-auto px-6 py-24 max-w-7xl">
+  <div class="text-center mb-16">
+    <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Prozkoumej</p>
+    <h3 class="text-5xl font-heading">
+      NAŠE <span class="text-red-600">KURZY</span>
+    </h3>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <!-- K1 -->
+    <div
+      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
+      in:fly={{ y: 20, duration: 1200, delay: 300 }}
+    >
+      <h4 class="text-3xl font-heading mb-2">K1</h4>
+      <p class="text-gray-400 leading-relaxed mb-6">
+        Naučíte se spojovat údery rukou, kopy a kolena do efektivních kombinací.
+        Tréninky rozvíjí rychlost, dynamiku i odolnost – ideální pro soutěže i kondici.
+      </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-      <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 300 }}>
-        <h4 class="text-3xl font-heading mb-2">MMA</h4>
-        <p class="text-gray-400 leading-relaxed mb-6">
-          Nabízíme tréninky MMA vhodné pro všechny úrovně – od začátečníků až po pokročilé. Kombinujeme úderové techniky, zápasení i boj na zemi, abyste získali všestranný základ.
-        </p>
-        <a href="#join" class="text-red-600 font-bold uppercase text-sm tracking-wide transition-colors duration-300 hover:text-white">Všechny úrovně</a>
-      </div>
-      <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 600 }}>
-        <h4 class="text-3xl font-heading mb-2">BOX</h4>
-        <p class="text-gray-400 leading-relaxed mb-6">
-          Naučíte se základní i pokročilejší boxerské techniky – od správného postoje a práce nohou až po kombinace úderů, které využijete v tréninku i sparingu.
-        </p>
-        <a href="#join" class="text-red-600 font-bold uppercase text-sm tracking-wide transition-colors duration-300 hover:text-white">Všechny úrovně</a>
-      </div>
-      <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 900 }}>
-        <h4 class="text-3xl font-heading mb-2">BJJ</h4>
-        <p class="text-gray-400 leading-relaxed mb-6">
-          Brazilské jiu-jitsu se zaměřuje na boj na zemi – učení pák, škrcení atd. Tréninky jsou vhodné jak pro začátečníky, tak pro pokročilejší, kteří chtějí rozvíjet techniku i strategii.
-        </p>
-        <a href="#join" class="text-red-600 font-bold uppercase text-sm tracking-wide transition-colors duration-300 hover:text-white">Všechny úrovně</a>
-      </div>
+
+    <!-- Grappling -->
+    <div
+      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
+      in:fly={{ y: 20, duration: 1200, delay: 600 }}
+    >
+      <h4 class="text-3xl font-heading mb-2">Grappling</h4>
+      <p class="text-gray-400 leading-relaxed mb-6">
+        Zaměříte se na boj na zemi – páky, znehybnění a škrcení.
+        Skvělý základ sebeobrany i příprava pro MMA.
+      </p>
     </div>
-  </section>
+
+    <!-- Thaibox -->
+    <div
+      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
+      in:fly={{ y: 20, duration: 1200, delay: 900 }}
+    >
+      <h4 class="text-3xl font-heading mb-2">Thaibox (Muay Thai)</h4>
+      <p class="text-gray-400 leading-relaxed mb-6">
+        Tradiční thajské umění, kde využijete údery, kopy, lokty i kolena.
+        Rozvíjí tvrdost, přesnost a kondici.
+      </p>
+    </div>
+
+    <!-- Wrestling -->
+    <div
+      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
+      in:fly={{ y: 20, duration: 1200, delay: 300 }}
+    >
+      <h4 class="text-3xl font-heading mb-2">Wrestling</h4>
+      <p class="text-gray-400 leading-relaxed mb-6">
+        Naučíte se takedowny, strhy a kontrolu soupeře na zemi.
+        Perfektní doplněk k MMA i samostatná disciplína s důrazem na sílu a výbušnost.
+      </p>
+    </div>
+
+    <!-- Fitbox -->
+    <div
+      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
+      in:fly={{ y: 20, duration: 1200, delay: 600 }}
+    >
+      <h4 class="text-3xl font-heading mb-2">Fitbox</h4>
+      <p class="text-gray-400 leading-relaxed mb-6">
+        Kondiční trénink s boxerskými a kickboxerskými prvky.
+        Spálíte kalorie, posílíte celé tělo a odreagujete se od stresu.
+      </p>
+    </div>
+
+    <!-- Bezkontaktní MMA -->
+    <div
+      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
+      in:fly={{ y: 20, duration: 1200, delay: 900 }}
+    >
+      <h4 class="text-3xl font-heading mb-2">Bezkontaktní MMA</h4>
+      <p class="text-gray-400 leading-relaxed mb-6">
+        Technika a pohyb bez tvrdých úderů – ideální pro ty, kdo chtějí zlepšit koordinaci,
+        kondici a naučit se principy MMA bez fyzického kontaktu.
+      </p>
+    </div>
+
+    <!-- Přípravka MMA -->
+    <div
+      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
+      in:fly={{ y: 20, duration: 1200, delay: 900 }}
+    >
+      <h4 class="text-3xl font-heading mb-2">Přípravka MMA(4-10 let)</h4>
+      <p class="text-gray-400 leading-relaxed mb-6">
+        Hravou formou se děti učí základní pohybovou průpravu, disciplínu a první techniky bojových sportů. Důraz je na zábavu, bezpečí a rozvoj všestrannosti..
+      </p>
+    </div>
+    <!-- Junioři MMA -->
+    <div
+      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
+      in:fly={{ y: 20, duration: 1200, delay: 900 }}
+    >
+      <h4 class="text-3xl font-heading mb-2">Junioři MMA(11-13 let)</h4>
+      <p class="text-gray-400 leading-relaxed mb-6">
+        Mladí sportovci už trénují konkrétní techniky MMA, rozvíjí kondici i týmového ducha. Tréninky jsou přizpůsobeny věku a podporují zdravý růst i sebedůvěru.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
   <!-- CENY A SLUŽBY -->
   <section id="plans" class="container mx-auto px-6 py-24 max-w-7xl">
@@ -187,9 +271,6 @@
                     Rozvoj motoriky a disciplíny
                 </li>
             </ul>
-            <a href="#join" class="bg-red-600 hover:bg-red-700 transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full shadow-lg">
-                Vybrat
-            </a>
         </div>
 
         <div class="group bg-red-600 p-10 rounded-3xl border border-red-600 text-center transform transition-transform duration-700 hover:scale-[1.02] hover:border-white shadow-2xl" in:fly={{ y: 20, duration: 1200, delay: 600 }}>
@@ -205,9 +286,6 @@
                     Vstup do posilovny
                 </li>
             </ul>
-            <a href="#join" class="bg-white text-red-600 hover:bg-black/20 hover:text-white transition-colors duration-500 px-10 py-4 uppercase font-bold text-sm tracking-wide rounded-full shadow-lg">
-                Vybrat
-            </a>
         </div>
 
         <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 text-center transform transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 900 }}>
@@ -223,9 +301,6 @@
                     Neomezený vstup do posilovny
                 </li>
             </ul>
-            <a href="#join" class="bg-red-600 hover:bg-red-700 transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full shadow-lg">
-                Vybrat
-            </a>
         </div>
     </div>
 </section>

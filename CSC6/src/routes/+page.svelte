@@ -77,7 +77,8 @@
     'Trenéři se zkušenostmi z praxe',
     'Tréninky pro všechny úrovně',
     'Příjemné prostředí',
-    'Příprava na soutěže'
+    'Příprava na soutěže',
+    'Skvělý kolektiv'
   ];
 
   // === SCHEDULE ===
@@ -162,10 +163,11 @@
           CSC MMA KLUB
         </p>
         <h1 class="text-6xl md:text-8xl font-heading leading-none" in:fly={{ y: 20, duration: 1000, delay: 800 }}>
-          TRÉNUJ TVRDĚ.<br />BOJUJ <span class="text-red-600">JEŠTĚ TVRDĚJI.</span>
+          PRVNÍ TRÉNINK?<br /> <span class="text-red-600">BEZ STRESU.</span>
         </h1>
         <p class="mt-8 text-lg text-gray-300 max-w-lg" in:fly={{ y: 20, duration: 1000, delay: 1100 }}>
-          Připoj se k nám a staň se součástí elitní komunity. Nabízíme profesionální trénink pro všechny úrovně.
+          Připoj se k nám a staň se součástí rodiny. Nabízíme profesionální trénink pro všechny úrovně, skvělé prostředí a přátelský kolektiv.
+
         </p>
         <div class="mt-12 flex flex-wrap gap-6" in:fly={{ y: 20, duration: 1000, delay: 1400 }}>
           <a href="#join" class="bg-red-600 hover:bg-red-700 transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full shadow-lg">
@@ -206,8 +208,7 @@
           PŘEKONÁVEJ SVOJE <span class="text-red-600">LIMITY.</span>
         </h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-8">
-         CSC MMA klub vznikl v roce 2012 jako místo, kde se lidé mohou společně věnovat bojovým sportům a postupně se zlepšovat. Nabízíme tréninky MMA, BJJ, Muay Thai, wrestligu i boxu v přátelském prostředí. Naši trenéři nejsou z velkých světových scén, ale mají zkušenosti, které rádi předávají dál.
-        </p>
+CSC MMA klub vznikl v roce 2012 jako místo, kde se lidé mohou společně věnovat bojovým sportům a postupně se zlepšovat. Nabízíme tréninky MMA, boxu, grapplingu, thaiboxu, wrestligu, K1 a mnoho dalšího v přátelském prostředí. Naši trenéři nejsou z velkých světových scén, ale mají zkušenosti, které rádi předávají dál.         </p>
         <ul class="space-y-4 mb-10">
           {#each aboutList as item}
             <li class="flex items-center text-lg text-gray-200">
@@ -246,7 +247,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600 mr-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.068 15.068 0 006.59 6.59l2.21-2.21c.27-.27.67-.36.98-.24a10.012 10.012 0 014.28 1.15c.32.1.4.52.1.84l-1.89 1.89c-.52.52-1.28.61-1.87.21-3.69-2.43-6.9-5.64-9.33-9.33-.4-.59-.3-1.35.21-1.87l1.89-1.89c.32-.32.74-.24.84.1a10.012 10.012 0 011.15 4.28c.12.31.03.71-.24.98l-2.21 2.21z"/></svg>
               <div>
                 <strong class="font-semibold text-lg">Telefon</strong>
-                <p class="text-gray-400">+420 123 456 789</p>
+                <p class="text-gray-400">+420 734 538 844</p>
               </div>
             </div>
             <div class="flex items-start">

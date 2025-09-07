@@ -18,29 +18,98 @@
 
 <main class="bg-dark text-white font-body overflow-hidden">
   <section class="container mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-20 items-center max-w-7xl">
-    <div in:fly={{ y: 20, duration: 1200, delay: 200 }}>
-      <p class="text-red-600 font-bold uppercase tracking-widest mb-4">PŘÍBĚH KLUBU</p>
-      <h2 class="text-5xl font-heading mb-6 leading-tight">
-        NAŠE <span class="text-red-600">HISTORIE</span>
-      </h2>
-      <p class="text-gray-300 text-lg leading-relaxed mb-6">
-        CSC MMA klub vznikl v roce 2012 jako prostor, kde mohou lidé různých úrovní trénovat bojové sporty a rozvíjet se v přátelském prostředí. Z malého projektu se postupně stal klub, který spojuje začátečníky, zkušenější sportovce i ty, kdo chtějí jen zlepšit kondici.
-      </p>
-      <p class="text-gray-400 text-base leading-relaxed mb-6">
-        Naší misí je od začátku nabídnout světovou úroveň tréninku a zároveň budovat podpůrnou komunitu. Věříme, že bojové umění není jen o zápasech, ale především o disciplíně, respektu a neustálém osobním růstu.
-      </p>
-      <p class="text-gray-400 text-base leading-relaxed">
-        Dnes je CSC MMA domovem profesionálních zápasníků, amatérských bojovníků i nadšenců fitness. Společným cílem všech členů je překonávat své limity a dosahovat dokonalosti, v ringu i mimo něj.
-      </p>
+  <!-- LEVÝ SLOUPEC – přepracovaný text -->
+  <div class="max-w-prose" in:fly={{ y: 20, duration: 1200, delay: 200 }}>
+    <p class="text-red-600 font-bold uppercase tracking-widest mb-4">PŘÍBĚH KLUBU</p>
+    <h2 class="text-5xl font-heading mb-6 leading-tight">
+      NAŠE <span class="text-red-600">HISTORIE</span>
+    </h2>
+
+    <!-- Úvod -->
+    <p class="text-gray-300 text-lg leading-relaxed">
+      <span class="font-semibold text-white">CSC MMA Karviná</span> – místo, kde rosteš jako sportovec i jako člověk.
+    </p>
+
+    <!-- Vznik + vize -->
+    <p class="text-gray-300 text-lg leading-relaxed">
+      Klub vznikl v roce 2012 s jasnou vizí: vytvořit prostor, kde se lidé všech úrovní mohou učit, rozvíjet a růst prostřednictvím bojových sportů. 
+      Z malého projektu se stal respektovaný klub, který spojuje úplné začátečníky, zkušené sportovce i profesionální zápasníky.
+    </p>
+
+    <!-- Mise -->
+    <p class="text-gray-300 text-lg leading-relaxed">
+      Naší misí je nabídnout špičkový trénink a zároveň budovat silnou, přátelskou komunitu. Věříme, že bojová umění nejsou jen o vítězstvích, 
+      ale především o <span class="text-white font-semibold">disciplíně, respektu, pokoře</span> a neustálém osobním růstu – v ringu i mimo něj.
+    </p>
+
+    <!-- Co u nás najdeš -->
+    <div class="mt-6">
+      <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3">Co u nás najdeš</h3>
+      <ul class="space-y-3">
+        <li class="flex gap-3">
+          <span class="mt-2 inline-flex h-2.5 w-2.5 bg-red-600 rounded-full"></span>
+          <span class="text-gray-300">
+            Tréninky <span class="text-white">MMA, boxu, thajského boxu, K1, grapplingu, fitboxu, bezkontaktního MMA a wrestlingu</span> pro všechny úrovně.
+          </span>
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-2 inline-flex h-2.5 w-2.5 bg-red-600 rounded-full"></span>
+          <span class="text-gray-300">Zkušené trenéry s praxí z české i mezinárodní scény.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-2 inline-flex h-2.5 w-2.5 bg-red-600 rounded-full"></span>
+          <span class="text-gray-300">Přátelský kolektiv, respekt a motivace překonávat vlastní hranice.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-2 inline-flex h-2.5 w-2.5 bg-red-600 rounded-full"></span>
+          <span class="text-gray-300">Moderní zázemí v Karviné – ideální podmínky pro trénink i regeneraci.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-2 inline-flex h-2.5 w-2.5 bg-red-600 rounded-full"></span>
+          <span class="text-gray-300">Možnost startovat na soutěžích, nebo trénovat „jen“ pro radost a zdraví.</span>
+        </li>
+      </ul>
     </div>
-    <div class="relative" in:fly={{ y: 20, duration: 1200, delay: 500 }}>
-      <img
-        src="/images/about-gym.jpg"
-        alt="Interiér tělocvičny"
-        class="w-full rounded-3xl shadow-2xl relative transform rotate-3 transition-transform duration-700 hover:rotate-0"
-      />
+
+    <!-- Milníky 2025 -->
+    <div class="mt-8 bg-[#121212] border border-gray-800 rounded-2xl p-6">
+      <h3 class="text-white font-semibold mb-3">Milníky&nbsp;2025</h3>
+      <ul class="space-y-3">
+        <li class="flex gap-3">
+          <span class="mt-2 inline-flex h-2.5 w-2.5 bg-red-600 rounded-full"></span>
+          <span class="text-gray-300">
+            <span class="text-white">Adam Kánský (70&nbsp;kg)</span> – první šampion v amatérském MMA v historii Karviné.
+          </span>
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-2 inline-flex h-2.5 w-2.5 bg-red-600 rounded-full"></span>
+          <span class="text-gray-300">
+            <span class="text-white">Eliška Bobovičová</span> – první reprezentantka Karviné &amp; CSC MMA na amatérském MS v MMA (São&nbsp;Paulo, Brazílie).
+          </span>
+        </li>
+      </ul>
     </div>
-  </section>
+
+    <!-- Závěr + CTA -->
+    <p class="text-gray-300 text-lg leading-relaxed mt-6">
+      <span class="text-white font-semibold">CSC Karviná z. s.</span> je klub, kde se lidé podporují, motivují a společně posouvají vpřed. 
+      Ať chceš vyhrát první zápas, zlepšit kondici, shodit pár kilo nebo najít nový koníček, najdeš u nás odborné vedení a férové prostředí.
+    </p>
+    <p class="text-white font-semibold mt-3">
+      Staň se součástí CSC MMA Karviná a zažij, jaké to je překonat sám sebe.
+    </p>
+  </div>
+
+  <!-- PRAVÝ SLOUPEC – foto -->
+  <div class="relative" in:fly={{ y: 20, duration: 1200, delay: 500 }}>
+    <img
+      src="/images/about-gym.jpg"
+      alt="Interiér tělocvičny"
+      class="w-full rounded-3xl shadow-2xl relative transform rotate-3 transition-transform duration-700 hover:rotate-0"
+    />
+  </div>
+</section>
+
 
   <section class="container mx-auto px-6 py-24 max-w-7xl">
     <div class="text-center mb-20">
@@ -129,8 +198,8 @@
           class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div class="absolute inset-0 bg-black/70 flex flex-col justify-end p-8 text-white transition-opacity duration-500 group-hover:opacity-100 opacity-0">
-          <h4 class="text-3xl font-heading mb-1">ZÁPASENÍ & GRAPPLING</h4>
-          <p class="text-gray-300 text-sm">Prostorné žíněnky pro Brazílsko-jiu-jitsu, wrestling i grappling.</p>
+          <h4 class="text-3xl font-heading mb-1">RELAX</h4>
+          <p class="text-gray-300 text-sm">Naši členové mají i relax místnost.</p>
         </div>
       </div>
     </div>
