@@ -182,7 +182,7 @@
           </div>
           <div class="flex justify-between items-center pb-2 border-b border-gray-700">
             <span class="text-gray-400">Sobota:</span>
-            <span class="text-white font-bold">9:00 – 17:00</span>
+            <span class="text-white font-bold">8:00 – 21:00</span>
           </div>
           <div class="flex justify-between items-center">
             <span class="text-gray-400">Neděle:</span>

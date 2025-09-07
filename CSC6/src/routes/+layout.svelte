@@ -122,20 +122,16 @@
         <span class="text-white font-heading text-xl">CSC MMA CLUB</span>
       </div>
       <p class="text-gray-400 leading-relaxed">
-Naším posláním je vést lidi k tomu, aby objevili svou sílu a posouvali své hranice. Nabízíme špičkové tréninky bojových umění pro všechny úrovně – od úplných začátečníků po pokročilé – v prostředí plném respektu, disciplíny a přátelské podpory.      </p>
+       Naším posláním je vést lidi k tomu, aby objevili svou sílu a posouvali své hranice.<br><br> Nabízíme špičkové tréninky bojových umění pro všechny úrovně – od úplných začátečníků po pokročilé – v prostředí plném respektu, disciplíny a přátelské podpory.
+      </p>
       <div class="flex space-x-4 text-gray-500">
-        <a href="https://facebook.com" aria-label="Facebook" class="hover:text-[#4267B2] transition-colors duration-300">
+        <a href="https://www.facebook.com/CSCKarvina" aria-label="Facebook" class="hover:text-[#4267B2] transition-colors duration-300">
           {@html socialIcons.facebook}
         </a>
-        <a href="https://instagram.com" aria-label="Instagram" class="hover:text-[#E1306C] transition-colors duration-300">
+        <a href="https://www.instagram.com/csc_mma" aria-label="Instagram" class="hover:text-[#E1306C] transition-colors duration-300">
           {@html socialIcons.instagram}
         </a>
-        <a href="https://twitter.com" aria-label="Twitter" class="hover:text-[#1DA1F2] transition-colors duration-300">
-          {@html socialIcons.twitter}
-        </a>
-        <a href="https://youtube.com" aria-label="YouTube" class="hover:text-[#FF0000] transition-colors duration-300">
-          {@html socialIcons.youtube}
-        </a>
+       
       </div>
     </div>
 
@@ -182,4 +178,4 @@ Naším posláním je vést lidi k tomu, aby objevili svou sílu a posouvali sv�
   <div class="border-t border-gray-800 mt-16 pt-8">
     <p class="text-center text-sm">© {new Date().getFullYear()} CSC MMA Club. Všechna práva vyhrazena.</p>
   </div>
-</footer>
+</footer> 
