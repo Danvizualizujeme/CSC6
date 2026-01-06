@@ -112,7 +112,7 @@
       socials: [
         { href: 'https://facebook.com', label: 'Facebook', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5.007 3.658 9.164 8.438 9.878v-6.99H7.898V12h2.54v-1.745c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.194 2.238.194v2.465h-1.261c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.888h-2.33v6.99C18.342 21.164 22 17.007 22 12z"/></svg>` },
         { href: 'https://instagram.com', label: 'Instagram', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5A4.25 4.25 0 0020.5 16.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5z"/><path d="M12 7.25a4.75 4.75 0 110 9.5 4.75 4.75 0 010-9.5zm0 1.5a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z"/><circle cx="17.75" cy="6.25" r="1"/></svg>` },
-        { href: 'https://twitter.com', label: 'Twitter', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.569a10 10 0 01-2.825.775A4.932 4.932 0 0023.337 3a9.864 9.864 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482A13.978 13.978 0 011.671 3.149a4.92 4.92 0 001.523 6.574 4.903 4.903 0 01-2.229-.616v.06a4.923 4.923 0 003.946 4.827 4.903 4.903 0 01-2.224.084 4.928 4.928 0 004.604 3.417A9.867 9.867 0 010 19.54 13.94 13.94 0 007.548 22c9.142 0 14.307-7.721 13.994-14.646a10.025 10.025 0 002.411-2.535z"/></svg>` },
+        { href: 'https://twitter.com', label: 'Twitter', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.569a10 10 0 01-2.825.775A4.932 4.932 0 0023.337 3a9.864 9.864 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482A13.978 13.978 0 011.671 3.149a4.92 4.92 0 001.523 6.574 4.903 4.903 0 01-2.229-.616v.06a4.923 4.923 0 003.946 4.827 4.903 4.903 0 01-2.224.084 4.928 4.928 0 004.604 3.417A9.867 9.867 0 010 19.54 13.94 13.94 0 007.548 22c9.142 0 14.307-77.21 13.994-14.646a10.025 10.025 0 002.411-2.535z"/></svg>` },
       ]
     },
     {
@@ -138,7 +138,57 @@
       ]
     }
   ];
+
+  // Definice strukturovaných dat pro Knowledge Panel
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "CSC MMA KLUB Karviná",
+    "description": "Profesionální MMA klub v Karviné nabízející tréninky MMA, boxu, BJJ a kondiční přípravu pro všechny úrovně.",
+    "image": "https://www.csc-karvina.cz/images/mma-hero.jpg",
+    "@id": "https://www.csc-karvina.cz",
+    "url": "https://www.csc-karvina.cz",
+    "telephone": "+420 734 538 844",
+    "email": "csc.karvina@seznam.cz",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rudé armády 651/19A",
+      "addressLocality": "Karviná",
+      "postalCode": "733 01",
+      "addressCountry": "CZ"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 49.854, 
+      "longitude": 18.541
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Wednesday", "Friday"],
+        "opens": "06:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Thursday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/csckarvina",
+      "https://www.instagram.com/csckarvina"
+    ]
+  };
+
+  // Převedení na string pro vložení do hlavičky (Svelte nebude parsovat složené závorky)
+  const schemaScript = `<script type="application/ld+json">${JSON.stringify(schemaData)}<\/script>`;
 </script>
+
+<svelte:head>
+  {@html schemaScript}
+</svelte:head>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap');
@@ -167,7 +217,6 @@
         </h1>
         <p class="mt-8 text-lg text-gray-300 max-w-lg" in:fly={{ y: 20, duration: 1000, delay: 1100 }}>
           Připoj se k nám a staň se součástí rodiny. Nabízíme profesionální trénink pro všechny úrovně, skvělé prostředí a přátelský kolektiv.
-
         </p>
         <div class="mt-12 flex flex-wrap gap-6" in:fly={{ y: 20, duration: 1000, delay: 1400 }}>
           <a href="#join" class="bg-red-600 hover:bg-red-700 transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full shadow-lg">
@@ -208,7 +257,8 @@
           PŘEKONÁVEJ SVOJE <span class="text-red-600">LIMITY.</span>
         </h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-8">
-CSC MMA klub vznikl v roce 2012 jako místo, kde se lidé mohou společně věnovat bojovým sportům a postupně se zlepšovat. Nabízíme tréninky MMA, boxu, grapplingu, thaiboxu, wrestligu, K1 a mnoho dalšího v přátelském prostředí. Naši trenéři nejsou z velkých světových scén, ale mají zkušenosti, které rádi předávají dál.         </p>
+          CSC MMA klub vznikl v roce 2012 jako místo, kde se lidé mohou společně věnovat bojovým sportům a postupně se zlepšovat. Nabízíme tréninky MMA, boxu, grapplingu, thaiboxu, wrestlingu, K1 a mnoho dalšího v přátelském prostředí. Naši trenéři nejsou z velkých světových scén, ale mají zkušenosti, které rádi předávají dál.
+        </p>
         <ul class="space-y-4 mb-10">
           {#each aboutList as item}
             <li class="flex items-center text-lg text-gray-200">
@@ -222,8 +272,6 @@ CSC MMA klub vznikl v roce 2012 jako místo, kde se lidé mohou společně věno
         </a>
       </div>
     </section>
-
-    
 
     <section id="join" class="container mx-auto px-6 py-32 max-w-7xl">
       <div class="bg-[#1a1a1a] p-12 lg:p-20 rounded-3xl shadow-2xl border border-gray-800 grid lg:grid-cols-2 gap-16 items-center">
