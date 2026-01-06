@@ -212,28 +212,28 @@
         <p class="text-xl text-red-600 font-bold mb-4 uppercase tracking-widest" in:fly={{ y: 20, duration: 1000, delay: 500 }}>
           CSC MMA KLUB
         </p>
-        <h1 class="text-6xl md:text-8xl font-heading leading-none" in:fly={{ y: 20, duration: 1000, delay: 800 }}>
+        <h1 class="text-5xl md:text-8xl font-heading leading-none" in:fly={{ y: 20, duration: 1000, delay: 800 }}>
           PRVNÍ TRÉNINK?<br /> <span class="text-red-600">BEZ STRESU.</span>
         </h1>
         <p class="mt-8 text-lg text-gray-300 max-w-lg" in:fly={{ y: 20, duration: 1000, delay: 1100 }}>
           Připoj se k nám a staň se součástí rodiny. Nabízíme profesionální trénink pro všechny úrovně, skvělé prostředí a přátelský kolektiv.
         </p>
         <div class="mt-12 flex flex-wrap gap-6" in:fly={{ y: 20, duration: 1000, delay: 1400 }}>
-          <a href="#join" class="bg-red-600 hover:bg-red-700 transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full shadow-lg">
+          <a href="#join" class="bg-red-600 hover:bg-red-700 transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full shadow-lg w-full sm:w-auto text-center">
             Připoj se
           </a>
-          <a href="#about" class="border-2 border-white hover:bg-white hover:text-black transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full">
+          <a href="#about" class="border-2 border-white hover:bg-white hover:text-black transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full w-full sm:w-auto text-center">
             Zjistit více
           </a>
         </div>
       </div>
     </section>
 
-    <section class="container mx-auto px-6 py-32 max-w-7xl">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <section class="container mx-auto px-6 py-20 md:py-32 max-w-7xl">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
         {#each features as f, i}
           <div
-            class="bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
+            class="bg-[#1a1a1a] p-8 md:p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
             in:fade={{ duration: 1500, delay: 300 + i * 400 }}
           >
             <div class="text-red-600 mb-6 transition-colors duration-500 group-hover:text-white">
@@ -246,14 +246,14 @@
       </div>
     </section>
 
-    <section id="about" class="container mx-auto px-6 py-32 grid md:grid-cols-2 gap-20 items-center max-w-7xl">
-      <div class="relative">
+    <section id="about" class="container mx-auto px-6 py-20 md:py-32 grid md:grid-cols-2 gap-12 md:gap-20 items-center max-w-7xl">
+      <div class="relative order-2 md:order-1">
         <div class="absolute inset-0 bg-red-600 rounded-3xl -rotate-6 transform -z-10 transition-transform duration-700 hover:rotate-3"></div>
         <img src="/images/mma-gym-2.jpg" alt="Interiér tělocvičny" class="rounded-3xl shadow-2xl relative transform rotate-3 transition-transform duration-700 hover:rotate-0" />
       </div>
-      <div>
+      <div class="order-1 md:order-2">
         <p class="text-red-600 font-bold uppercase tracking-widest mb-4">O nás</p>
-        <h2 class="text-5xl font-heading mb-6 leading-tight">
+        <h2 class="text-4xl md:text-5xl font-heading mb-6 leading-tight">
           PŘEKONÁVEJ SVOJE <span class="text-red-600">LIMITY.</span>
         </h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-8">
@@ -267,19 +267,21 @@
             </li>
           {/each}
         </ul>
-        <a href="#join" class="border-2 border-red-600 bg-red-600 text-white hover:bg-transparent hover:text-red-600 transition-colors duration-500 px-8 py-3 uppercase font-bold text-sm tracking-wide rounded-full">
+        <a href="#join" class="inline-block border-2 border-red-600 bg-red-600 text-white hover:bg-transparent hover:text-red-600 transition-colors duration-500 px-8 py-3 uppercase font-bold text-sm tracking-wide rounded-full w-full sm:w-auto text-center">
           Začít trénovat
         </a>
       </div>
     </section>
 
-    <section id="join" class="container mx-auto px-6 py-32 max-w-7xl">
-      <div class="bg-[#1a1a1a] p-12 lg:p-20 rounded-3xl shadow-2xl border border-gray-800 grid lg:grid-cols-2 gap-16 items-center">
-        <div class="space-y-10">
-          <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Připoj se</p>
-          <h2 class="text-5xl font-heading leading-tight">
-            ZAČNI SVOU CESTU <span class="text-red-600">DNES.</span>
-          </h2>
+    <section id="join" class="container mx-auto px-4 md:px-6 py-20 md:py-32 max-w-7xl">
+      <div class="bg-[#1a1a1a] p-6 md:p-12 lg:p-20 rounded-3xl shadow-2xl border border-gray-800 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div class="space-y-8 md:space-y-10">
+          <div>
+            <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Připoj se</p>
+            <h2 class="text-3xl md:text-5xl font-heading leading-tight">
+              ZAČNI SVOU CESTU <span class="text-red-600">DNES.</span>
+            </h2>
+          </div>
           <p class="text-gray-300 text-lg leading-relaxed">
             Máš otázky nebo chceš naplánovat návštěvu? Napiš nám a my se ti ozveme, abychom ti pomohli udělat první krok.
           </p>
@@ -308,8 +310,8 @@
           </div>
         </div>
 
-        <div>
-          <form on:submit={handleSubmit} class="flex flex-col gap-6">
+        <div class="w-full">
+          <form on:submit={handleSubmit} class="flex flex-col gap-5">
             <input name="website" type="text" tabindex="-1" autocomplete="off" class="absolute left-[-9999px]" />
             <input name="ts" type="hidden" value={startTs} />
             
@@ -319,14 +321,14 @@
                 type="text"
                 placeholder="Jméno *"
                 required
-                class="bg-dark border-2 border-gray-700 px-6 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500"
+                class="bg-dark border-2 border-gray-700 px-5 py-3 md:px-6 md:py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full"
               />
               <input
                 name="prijmeni"
                 type="text"
                 placeholder="Příjmení *"
                 required
-                class="bg-dark border-2 border-gray-700 px-6 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500"
+                class="bg-dark border-2 border-gray-700 px-5 py-3 md:px-6 md:py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full"
               />
             </div>
             
@@ -335,29 +337,29 @@
               type="email"
               placeholder="Email *"
               required
-              class="bg-dark border-2 border-gray-700 px-6 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500"
+              class="bg-dark border-2 border-gray-700 px-5 py-3 md:px-6 md:py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full"
             />
             <textarea
               name="message"
               rows="4"
               placeholder="Zpráva..."
               required
-              class="bg-dark border-2 border-gray-700 px-6 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500"
+              class="bg-dark border-2 border-gray-700 px-5 py-3 md:px-6 md:py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full resize-none"
             ></textarea>
             
             {#if success}
-              <p class="text-green-400 mb-4">✅ Zpráva odeslána! Ozveme se vám co nejdříve.</p>
+              <p class="text-green-400 text-sm">✅ Zpráva odeslána! Ozveme se vám co nejdříve.</p>
             {/if}
             {#if errorMsg}
-              <p class="text-red-500 mb-4">❌ {errorMsg}</p>
+              <p class="text-red-500 text-sm">❌ {errorMsg}</p>
             {/if}
 
-            <div class="flex items-center gap-4">
-              <input id="souhlas" name="souhlas" type="checkbox" required class="accent-red-600 h-5 w-5" />
-              <label for="souhlas" class="text-sm text-gray-400">Souhlasím se zpracováním osobních údajů <span class="text-red-600">*</span></label>
+            <div class="flex items-center gap-3">
+              <input id="souhlas" name="souhlas" type="checkbox" required class="accent-red-600 h-5 w-5 flex-shrink-0" />
+              <label for="souhlas" class="text-xs md:text-sm text-gray-400">Souhlasím se zpracováním osobních údajů <span class="text-red-600">*</span></label>
             </div>
             
-            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white rounded-full px-12 py-5 font-bold uppercase transition duration-300 shadow-lg hover:shadow-xl mt-4 text-lg tracking-wide">
+            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white rounded-full px-8 py-4 md:px-12 md:py-5 font-bold uppercase transition duration-300 shadow-lg hover:shadow-xl mt-2 text-base md:text-lg tracking-wide w-full md:w-auto">
               Odeslat zprávu
             </button>
           </form>
