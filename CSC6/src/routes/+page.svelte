@@ -123,7 +123,7 @@
       socials: [
         { href: 'https://facebook.com', label: 'Facebook', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5.007 3.658 9.164 8.438 9.878v-6.99H7.898V12h2.54v-1.745c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.194 2.238.194v2.465h-1.261c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.888h-2.33v6.99C18.342 21.164 22 17.007 22 12z"/></svg>` },
         { href: 'https://instagram.com', label: 'Instagram', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5A4.25 4.25 0 0020.5 16.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5z"/><path d="M12 7.25a4.75 4.75 0 110 9.5 4.75 4.75 0 010-9.5zm0 1.5a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z"/><circle cx="17.75" cy="6.25" r="1"/></svg>` },
-        { href: 'https://twitter.com', label: 'Twitter', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.569a10 10 0 01-2.825.775A4.932 4.932 0 0023.337 3a9.864 9.864 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482A13.978 13.978 0 011.671 3.149a4.92 4.92 0 001.523 6.574 4.903 4.903 0 01-2.229-.616v.06a4.923 4.923 0 003.946 4.827 4.903 4.903 0 01-2.224.084 4.928 4.928 0 004.604 3.417A9.867 9.867 0 010 19.54 13.94 13.94 0 007.548 22c9.142 0 14.307-7.721 13.994-14.646a10.025 10.025 0 002.411-2.535z"/></svg>` },
+        { href: 'https://twitter.com', label: 'Twitter', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.569a10 10 0 01-2.825.775A4.932 4.932 0 0023.337 3a9.864 9.864 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482A13.978 13.978 0 011.671 3.149a4.92 4.92 0 001.523 6.574 4.903 4.903 0 01-2.229-.616v.06a4.923 4.923 0 003.946 4.827 4.903 4.903 0 01-2.224.084 4.928 4.928 0 004.604 3.417A9.867 9.867 0 010 19.54 13.94 13.94 0 007.548 22c9.142 0 14.307-77.21 13.994-14.646a10.025 10.025 0 002.411-2.535z"/></svg>` },
       ]
     },
     {
@@ -209,20 +209,20 @@
     <section class="relative bg-cover bg-center h-screen flex items-center" style="background-image:url('/images/mma-hero.jpg')">
       <div class="absolute inset-0 bg-black/80"></div>
       <div class="relative z-10 container mx-auto px-6 max-w-7xl flex flex-col items-start" in:fade={{ duration: 2000 }}>
-        <p class="text-xl text-red-600 font-bold mb-4 uppercase tracking-widest" in:fly={{ y: 20, duration: 1000, delay: 500 }}>
+        <p class="text-lg md:text-xl text-red-600 font-bold mb-4 uppercase tracking-widest" in:fly={{ y: 20, duration: 1000, delay: 500 }}>
           CSC MMA KLUB
         </p>
-        <h1 class="text-5xl md:text-8xl font-heading leading-none" in:fly={{ y: 20, duration: 1000, delay: 800 }}>
+        <h1 class="text-4xl xs:text-5xl md:text-8xl font-heading leading-none" in:fly={{ y: 20, duration: 1000, delay: 800 }}>
           PRVNÍ TRÉNINK?<br /> <span class="text-red-600">BEZ STRESU.</span>
         </h1>
-        <p class="mt-8 text-lg text-gray-300 max-w-lg" in:fly={{ y: 20, duration: 1000, delay: 1100 }}>
+        <p class="mt-8 text-base md:text-lg text-gray-300 max-w-lg" in:fly={{ y: 20, duration: 1000, delay: 1100 }}>
           Připoj se k nám a staň se součástí rodiny. Nabízíme profesionální trénink pro všechny úrovně, skvělé prostředí a přátelský kolektiv.
         </p>
-        <div class="mt-12 flex flex-wrap gap-6" in:fly={{ y: 20, duration: 1000, delay: 1400 }}>
-          <a href="#join" class="bg-red-600 hover:bg-red-700 transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full shadow-lg w-full sm:w-auto text-center">
+        <div class="mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto" in:fly={{ y: 20, duration: 1000, delay: 1400 }}>
+          <a href="#join" class="bg-red-600 hover:bg-red-700 transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full shadow-lg text-center">
             Připoj se
           </a>
-          <a href="#about" class="border-2 border-white hover:bg-white hover:text-black transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full w-full sm:w-auto text-center">
+          <a href="#about" class="border-2 border-white hover:bg-white hover:text-black transition-colors duration-500 px-10 py-4 text-white uppercase font-bold text-sm tracking-wide rounded-full text-center">
             Zjistit více
           </a>
         </div>
@@ -274,7 +274,7 @@
     </section>
 
     <section id="join" class="container mx-auto px-4 md:px-6 py-20 md:py-32 max-w-7xl">
-      <div class="bg-[#1a1a1a] p-6 md:p-12 lg:p-20 rounded-3xl shadow-2xl border border-gray-800 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <div class="bg-[#1a1a1a] px-5 py-12 md:p-12 lg:p-20 rounded-3xl shadow-2xl border border-gray-800 grid lg:grid-cols-2 gap-16 lg:gap-16 items-start">
         <div class="space-y-8 md:space-y-10">
           <div>
             <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Připoj se</p>
@@ -286,24 +286,24 @@
             Máš otázky nebo chceš naplánovat návštěvu? Napiš nám a my se ti ozveme, abychom ti pomohli udělat první krok.
           </p>
           <div class="space-y-6 text-gray-200">
-            <div class="flex items-start">
+            <div class="flex items-center sm:items-start">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600 mr-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
               <div>
-                <strong class="font-semibold text-lg">Adresa</strong>
+                <strong class="font-semibold text-lg block sm:inline">Adresa:</strong>
                 <p class="text-gray-400">Rudé armády 651/19A, Karviná 733 01</p>
               </div>
             </div>
-            <div class="flex items-start">
+            <div class="flex items-center sm:items-start">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600 mr-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.068 15.068 0 006.59 6.59l2.21-2.21c.27-.27.67-.36.98-.24a10.012 10.012 0 014.28 1.15c.32.1.4.52.1.84l-1.89 1.89c-.52.52-1.28.61-1.87.21-3.69-2.43-6.9-5.64-9.33-9.33-.4-.59-.3-1.35.21-1.87l1.89-1.89c.32-.32.74-.24.84.1a10.012 10.012 0 011.15 4.28c.12.31.03.71-.24.98l-2.21 2.21z"/></svg>
               <div>
-                <strong class="font-semibold text-lg">Telefon</strong>
+                <strong class="font-semibold text-lg block sm:inline">Telefon:</strong>
                 <p class="text-gray-400">+420 734 538 844</p>
               </div>
             </div>
-            <div class="flex items-start">
+            <div class="flex items-center sm:items-start">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600 mr-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
               <div>
-                <strong class="font-semibold text-lg">E-mail</strong>
+                <strong class="font-semibold text-lg block sm:inline">E-mail:</strong>
                 <p class="text-gray-400">csc.karvina@seznam.cz</p>
               </div>
             </div>
@@ -311,7 +311,7 @@
         </div>
 
         <div class="w-full">
-          <form on:submit={handleSubmit} class="flex flex-col gap-5">
+          <form on:submit={handleSubmit} class="flex flex-col gap-6 bg-black/20 p-6 sm:p-0 rounded-2xl sm:bg-transparent">
             <input name="website" type="text" tabindex="-1" autocomplete="off" class="absolute left-[-9999px]" />
             <input name="ts" type="hidden" value={startTs} />
             
@@ -321,14 +321,14 @@
                 type="text"
                 placeholder="Jméno *"
                 required
-                class="bg-dark border-2 border-gray-700 px-5 py-3 md:px-6 md:py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full"
+                class="bg-dark border-2 border-gray-700 px-5 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full text-base"
               />
               <input
                 name="prijmeni"
                 type="text"
                 placeholder="Příjmení *"
                 required
-                class="bg-dark border-2 border-gray-700 px-5 py-3 md:px-6 md:py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full"
+                class="bg-dark border-2 border-gray-700 px-5 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full text-base"
               />
             </div>
             
@@ -337,26 +337,26 @@
               type="email"
               placeholder="Email *"
               required
-              class="bg-dark border-2 border-gray-700 px-5 py-3 md:px-6 md:py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full"
+              class="bg-dark border-2 border-gray-700 px-5 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full text-base"
             />
             <textarea
               name="message"
               rows="4"
               placeholder="Zpráva..."
               required
-              class="bg-dark border-2 border-gray-700 px-5 py-3 md:px-6 md:py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full resize-none"
+              class="bg-dark border-2 border-gray-700 px-5 py-4 text-white rounded-xl focus:ring-2 focus:ring-red-600 focus:outline-none placeholder:text-gray-500 w-full resize-none text-base"
             ></textarea>
             
             {#if success}
-              <p class="text-green-400 text-sm">✅ Zpráva odeslána! Ozveme se vám co nejdříve.</p>
+              <p class="text-green-400 text-sm font-semibold">✅ Zpráva odeslána! Ozveme se vám co nejdříve.</p>
             {/if}
             {#if errorMsg}
-              <p class="text-red-500 text-sm">❌ {errorMsg}</p>
+              <p class="text-red-500 text-sm font-semibold">❌ {errorMsg}</p>
             {/if}
 
-            <div class="flex items-center gap-3">
-              <input id="souhlas" name="souhlas" type="checkbox" required class="accent-red-600 h-5 w-5 flex-shrink-0" />
-              <label for="souhlas" class="text-xs md:text-sm text-gray-400">Souhlasím se zpracováním osobních údajů <span class="text-red-600">*</span></label>
+            <div class="flex items-start gap-3">
+              <input id="souhlas" name="souhlas" type="checkbox" required class="accent-red-600 h-5 w-5 flex-shrink-0 mt-0.5" />
+              <label for="souhlas" class="text-xs sm:text-sm text-gray-400 leading-tight">Souhlasím se zpracováním osobních údajů <span class="text-red-600">*</span></label>
             </div>
             
             <button type="submit" class="bg-red-600 hover:bg-red-700 text-white rounded-full px-8 py-4 md:px-12 md:py-5 font-bold uppercase transition duration-300 shadow-lg hover:shadow-xl mt-2 text-base md:text-lg tracking-wide w-full md:w-auto">
