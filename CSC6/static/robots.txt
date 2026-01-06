@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Odkaz na tvou mapu webu, aby ji Google hned našel
+
+Sitemap: https://www.google.com/url?sa=E&source=gmail&q=https://www.csc-karvina.cz/sitemap.xml
