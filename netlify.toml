@@ -1,0 +1,4 @@
+[build]
+  base = "CSC6"
+  command = "npm install && npm run build"
+  publish = "build"
