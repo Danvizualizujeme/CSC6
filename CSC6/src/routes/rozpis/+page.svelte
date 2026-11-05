@@ -1,334 +1,197 @@
-<script>
-  // @ts-check
-  import { fly, fade } from 'svelte/transition';
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { reveal } from '$lib/reveal';
+	import { DAYS, DAY_NAMES, SCHEDULE, DISCIPLINES, PLANS, LESSONS_PER_WEEK, todayIndex } from '$lib/data';
 
-  /** @typedef {'PO'|'ÚT'|'ST'|'ČT'|'PÁ'|'SO'|'NE'} Day */
-  /** @typedef {{ time: string; class: string; instructor: string; level: string }} ScheduleItem */
+	let active = $state(0);
+	let today = $state(-1);
+	onMount(() => {
+		today = todayIndex();
+		active = today;
+	});
 
-  /** @type {Day[]} */
-  let days = ['PO', 'ÚT', 'ST', 'ČT', 'PÁ', 'SO', 'NE'];
+	const day = $derived(DAYS[active]);
+	const lessons = $derived(SCHEDULE[day]);
 
-  let active = 0;
+	function onKey(e: KeyboardEvent) {
+		if (e.key === 'ArrowRight') active = (active + 1) % 7;
+		else if (e.key === 'ArrowLeft') active = (active + 6) % 7;
+		else return;
+		e.preventDefault();
+		document.getElementById(`tab-${active}`)?.focus();
+	}
 
-  /** @type {Day} */
-  let currentDay = /** @type {Day} */ (days[active]);
-  $: currentDay = /** @type {Day} */ (days[active]);
-
-  /** @type {Record<Day, ScheduleItem[]>} */
-const scheduleByDay = {
-  PO: [
-    { time: '8:15 - 9:15',  class: 'MMA, BOX, K1',            instructor: 'Wojdyla',          level: 'Všichni' },
-    { time: '15:30 - 16:30', class: 'Přípravka MMA',           instructor: 'Mayer, Wojdyla',  level: '4–10 let' },
-    { time: '16:30 - 17:30', class: 'BOX začátečníci',         instructor: 'Pawliczek',       level: 'Začátečníci' },
-    { time: '17:30 - 18:45', class: 'Grappling + Wrestling',   instructor: '—',               level: 'Všichni' },
-    { time: '18:30 - 19:30', class: 'Bezkontaktní MMA',        instructor: 'Pawliczek',       level: '' }
-  ],
-
-  ÚT: [
-    { time: '15:30 - 16:30', class: 'Junioři MMA',             instructor: 'Mayer, Kuta',     level: '11–13 let' },
-    { time: '16:00 - 17:00', class: 'BOX pokročilí',           instructor: 'Górecki',         level: 'Pokročilí' },
-    { time: '16:30 - 17:30', class: 'Fitbox',                  instructor: 'Hudeček',         level: '' },
-    { time: '17:30 - 18:30', class: 'K1',                      instructor: 'Hudeček',         level: 'Začátečníci' },
-    { time: '17:00 - 18:15', class: 'MMA začátečníci',         instructor: 'Bráborec',        level: 'Začátečníci' },
-    { time: '18:15 - 19:30', class: 'MMA pokročilí',           instructor: 'Wojdyla',         level: 'Pokročilí' }
-  ],
-
-  ST: [
-    { time: '8:15 - 9:15',   class: 'MMA, BOX, K1',            instructor: 'Wojdyla',         level: 'Všichni' },
-    { time: '15:30 - 16:30', class: 'Přípravka MMA',           instructor: 'Mayer, Wojdyla',  level: '4–10 let' },
-    { time: '16:30 - 17:30', class: 'BOX začátečníci',         instructor: 'Pawliczek',       level: 'Začátečníci' },
-    { time: '17:30 - 18:45', class: 'Wrestling',               instructor: 'Barva',           level: 'Všichni' },
-    { time: '18:30 - 19:30', class: 'Bezkontaktní MMA',        instructor: 'Pawliczek',       level: '' },
-    { time: '18:45 - 19:45', class: 'Grappling',               instructor: 'Wojdyla',         level: 'Všichni' }
-  ],
-
-  ČT: [
-    { time: '15:30 - 16:30', class: 'Junioři MMA',             instructor: 'Mayer, Kuta',     level: '11–13 let' },
-    { time: '16:00 - 17:00', class: 'BOX pokročilí',           instructor: 'Górecki',         level: 'Pokročilí' },
-    { time: '16:30 - 17:30', class: 'Fitbox',                  instructor: 'Hudeček',         level: '' },
-    { time: '17:00 - 18:15', class: 'MMA začátečníci',         instructor: 'Bráborec',        level: 'Začátečníci' },
-    { time: '18:15 - 19:30', class: 'MMA pokročilí',           instructor: 'Wojdyla',         level: 'Pokročilí' }
-  ],
-
-  PÁ: [
-    { time: '8:15 - 9:15',   class: 'MMA, BOX, K1',            instructor: 'Wojdyla',         level: 'Všichni' },
-    { time: '15:00 - 16:00', class: 'Přípravka MMA + Junioři MMA', instructor: '—',          level: '4–10 & 11–13 let' },
-    { time: '15:30 - 17:00', class: 'Grappling',               instructor: 'Sumelidis',       level: 'Všichni' },
-    { time: '17:00 - 18:15', class: 'Thaibox',                 instructor: 'Breit',           level: '' },
-    { time: '18:15 - 19:15', class: 'Sparing K1 + BOX',        instructor: '—',               level: '' }
-  ],
-
-  SO: [
-    { time: '—',             class: 'Žádné pravidelné lekce (volno)', instructor: '—',       level: '' }
-  ],
-
-  NE: [
-    { time: '16:00 - 17:00', class: 'K1',                      instructor: 'Hudeček',         level: 'Začátečníci' },
-    { time: '17:00 - 18:00', class: 'Sparing MMA + grappling', instructor: '—',               level: 'Všichni' },
-    { time: '18:00 - 19:00', class: 'Bezkontaktní MMA',        instructor: 'Pawliczek',       level: '' }
-  ]
-};
-
-
-
-  /** @param {number} index */
-  function selectDay(index) {
-    active = index;
-  }
+	// Odpovědi doplněné k původním otázkám – ověřit s klubem
+	const faq = [
+		{
+			q: 'Potřebuju předchozí zkušenosti?',
+			a: 'Ne. Většina lidí k nám přišla bez zkušeností. Vyber si trénink označený jako „Začátečníci“ nebo „Všichni“ a trenér tě provede základy.'
+		},
+		{
+			q: 'Co si mám vzít na první trénink?',
+			a: 'Sportovní oblečení, pití a ručník. Pokud máš vlastní rukavice nebo chrániče, vezmi je s sebou. Když ne, napiš nám předem a poradíme.'
+		},
+		{
+			q: 'Od kolika let můžou děti trénovat?',
+			a: 'Přípravka MMA je pro děti od 4 do 10 let, junioři pro věk 11 až 13 let. Tréninky jsou přizpůsobené věku a důraz je na bezpečí a zábavu.'
+		},
+		{
+			q: 'Musím zápasit nebo sparovat?',
+			a: 'Ne. Spousta členů trénuje jen pro kondici a radost. Na sparing a soutěže se chodí dobrovolně, až když na to budeš připravený.'
+		}
+	];
 </script>
 
+<svelte:head>
+	<title>Rozpis tréninků a ceník | CSC MMA Karviná</title>
+	<meta
+		name="description"
+		content="Týdenní rozpis tréninků MMA, boxu, K1, thaiboxu, grapplingu a wrestlingu v Karviné. Ceník členství pro děti, juniory a dospělé."
+	/>
+	<link rel="canonical" href="https://www.csc-karvina.cz/rozpis" />
+</svelte:head>
 
+<header class="page-head">
+	<div class="container">
+		<span class="label">Rozpis tréninků</span>
+		<div class="page-head__row">
+			<h1 class="page-head__title">{LESSONS_PER_WEEK} tréninků každý týden.</h1>
+			<p class="page-head__lead">
+				Ranní, odpolední i večerní. Vyber den a najdi trénink, který ti sedne. Začátečníci jsou vítaní na
+				všech lekcích označených „Začátečníci“ a „Všichni“.
+			</p>
+		</div>
+	</div>
+</header>
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap');
+<section class="section" style="padding-top:0">
+	<div class="container">
+		<div class="days" role="tablist" aria-label="Den v týdnu">
+			{#each DAYS as d, i}
+				<button
+					id="tab-{i}"
+					role="tab"
+					aria-selected={i === active}
+					aria-controls="sched"
+					tabindex={i === active ? 0 : -1}
+					class:is-today={i === today}
+					title={DAY_NAMES[d]}
+					onclick={() => (active = i)}
+					onkeydown={onKey}>{d}</button
+				>
+			{/each}
+		</div>
 
-  .font-heading {
-    font-family: 'Bebas Neue', sans-serif;
-  }
-  .font-body {
-    font-family: 'Poppins', sans-serif;
-  }
-  .bg-dark {
-    background-color: #0c0c0c;
-  }
-</style>
-
-<main class="bg-dark text-white font-body overflow-hidden">
-  <div class="container mx-auto px-6 py-24 max-w-7xl">
-    <div class="text-center mb-16">
-      <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Rozvrh tréninků</p>
-      <h2 class="text-5xl font-heading leading-tight">
-        DENNÍ <span class="text-red-600">ROZPIS</span>
-      </h2>
-    </div>
-
-    <div class="flex flex-wrap justify-center gap-2 mb-10 border-b-2 border-gray-800">
-      {#each days as day, i}
-        <button
-          on:click={() => selectDay(i)}
-          class="px-6 py-4 uppercase text-sm tracking-wide font-bold transition-all duration-300 transform hover:scale-110"
-          class:text-red-600={i === active}
-          class:border-red-600={i === active}
-          class:text-gray-400={i !== active}
-        >
-          {day}
-        </button>
-      {/each}
-    </div>
-
-    <div
-      class="overflow-x-auto bg-[#1a1a1a] rounded-3xl border border-gray-800 shadow-2xl"
-      in:fade={{ duration: 1000 }}
-    >
-      <table class="min-w-full text-left">
-        <thead class="bg-[#1e1e1e]">
-          <tr class="text-gray-400 uppercase text-sm font-bold tracking-wider">
-            <th class="px-8 py-5 border-b border-gray-700">Čas</th>
-            <th class="px-8 py-5 border-b border-gray-700">Lekce</th>
-            <th class="px-8 py-5 border-b border-gray-700">Trenér</th>
-            <th class="px-8 py-5 border-b border-gray-700">Úroveň</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each scheduleByDay[currentDay] as item}
-            <tr class="border-t border-gray-800 transition-colors duration-300 hover:bg-[#252525]">
-              <td class="px-8 py-4 text-red-600 font-bold">{item.time}</td>
-              <td class="px-8 py-4 text-white font-semibold">{item.class}</td>
-              <td class="px-8 py-4 text-gray-300">{item.instructor}</td>
-              <td class="px-8 py-4 text-gray-400">{item.level}</td>
-            </tr>
-          {/each}
-        </tbody>
-      </table>
-    </div>
-  </div>
-
- <!-- PROZKOUMEJ – KURZY -->
-<section class="container mx-auto px-6 py-24 max-w-7xl">
-  <div class="text-center mb-16">
-    <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Prozkoumej</p>
-    <h3 class="text-5xl font-heading">
-      NAŠE <span class="text-red-600">KURZY</span>
-    </h3>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-    <!-- K1 -->
-    <div
-      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
-      in:fly={{ y: 20, duration: 1200, delay: 300 }}
-    >
-      <h4 class="text-3xl font-heading mb-2">K1</h4>
-      <p class="text-gray-400 leading-relaxed mb-6">
-        Naučíte se spojovat údery rukou, kopy a kolena do efektivních kombinací.
-        Tréninky rozvíjí rychlost, dynamiku i odolnost – ideální pro soutěže i kondici.
-      </p>
-    </div>
-
-    <!-- Grappling -->
-    <div
-      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
-      in:fly={{ y: 20, duration: 1200, delay: 600 }}
-    >
-      <h4 class="text-3xl font-heading mb-2">Grappling</h4>
-      <p class="text-gray-400 leading-relaxed mb-6">
-        Zaměříte se na boj na zemi – páky, znehybnění a škrcení.
-        Skvělý základ sebeobrany i příprava pro MMA.
-      </p>
-    </div>
-
-    <!-- Thaibox -->
-    <div
-      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
-      in:fly={{ y: 20, duration: 1200, delay: 900 }}
-    >
-      <h4 class="text-3xl font-heading mb-2">Thaibox (Muay Thai)</h4>
-      <p class="text-gray-400 leading-relaxed mb-6">
-        Tradiční thajské umění, kde využijete údery, kopy, lokty i kolena.
-        Rozvíjí tvrdost, přesnost a kondici.
-      </p>
-    </div>
-
-    <!-- Wrestling -->
-    <div
-      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
-      in:fly={{ y: 20, duration: 1200, delay: 300 }}
-    >
-      <h4 class="text-3xl font-heading mb-2">Wrestling</h4>
-      <p class="text-gray-400 leading-relaxed mb-6">
-        Naučíte se takedowny, strhy a kontrolu soupeře na zemi.
-        Perfektní doplněk k MMA i samostatná disciplína s důrazem na sílu a výbušnost.
-      </p>
-    </div>
-
-    <!-- Fitbox -->
-    <div
-      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
-      in:fly={{ y: 20, duration: 1200, delay: 600 }}
-    >
-      <h4 class="text-3xl font-heading mb-2">Fitbox</h4>
-      <p class="text-gray-400 leading-relaxed mb-6">
-        Kondiční trénink s boxerskými a kickboxerskými prvky.
-        Spálíte kalorie, posílíte celé tělo a odreagujete se od stresu.
-      </p>
-    </div>
-
-    <!-- Bezkontaktní MMA -->
-    <div
-      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
-      in:fly={{ y: 20, duration: 1200, delay: 900 }}
-    >
-      <h4 class="text-3xl font-heading mb-2">Bezkontaktní MMA</h4>
-      <p class="text-gray-400 leading-relaxed mb-6">
-        Technika a pohyb bez tvrdých úderů – ideální pro ty, kdo chtějí zlepšit koordinaci,
-        kondici a naučit se principy MMA bez fyzického kontaktu.
-      </p>
-    </div>
-
-    <!-- Přípravka MMA -->
-    <div
-      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
-      in:fly={{ y: 20, duration: 1200, delay: 900 }}
-    >
-      <h4 class="text-3xl font-heading mb-2">Přípravka MMA(4-10 let)</h4>
-      <p class="text-gray-400 leading-relaxed mb-6">
-        Hravou formou se děti učí základní pohybovou průpravu, disciplínu a první techniky bojových sportů. Důraz je na zábavu, bezpečí a rozvoj všestrannosti..
-      </p>
-    </div>
-    <!-- Junioři MMA -->
-    <div
-      class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10"
-      in:fly={{ y: 20, duration: 1200, delay: 900 }}
-    >
-      <h4 class="text-3xl font-heading mb-2">Junioři MMA(11-13 let)</h4>
-      <p class="text-gray-400 leading-relaxed mb-6">
-        Mladí sportovci už trénují konkrétní techniky MMA, rozvíjí kondici i týmového ducha. Tréninky jsou přizpůsobeny věku a podporují zdravý růst i sebedůvěru.
-      </p>
-    </div>
-
-  </div>
+		<div class="sched" id="sched" role="tabpanel" aria-labelledby="tab-{active}">
+			<div class="sched__head">
+				<h2>{DAY_NAMES[day]}</h2>
+				<span class="mono">{active === today ? 'Dnes · ' : ''}{lessons.length} {lessons.length === 1 ? 'trénink' : lessons.length >= 2 && lessons.length <= 4 ? 'tréninky' : 'tréninků'}</span>
+			</div>
+			{#each lessons as l}
+				<div class="sched__row">
+					<span class="sched__time">{l.time}</span>
+					<span class="sched__name">{l.name}</span>
+					<span class="sched__coach">{l.coach || '—'}</span>
+					<span class="sched__level">{#if l.level}<span>{l.level}</span>{/if}</span>
+				</div>
+			{:else}
+				<p class="sched__empty">V sobotu nejsou pravidelné tréninky. Odpočívej, v neděli se jede dál.</p>
+			{/each}
+		</div>
+	</div>
 </section>
 
-
-  <!-- CENY A SLUŽBY -->
-  <section id="plans" class="container mx-auto px-6 py-24 max-w-7xl">
-    <div class="text-center mb-16">
-        <h3 class="text-5xl font-heading">
-            ČLENSKÉ <span class="text-red-600">PLÁNY</span>
-        </h3>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-        <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 text-center transform transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 300 }}>
-            <h4 class="text-3xl font-heading mb-4">Děti</h4>
-            <p class="text-white text-5xl font-heading mb-4">500 Kč<span class="text-xl">/měsíc</span></p>
-            <ul class="text-gray-400 mb-8 space-y-3 font-body">
-                <li class="flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    Pravidelný dětský trénink
-                </li>
-                <li class="flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    Rozvoj motoriky a disciplíny
-                </li>
-            </ul>
-        </div>
-
-        <div class="group bg-red-600 p-10 rounded-3xl border border-red-600 text-center transform transition-transform duration-700 hover:scale-[1.02] hover:border-white shadow-2xl" in:fly={{ y: 20, duration: 1200, delay: 600 }}>
-            <h4 class="text-3xl font-heading mb-4 text-white">Junioři</h4>
-            <p class="text-white text-5xl font-heading mb-4">650 Kč<span class="text-xl">/měsíc</span></p>
-            <ul class="text-white mb-8 space-y-3 font-body">
-                <li class="flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    Přístup ke všem lekcím
-                </li>
-                <li class="flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    Vstup do posilovny
-                </li>
-            </ul>
-        </div>
-
-        <div class="group bg-[#1a1a1a] p-10 rounded-3xl border border-gray-800 text-center transform transition-transform duration-700 hover:scale-[1.02] hover:border-red-600 hover:shadow-2xl hover:shadow-red-600/10" in:fly={{ y: 20, duration: 1200, delay: 900 }}>
-            <h4 class="text-3xl font-heading mb-4">Dospělí</h4>
-            <p class="text-white text-5xl font-heading mb-4">850 Kč<span class="text-xl">/měsíc</span></p>
-            <ul class="text-gray-400 mb-8 space-y-3 font-body">
-                <li class="flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    Přístup ke všem lekcím
-                </li>
-                <li class="flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    Neomezený vstup do posilovny
-                </li>
-            </ul>
-        </div>
-    </div>
+<section class="section">
+	<div class="container">
+		<header class="section__head">
+			<span class="label">Kurzy</span>
+			<h2>Co znamená který trénink</h2>
+		</header>
+		<ul class="disc">
+			{#each DISCIPLINES as d, i}
+				<li use:reveal={i * 40}>
+					<span class="disc__no">{String(i + 1).padStart(2, '0')}</span>
+					<h3 class="disc__name">{d.name}</h3>
+					<p class="disc__text">{d.text}</p>
+					<span class="disc__tag">{d.tag}</span>
+				</li>
+			{/each}
+			<li use:reveal>
+				<span class="disc__no">09</span>
+				<h3 class="disc__name">Přípravka MMA</h3>
+				<p class="disc__text">
+					Hravou formou se děti učí pohybovou průpravu, disciplínu a první techniky. Důraz je na zábavu, bezpečí
+					a všestrannost.
+				</p>
+				<span class="disc__tag">4–10 let</span>
+			</li>
+			<li use:reveal>
+				<span class="disc__no">10</span>
+				<h3 class="disc__name">Junioři MMA</h3>
+				<p class="disc__text">
+					Konkrétní techniky MMA, kondice a týmový duch. Tréninky přizpůsobené věku podporují zdravý růst i
+					sebedůvěru.
+				</p>
+				<span class="disc__tag">11–13 let</span>
+			</li>
+		</ul>
+	</div>
 </section>
 
-  <!-- ČASTÉ OTÁZKY -->
-  <section class="container mx-auto px-6 py-24 max-w-7zxl">
-    <div class="text-center mb-16">
-      <h3 class="text-5xl font-heading">
-        ČASTO KLADENÉ <span class="text-red-600">DOTAZY</span>
-      </h3>
-    </div>
-    <div class="space-y-6">
-      <div class="group bg-[#1a1a1a] rounded-xl border border-gray-800 transition-transform duration-500 hover:scale-[1.01] hover:border-red-600 hover:shadow-xl">
-        <button class="w-full flex justify-between items-center text-white font-semibold text-lg px-8 py-6">
-          Potřebuji předchozí zkušenosti?
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-          </svg>
-        </button>
-      </div>
-      <div class="group bg-[#1a1a1a] rounded-xl border border-gray-800 transition-transform duration-500 hover:scale-[1.01] hover:border-red-600 hover:shadow-xl">
-        <button class="w-full flex justify-between items-center text-white font-semibold text-lg px-8 py-6">
-          Co si mám přinést na první lekci?
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </section>
-</main>
+<section class="bone" id="cenik">
+	<div class="container">
+		<header class="section__head">
+			<span class="label">Ceník</span>
+			<h2>Členství</h2>
+			<p>Platí se měsíčně.</p>
+		</header>
+		<div class="plans">
+			{#each PLANS as p, i}
+				<article class="plan" class:plan--hl={i === 2} use:reveal={i * 80}>
+					<h3>{p.name}</h3>
+					<span class="plan__note">{p.note ?? ''}</span>
+					<p class="plan__price">{p.price}&nbsp;Kč<small>/ měsíc</small></p>
+					<ul>
+						{#each p.items as item}
+							<li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>{item}</li>
+						{/each}
+					</ul>
+				</article>
+			{/each}
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container container--narrow">
+		<header class="section__head">
+			<span class="label">Časté dotazy</span>
+			<h2>Než přijdeš poprvé</h2>
+		</header>
+		<div class="faq">
+			{#each faq as f}
+				<details>
+					<summary>{f.q}<span class="faq__plus" aria-hidden="true"></span></summary>
+					<p>{f.a}</p>
+				</details>
+			{/each}
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="cta">
+			<div>
+				<h2>Vybral sis trénink?</h2>
+				<p>Napiš nám, kdy chceš přijít, a dáme vědět trenérovi.</p>
+			</div>
+			<div class="cta__actions">
+				<a class="btn-pill" href="/kontakt#prihlaska">
+					<span>Domluvit první trénink</span>
+					<span class="btn-pill__icon"><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

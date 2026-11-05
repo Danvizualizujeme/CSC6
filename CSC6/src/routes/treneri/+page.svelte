@@ -1,221 +1,132 @@
 <script lang="ts">
-  import { fly, fade } from 'svelte/transition';
-  import { base } from '$app/paths';
+	import { reveal } from '$lib/reveal';
+	import { HEAD_COACH, COACHES, type Coach } from '$lib/data';
 
-  // === HLAVNÍ TRENÉR ===
-  const mainImage = '/images/tr1.jpg';
+	let dialog: HTMLDialogElement;
+	let selected = $state<Coach | null>(null);
 
-  interface MainTrainer {
-    name: string;
-    role: string;
-    image: string;
-    intro: string;
-    shinesIn: string[];
-  }
-
-  const mainTrainer: MainTrainer = {
-    name: 'Lukáš Wojdyla',
-    role: 'Hlavní trenér & zakladatel klubu',
-    image: mainImage,
-    intro:
-      'Hlavní trenér a srdce celého klubu. Každého člena bere jako součást rodiny a vždy se snaží z každého dostat maximum. Je trpělivý, motivující a nikdy nezkazí žádnou srandu.',
-    shinesIn: ['trpělivosti', 'motivaci svěřenců', 'vedení týmu', 'zakladatel CSC']
-  };
-
-  // === ELITNÍ TRENÉŘI ===
-  interface Trainer {
-    name: string;
-    img: string;        // Každý trenér má nyní svou cestu k fotce
-    role: string;
-    bioFull: string;
-    highlights?: string[];
-  }
-
-  const otherTrainers: Trainer[] = [
-    {
-      name: 'Lukáš Bráborec',
-      img: `${base}/images/tr3.jpg`,
-      role: 'MMA začátečníci & příprava kondice',
-      bioFull:
-        'Specialista na práci s nováčky, kterým dokáže srozumitelně a dopodrobna vysvětlit každý detail. Trpělivě vede začátečníky k pevným základům MMA a zároveň jim vštěpuje respekt a disciplínu. Díky němu mají noví členové pevný start.',
-      highlights: ['trpělivost', 'technické vysvětlení', 'výchova začátečníků']
-    },
-    {
-      name: 'Lukáš Górecki',
-      img: `${base}/images/tr9.jpg`,
-      role: 'BOX pokročilí',
-      bioFull:
-        'Tvrdý, ale férový trenér, který dokáže najít slabinu soupeře a připravit bojovníky jak na zápas, tak do života. Je známý svým smyslem pro humor a výborným přístupem, který kombinuje dril s nadhledem. Na svou výšku má ránu, kterou nikdo nechce schytat.',
-      highlights: ['strategie', 'tvrdost', 'humor']
-    },
-    {
-      name: 'Ondřej Pawliczek',
-      img: `${base}/images/tr2.jpg`,
-      role: 'BOX začátečníci & bezkontaktní MMA',
-      bioFull:
-        'Mladý a energický trenér, který přináší do tréninků moderní přístup a nové metody. Odchovanec Lukáše Wojdyly, který se zaměřuje na techniku a detail. Neustále se snaží posouvat svěřence dopředu a motivovat je k růstu.',
-      highlights: ['inovace', 'technika', 'motivace mladých']
-    },
-    {
-      name: 'Lukáš Mayer',
-      img: `${base}/images/tr4.jpg`,
-      role: 'Přípravka (4–10 let) & základy MMA',
-      bioFull:
-        'Empatický trenér s výjimečným přístupem k dětem i dospělým. Snaží se předat nejen techniku bojových sportů, ale také rozumové hodnoty a respekt. Je ohleduplný, lidský a dokáže vytvořit pozitivní atmosféru v každém tréninku.',
-      highlights: ['práce s dětmi', 'lidský přístup', 'výchova hodnot']
-    },
-    {
-      name: 'Daniel Hudeček',
-      img: `${base}/images/tr7.jpg`,
-      role: 'K1 začátečníci & kondiční příprava',
-      bioFull:
-        'Přísný, ale zároveň přátelský trenér, který své svěřence dokáže dovést k jasně stanoveným cílům. Je motivační, férový a vždy dokáže vyvážit disciplínu se zábavou. Každý trénink pod jeho vedením má smysl a řád.',
-      highlights: ['disciplína', 'vedení k cílům', 'přátelský přístup']
-    },
-    {
-      name: 'Michal Sumelidis',
-      img: `${base}/images/tr5.jpg`,
-      role: 'Grappling & mládež (přípravka + junioři)',
-      bioFull:
-        'Jeden z nejlepších grapplerů v České republice, který dokáže učit s lehkostí a humorem. Jeho tréninky jsou zábavné a efektivní i pro ty, kdo nemají přirozený talent. Michal je vtipný, uvolněný a známý svou láskou ke kebabu.',
-      highlights: ['grappling', 'trpělivé učení', 'humor']
-    },
-    {
-      name: 'Erik Breit',
-      img: `${base}/images/tr6.jpg`,
-      role: 'Thaibox (Muay Thai)',
-      bioFull:
-        'Elitní thaiboxer, který pravidelně piluje své dovednosti přímo v Thajsku. Patří k nejlepším v České republice a své znalosti dokáže předat jasně a detailně. Je precizní, náročný na techniku a inspirující pro všechny své svěřence.',
-      highlights: ['thaibox', 'technická preciznost', 'mezinárodní zkušenosti']
-    },
-    {
-      name: 'Marek Barva',
-      img: `${base}/images/trainers/alex1.jpg`,
-      role: 'Wrestling',
-      bioFull:
-        'Specialista na wrestling a hody, které učí s maximální pečlivostí a smyslem pro detail. Je skvělý trenér i člověk, jeho tréninky mají jasnou koncepci a směřují k výsledkům. Pokud chcete umět perfektní strhy, je to ten pravý.',
-      highlights: ['wrestling', 'systematičnost', 'praktické vedení']
-    },
-    {
-      name: 'Maxim Kuta',
-      img: `${base}/images/tr8.jpg`,
-      role: 'Asistent trenéra & mládež',
-      bioFull:
-        'Nejmladší člen trenérského týmu, který už nyní dokáže pomoci a inspirovat mladé sportovce. Je otevřený, přátelský a rychle získává zkušenosti, které předává dál. Přináší do klubu svěží energii a pozitivní přístup.',
-      highlights: ['práce s mládeží', 'přátelský přístup', 'energie']
-    }
-  ];
-
-  // Stav rozbalení karet
-  let expanded = new Set<number>();
-  function toggle(i: number) {
-    if (expanded.has(i)) expanded.delete(i);
-    else expanded.add(i);
-    expanded = new Set(expanded);
-  }
+	function openCoach(c: Coach) {
+		selected = c;
+		dialog.showModal();
+	}
+	const initials = (n: string) =>
+		n
+			.split(' ')
+			.map((p) => p[0])
+			.join('');
 </script>
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap');
+<svelte:head>
+	<title>Trenéři | CSC MMA Karviná</title>
+	<meta
+		name="description"
+		content="Trenérský tým CSC Karviná: MMA, box, K1, thaibox, grappling, wrestling a tréninky pro děti. Hlavní trenér Lukáš Wojdyla."
+	/>
+	<link rel="canonical" href="https://www.csc-karvina.cz/treneri" />
+</svelte:head>
 
-  .font-heading { font-family: 'Bebas Neue', sans-serif; }
-  .font-body { font-family: 'Poppins', sans-serif; }
-  .bg-dark { background-color: #0c0c0c; }
-</style>
+<header class="page-head">
+	<div class="container">
+		<span class="label">Trenéři</span>
+		<div class="page-head__row">
+			<h1 class="page-head__title">{COACHES.length + 1} trenérů, jeden tým.</h1>
+			<p class="page-head__lead">
+				Každý má svou specializaci, od dětské přípravky po thaibox z Thajska. Klikni na trenéra a přečti si,
+				v čem vyniká.
+			</p>
+		</div>
+	</div>
+</header>
 
-<main class="bg-dark text-white font-body overflow-hidden">
-  <section id="profil" class="container mx-auto px-6 py-24 max-w-7xl">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-      <div class="relative" in:fade={{ duration: 1500 }}>
-        <img
-          src={mainTrainer.image}
-          alt={mainTrainer.name}
-          class="w-full rounded-3xl shadow-2xl object-cover relative transform transition-transform duration-700 hover:scale-105"
-        />
-      </div>
+<section class="section" style="padding-top:0">
+	<div class="container split">
+		<div class="split__media" style="position:static">
+			<img class="photo" src={HEAD_COACH.img} alt={HEAD_COACH.name} />
+		</div>
+		<div class="prose" use:reveal>
+			<span class="label">Hlavní trenér</span>
+			<h2>{HEAD_COACH.name}</h2>
+			<p class="mono" style="color:var(--red);font-size:13px;letter-spacing:.08em;text-transform:uppercase">
+				{HEAD_COACH.role}
+			</p>
+			<p>{HEAD_COACH.bio}</p>
+			<ul class="list-lines" style="margin-top:28px">
+				{#each HEAD_COACH.strengths as s, i}
+					<li><span class="mono">0{i + 1}</span><span>{s}</span></li>
+				{/each}
+			</ul>
+		</div>
+	</div>
+</section>
 
-      <div in:fade={{ duration: 1500, delay: 200 }}>
-        <p class="text-red-600 font-bold uppercase tracking-widest mb-4">Hlavní trenér</p>
-        <h2 class="text-5xl font-heading leading-tight mb-6">{mainTrainer.name}</h2>
-        <p class="text-gray-300 text-lg leading-relaxed mb-6">
-          {mainTrainer.intro}
-        </p>
+<section class="section">
+	<div class="container">
+		<header class="section__head">
+			<span class="label">Tým</span>
+			<h2>Trenérský tým</h2>
+		</header>
+		<div class="coaches">
+			{#each COACHES as c, i}
+				<button type="button" class="coach" onclick={() => openCoach(c)} use:reveal={(i % 4) * 70}>
+					{#if c.img}
+						<img class="photo" src={c.img} alt="" loading="lazy" />
+					{:else}
+						<span class="coach__mono" aria-hidden="true">{initials(c.name)}</span>
+					{/if}
+					<span class="coach__body">
+						<span>
+							<span class="coach__name">{c.name}</span>
+							<span class="coach__role">{c.role}</span>
+						</span>
+						<span class="coach__go" aria-hidden="true"><svg class="icon"><use href="#i-plus" /></svg></span>
+					</span>
+				</button>
+			{/each}
+		</div>
+	</div>
+</section>
 
-        <div class="bg-[#131313] border border-gray-800 rounded-2xl p-6">
-          <h3 class="text-white font-semibold mb-3">Vyniká v:</h3>
-          <ul class="space-y-2.5 text-gray-200 text-base leading-relaxed">
-            {#each mainTrainer.shinesIn as item}
-              <li class="flex gap-3 items-start">
-                <span class="mt-2 inline-flex h-2.5 w-2.5 bg-red-600 rounded-full"></span>
-                <span>{item}</span>
-              </li>
-            {/each}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="section">
+	<div class="container">
+		<div class="cta">
+			<div>
+				<h2>Pojď trénovat s námi.</h2>
+				<p>Napiš, co tě zajímá, a doporučíme ti trénink i trenéra.</p>
+			</div>
+			<div class="cta__actions">
+				<a class="btn-pill" href="/kontakt#prihlaska">
+					<span>Domluvit první trénink</span>
+					<span class="btn-pill__icon"><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
 
-  <section id="tym" class="container mx-auto px-6 py-24 max-w-7xl">
-    <div class="text-center mb-20">
-      <p class="text-red-600 font-bold uppercase tracking-widest mb-2">Seznamte se s týmem</p>
-      <h3 class="text-5xl font-heading">
-        ELITNÍ <span class="text-red-600">TRENÉŘI</span>
-      </h3>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-      {#each otherTrainers as coach, i}
-        <div class="group bg-[#1a1a1a] rounded-3xl overflow-hidden shadow-xl border border-gray-800 transition-transform duration-500 hover:scale-[1.02]">
-          
-          <button
-            type="button"
-            on:click={() => toggle(i)}
-            class="relative h-96 w-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-red-600"
-            aria-expanded={expanded.has(i)}
-          >
-            <img
-              src={coach.img}
-              alt={coach.name}
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-            />
-          </button>
-
-          <div class="p-8">
-            <h4 class="text-2xl font-heading text-white text-center">{coach.name}</h4>
-
-            {#if expanded.has(i)}
-              <div
-                class="text-gray-300 leading-relaxed mt-4 space-y-3"
-                in:fade={{ duration: 200 }}
-                out:fade={{ duration: 150 }}
-              >
-                <p>{coach.bioFull}</p>
-                {#if coach.highlights?.length}
-                  <div>
-                    <p class="font-semibold text-white mb-1">Vyniká v:</p>
-                    <ul class="list-disc list-inside text-gray-300 space-y-1">
-                      {#each coach.highlights as h}
-                        <li>{h}</li>
-                      {/each}
-                    </ul>
-                  </div>
-                {/if}
-              </div>
-            {/if}
-
-            <div class="mt-6 flex justify-center">
-              <button
-                type="button"
-                on:click={() => toggle(i)}
-                class="px-5 py-2 rounded-full border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-colors duration-200 text-sm font-semibold"
-              >
-                {expanded.has(i) ? 'Méně' : 'Více'} o trenérovi
-              </button>
-            </div>
-          </div>
-        </div>
-      {/each}
-    </div>
-  </section>
-</main>
+<dialog
+	class="dialog"
+	bind:this={dialog}
+	aria-labelledby="coach-name"
+	onclick={(e) => e.target === dialog && dialog.close()}
+>
+	{#if selected}
+		<div class="dialog__grid">
+			{#if selected.img}
+				<img class="photo" src={selected.img} alt={selected.name} />
+			{:else}
+				<span class="coach__mono" aria-hidden="true">{initials(selected.name)}</span>
+			{/if}
+			<div class="dialog__body">
+				<button class="lightbox__btn dialog__close" style="position:static" onclick={() => dialog.close()} aria-label="Zavřít">
+					<svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
+				</button>
+				<h2 id="coach-name">{selected.name}</h2>
+				<p class="role">{selected.role}</p>
+				<p>{selected.bio}</p>
+				<ul class="chips" aria-label="Vyniká v">
+					{#each selected.strengths as s}<li>{s}</li>{/each}
+				</ul>
+			</div>
+		</div>
+	{/if}
+</dialog>
