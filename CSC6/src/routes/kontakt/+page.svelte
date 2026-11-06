@@ -1,6 +1,9 @@
 <script lang="ts">
 	import ContactForm from '$lib/ContactForm.svelte';
 	import { CONTACT } from '$lib/data';
+
+	// Mapa Google se načte až po kliknutí (bez cookies třetích stran předem)
+	let showMap = $state(false);
 </script>
 
 <svelte:head>
@@ -50,13 +53,30 @@
 					</span>
 				</li>
 			</ul>
-			<iframe
-				class="map"
-				src="https://www.google.com/maps?q=Rud%C3%A9+arm%C3%A1dy+651%2F19A%2C+733+01+Karvin%C3%A1&output=embed"
-				title="Mapa: CSC MMA Karviná, Rudé armády 651/19A"
-				loading="lazy"
-				referrerpolicy="no-referrer-when-downgrade"
-			></iframe>
+			{#if showMap}
+				<iframe
+					class="map"
+					src="https://www.google.com/maps?q=Rud%C3%A9+arm%C3%A1dy+651%2F19A%2C+733+01+Karvin%C3%A1&output=embed"
+					title="Mapa: CSC MMA Karviná, Rudé armády 651/19A"
+					referrerpolicy="no-referrer-when-downgrade"
+				></iframe>
+			{:else}
+				<div class="map-consent">
+					<p>
+						Mapa se načítá od Googlu, který při tom může uložit cookies. Načteme ji, až když o ni požádáte.
+						<a href="/cookies#mapa">Více o cookies</a>
+					</p>
+					<div class="map-consent__actions">
+						<button class="btn btn--ghost" type="button" onclick={() => (showMap = true)}>Zobrazit mapu</button>
+						<a
+							class="btn btn--ghost"
+							href="https://mapy.cz/zakladni?q=Rud%C3%A9%20arm%C3%A1dy%20651%2F19a%20Karvin%C3%A1"
+							target="_blank"
+							rel="noopener">Otevřít v Mapy.cz</a
+						>
+					</div>
+				</div>
+			{/if}
 		</div>
 		<div class="card">
 			<h2>Napiš nám</h2>

@@ -78,10 +78,12 @@
 		<textarea name="message" rows="4" required placeholder="Např. kdy můžu přijít poprvé a co si mám vzít s sebou?"
 		></textarea>
 	</label>
-	<label class="consent">
-		<input name="souhlas" type="checkbox" required />
-		<span>Souhlasím se zpracováním osobních údajů za účelem odpovědi na zprávu. *</span>
-	</label>
+	<p class="consent">
+		<span
+			>Odesláním zprávy berete na vědomí, že vaše údaje použijeme k odpovědi podle
+			<a href="/ochrana-osobnich-udaju#dotazy" style="color:var(--text)">zásad ochrany osobních údajů</a>.</span
+		>
+	</p>
 
 	{#if status === 'ok'}
 		<p class="form__msg form__msg--ok" role="status">Díky, zpráva dorazila. Ozveme se ti co nejdřív.</p>

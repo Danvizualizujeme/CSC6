@@ -187,3 +187,14 @@ export const CONTACT = {
 	facebook: 'https://www.facebook.com/CSCKarvina',
 	instagram: 'https://www.instagram.com/csc_mma'
 };
+
+// Údaje spolku z veřejného rejstříku (ARES, ověřeno 6. 11. 2026)
+export const CLUB = {
+	name: 'CSC Karviná z. s.',
+	ico: '23302127',
+	seat: 'Rudé armády 651/19a, Hranice, 733 01 Karviná',
+	register: 'spolkovém rejstříku vedeném Krajským soudem v Ostravě, oddíl L, vložka 22024',
+	chair: 'Lukáš Wojdyla',
+	// Datum účinnosti právních dokumentů
+	legalSince: '6. 11. 2026'
+};

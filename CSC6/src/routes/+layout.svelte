@@ -1,8 +1,12 @@
 <script lang="ts">
+	import '@fontsource/geist/400.css';
+	import '@fontsource/geist/500.css';
+	import '@fontsource/geist/600.css';
+	import '@fontsource/geist-mono/500.css';
 	import '../app.css';
 	import { page } from '$app/state';
 	import { afterNavigate } from '$app/navigation';
-	import { CONTACT } from '$lib/data';
+	import { CONTACT, CLUB } from '$lib/data';
 
 	let { children } = $props();
 	let open = $state(false);
@@ -117,9 +121,16 @@
 		</div>
 		<p class="footer__word" aria-hidden="true">CSC Karviná</p>
 		<div class="footer__bottom">
-			<p>© {new Date().getFullYear()} CSC Karviná z. s.</p>
-			<p>Jedna cesta · Jeden cíl · Jedna rodina</p>
+			<p>© {new Date().getFullYear()} {CLUB.name}</p>
+			<nav class="footer__legal" aria-label="Právní informace">
+				<a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a>
+				<a href="/cookies">Cookies</a>
+				<a href="/obchodni-podminky">Obchodní podmínky</a>
+			</nav>
 		</div>
+		<p class="footer__id">
+			{CLUB.name} · IČO {CLUB.ico} · sídlo {CLUB.seat} · zapsaný ve {CLUB.register}
+		</p>
 	</div>
 </footer>
 
